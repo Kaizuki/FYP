@@ -1,16 +1,16 @@
 package Controller;
 
-import Dao.UsersDao;
-import Dao.UsersDaoImpl;
-import Models.Users;
+import Dao.UserDao;
+import Dao.UserDaoImpl;
+import Models.User;
 
-public class UsersController {
-    UsersDao manageUser = new UsersDaoImpl();
+public class UserController {
+    UserDao userDao = new UserDaoImpl();
 
     //! TODO: Remeber to convert all the return methods accordingly
     
     public void getUserData(String username) {
-        Users user  = manageUser.getUser(username);
+        User user  = userDao.getUser(username);
         if (user != null)  
             System.out.println(user.toString());
         else
@@ -18,21 +18,21 @@ public class UsersController {
     }
 
     public void getAllUserData() {
-        for (Users user : manageUser.getAllUsers()) {
+        for (User user : userDao.getAllUsers()) {
             System.out.println(user.toString());
         }
     }
 
-    public void authUser(Users user) {
-        boolean authResult = manageUser.authUser(user);
+    public void authUser(User user) {
+        boolean authResult = userDao.authUser(user);
         if (authResult)
             System.out.println("Correct Credential");
         else
             System.out.println("Incorrect Credential");
     }
 
-    public void createNewUser(Users user) {
-        boolean insertResult = manageUser.createUser(user);
+    public void createNewUser(User user) {
+        boolean insertResult = userDao.createUser(user);
         if (insertResult)
             System.out.println("Inserted successfully!");
         else

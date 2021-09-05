@@ -1,16 +1,16 @@
 package Models;
 
-public class Users {
+public class User {
     private int userId;
     private String userName;
     private String userPass;
     private String userRole;
-    private Enum usertask;
+    private Enum userTask;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(int userId, String userName, String userPass, String userRole) {
+    public User(int userId, String userName, String userPass, String userRole) {
         this.userId = userId;
         this.userName = userName;
         this.userPass = userPass;
@@ -18,7 +18,7 @@ public class Users {
     }
     
     
-    public Users(String userName, String userPass, String userRole) {
+    public User(String userName, String userPass, String userRole) {
         this.userName = userName;
         this.userPass = userPass;
         this.userRole = userRole;
