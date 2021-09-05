@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2021 at 05:47 PM
+-- Generation Time: Sep 05, 2021 at 02:32 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -24,45 +24,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `inventoryorder`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(10) NOT NULL,
-  `user_name` varchar(32) NOT NULL,
-  `user_pass` varchar(16) NOT NULL,
-  `user_role` varchar(20) NOT NULL
+CREATE TABLE `inventoryorder` (
+  `inventoryOrder_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `ware_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_role`) VALUES
-(1, 'kim', 'kim1234', 'manager'),
-(2, 'eli', 'eli1234', 'staff'),
-(3, 'hey', 'eli1234', 'vendo'),
-(6, 'hey2', 'eli1234', 'staff');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table `inventoryorder`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `inventoryorder`
+  ADD PRIMARY KEY (`inventoryOrder_id`),
+  ADD UNIQUE KEY `supplier_id` (`supplier_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `ware_id` (`ware_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `inventoryorder`
 --
-ALTER TABLE `users`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `inventoryorder`
+  MODIFY `inventoryOrder_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `inventoryorder`
+--
+ALTER TABLE `inventoryorder`
+  ADD CONSTRAINT `inventoryorder_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `inventoryorder_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `inventoryorder_ibfk_3` FOREIGN KEY (`ware_id`) REFERENCES `warehouse` (`ware_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
