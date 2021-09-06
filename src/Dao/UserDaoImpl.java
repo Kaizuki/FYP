@@ -11,16 +11,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import Models.User;
-import db_connection.Dbconnect;
+import Helper.DatabaseConnection;
 
 public class UserDaoImpl implements UserDao {
 
-    Dbconnect dbconnect;
+    DatabaseConnection dbConnect;
 
     Logger logger = Logger.getLogger(UserDaoImpl.class.getName());
 
     public UserDaoImpl() {
-        dbconnect = new Dbconnect();
+        dbConnect = new DatabaseConnection();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
         List<User> fetchUsers = new ArrayList<User>();
         String sqlQuery = "SELECT * FROM users";
         try {
-            PreparedStatement st = dbconnect.connect().prepareStatement(sqlQuery);
+            PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
             ResultSet rs = st.executeQuery();
             logger.log(Level.INFO, "Fetching [users] lists from DB.");
 
@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
             return null;
         } finally {
-            dbconnect.disconnect();
+            dbConnect.disconnect();
         }
     }
 
@@ -55,7 +55,7 @@ public class UserDaoImpl implements UserDao {
         String sqlQuery = "SELECT * FROM users WHERE user_username = ?";
         try {
             User user = null;
-            PreparedStatement st = dbconnect.connect().prepareStatement(sqlQuery);
+            PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
             logger.log(Level.INFO, "Fetching [users] " + username + " from DB.");
@@ -73,7 +73,7 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
             return null;
         } finally {
-            dbconnect.disconnect();
+            dbConnect.disconnect();
         }
     }
 
@@ -102,7 +102,7 @@ public class UserDaoImpl implements UserDao {
             boolean duplicateResult = chkDuplicateUser(user.getUserName());
             if (!duplicateResult) {
                 resetIdCount();
-                PreparedStatement st = dbconnect.connect().prepareStatement(sqlQuery);
+                PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
                 st.setString(1, user.getUserName());
 
                 // st.setString(2, user.getUserPass());
@@ -125,7 +125,7 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
             return false;
         } finally {
-            dbconnect.disconnect();
+            dbConnect.disconnect();
         }
     }
 
@@ -144,7 +144,7 @@ public class UserDaoImpl implements UserDao {
         // * UPGRADE: Add hashing and encryption to param before comparing db result
         String sqlQuery = "SELECT * FROM users WHERE user_username = ? AND user_password = ?";
         try {
-            PreparedStatement st = dbconnect.connect().prepareStatement(sqlQuery);
+            PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
             st.setString(1, user.getUserName());
             System.out.println(hash(user.getUserPass()));
             st.setString(2, hash(user.getUserPass()));
@@ -159,7 +159,7 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
             return false;
         } finally {
-            dbconnect.disconnect();
+            dbConnect.disconnect();
         }
     }
 
@@ -167,19 +167,19 @@ public class UserDaoImpl implements UserDao {
     private void resetIdCount() {
         String sqlQuery = "ALTER TABLE users AUTO_INCREMENT = 1";
         try {
-            PreparedStatement st = dbconnect.connect().prepareStatement(sqlQuery);
+            PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
             st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            dbconnect.disconnect();
+            dbConnect.disconnect();
         }
     }
 
     private boolean chkDuplicateUser(String username) {
         String sqlQuery = "SELECT * FROM users WHERE user_username = ?";
         try {
-            PreparedStatement st = dbconnect.connect().prepareStatement(sqlQuery);
+            PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
             logger.log(Level.INFO, "Auth Duplicate User " + username + ".");
@@ -194,7 +194,7 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
             return true;
         } finally {
-            dbconnect.disconnect();
+            dbConnect.disconnect();
         }
     }
 

@@ -1,8 +1,8 @@
-package db_connection;
+package Helper;
 import java.sql.*;
 import java.util.Properties;
 
-public class Dbconnect {
+public class DatabaseConnection {
     
     //* Database connection constants
     private static final String DB_URL = "jdbc:mysql://localhost:3306/inventory_system";
