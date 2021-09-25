@@ -4,23 +4,24 @@ public class User {
     private int userId;
     private String userName;
     private String userPass;
+    private String userEmail;
     private String userRole;
-    private Enum userTask;
 
     public User() {
     }
 
-    public User(int userId, String userName, String userPass, String userRole) {
+    public User(int userId, String userName, String userPass, String userEmail, String userRole) {
         this.userId = userId;
         this.userName = userName;
         this.userPass = userPass;
+        this.userEmail = userEmail;
         this.userRole = userRole;
     }
-    
-    
-    public User(String userName, String userPass, String userRole) {
+
+    public User(String userName, String userPass, String userEmail, String userRole) {
         this.userName = userName;
         this.userPass = userPass;
+        this.userEmail = userEmail;
         this.userRole = userRole;
     }
 
@@ -48,13 +49,30 @@ public class User {
         this.userPass = userPass;
     }
 
+    public String getUserRole() {
+        return this.userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
+    public String getUserEmail() {
+        return this.userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     @Override
     public String toString() {
         return "{" +
             " userId='" + getUserId() + "'" +
             ", userName='" + getUserName() + "'" +
             ", userPass='" + getUserPass() + "'" +
+            ", userEmail='" + getUserEmail() + "'" +
+            ", userRole='" + getUserRole() + "'" +
             "}";
     }
-     
 }

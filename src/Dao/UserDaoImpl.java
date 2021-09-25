@@ -37,7 +37,8 @@ public class UserDaoImpl implements UserDao {
                 User user = new User(rs.getInt(1), // user_id
                         rs.getString(2), // user_name
                         rs.getString(3), // user_pass
-                        rs.getString(4) // user_role
+                        rs.getString(4), //user_email
+                        rs.getString(5) // user_role
                 );
                 fetchUsers.add(user);
             }
@@ -65,7 +66,8 @@ public class UserDaoImpl implements UserDao {
                 user = new User(rs.getInt(1), // user_id
                         rs.getString(2), // user_name
                         rs.getString(3), // user_pass
-                        rs.getString(4) // user_role
+                        rs.getString(4), // user_email
+                        rs.getString(5) // user_role
                 );
             }
             return user;

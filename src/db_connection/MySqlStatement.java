@@ -4,12 +4,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import Helper.DatabaseConnection;
 
 public class MySqlStatement {
-    Dbconnect dbconn;
+    DatabaseConnection dbconn;
 
     public MySqlStatement() { 
-        dbconn = new Dbconnect(); 
+        dbconn = new DatabaseConnection(); 
     }
 
     public void createSql() {
@@ -71,6 +72,4 @@ public class MySqlStatement {
             e.printStackTrace();
         }
     }
-    
-    
 }

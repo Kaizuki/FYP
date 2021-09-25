@@ -1,5 +1,10 @@
+import java.util.LinkedList;
+
+import Blockchain.Block;
+import Blockchain.Blockchain;
+import Blockchain.BlockchainOperation;
 import Controller.UserController;
-import Models.User;
+import Models.Orders;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -25,9 +30,18 @@ public class App {
 
         UserController userController = new UserController();
         // userController.getUserData("peach");
-        User user = new User("peach", "peach", "manager");
-        userController.authUser(user);
+        // User user = new User("peach", "peach", "peach@gmail.com", "manager");
+        // userController.authUser(user);
         // userController.createNewUser(user);
 
+        Orders order1 = new Orders(1, 11, 12, 13);
+        Orders order2 = new Orders(2, 21, 22, 23);
+        Orders order3 = new Orders(3, 31, 32, 33);
+
+        Blockchain blockchain = new Blockchain();
+        // BlockchainOperation.initBlock(order3);
+        // BlockchainOperation.nextBlock(order2);
+        // BlockchainOperation.nextBlock(order1);
+        // BlockchainOperation.nextBlock(order3);
     }
 }
