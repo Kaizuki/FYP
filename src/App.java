@@ -1,8 +1,5 @@
-import java.util.LinkedList;
-
-import Blockchain.Block;
-import Blockchain.Blockchain;
 import Blockchain.BlockchainOperation;
+import Blockchain.BlockchainOperation.BlockType;
 import Controller.UserController;
 import Models.Orders;
 
@@ -37,11 +34,20 @@ public class App {
         Orders order1 = new Orders(1, 11, 12, 13);
         Orders order2 = new Orders(2, 21, 22, 23);
         Orders order3 = new Orders(3, 31, 32, 33);
+        
+        BlockchainOperation bc1 = new BlockchainOperation(BlockType.ORDER);
+        bc1.createBlock(order1);
+        bc1.createBlock(order2);
 
-        Blockchain blockchain = new Blockchain();
-        // BlockchainOperation.initBlock(order3);
-        // BlockchainOperation.nextBlock(order2);
-        // BlockchainOperation.nextBlock(order1);
-        // BlockchainOperation.nextBlock(order3);
+        System.out.println("BC1: " + bc1.toString());
+        
+        BlockchainOperation bc2 = new BlockchainOperation(BlockType.INVENTORY);
+        bc2.createBlock(order3);
+        bc2.createBlock(order2);
+        
+        BlockchainOperation bc3 = new BlockchainOperation(BlockType.STOCK);
+        bc3.createBlock(order3);
+
+
     }
 }
