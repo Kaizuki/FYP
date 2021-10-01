@@ -8,12 +8,12 @@
  *
  * @author slavi
  */
-public class MainMenu extends javax.swing.JFrame {
+public class Mainmenu extends javax.swing.JFrame {
 
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public Mainmenu() {
         initComponents();
     }
 
@@ -31,6 +31,10 @@ public class MainMenu extends javax.swing.JFrame {
         Btn_Inventory = new javax.swing.JButton();
         Btn_Orders = new javax.swing.JButton();
         Btn_Logout = new javax.swing.JButton();
+        Btn_Addorder = new javax.swing.JButton();
+        Btn_Addinventory = new javax.swing.JButton();
+        Btn_Edit = new javax.swing.JButton();
+        Btn_Delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,14 +51,19 @@ public class MainMenu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Tbl_View);
 
-        Btn_Inventory.setText("Inventory");
+        Btn_Inventory.setText("View Inventory");
         Btn_Inventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_InventoryActionPerformed(evt);
             }
         });
 
-        Btn_Orders.setText("Orders");
+        Btn_Orders.setText("View Orders");
+        Btn_Orders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_OrdersActionPerformed(evt);
+            }
+        });
 
         Btn_Logout.setText("Logout");
         Btn_Logout.addActionListener(new java.awt.event.ActionListener() {
@@ -63,19 +72,54 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        Btn_Addorder.setText("Add Order");
+        Btn_Addorder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AddorderActionPerformed(evt);
+            }
+        });
+
+        Btn_Addinventory.setText("Add Inventory");
+        Btn_Addinventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AddinventoryActionPerformed(evt);
+            }
+        });
+
+        Btn_Edit.setText("Edit");
+        Btn_Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_EditActionPerformed(evt);
+            }
+        });
+
+        Btn_Delete.setText("Delete");
+        Btn_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_DeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Btn_Inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Btn_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Btn_Logout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                            .addComponent(Btn_Addinventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Btn_Addorder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Btn_Edit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Btn_Logout)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(Btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Btn_Orders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Btn_Inventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -92,7 +136,15 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Btn_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Btn_Logout)))
+                        .addComponent(Btn_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Btn_Addorder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Btn_Addinventory, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Btn_Logout))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -101,11 +153,42 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void Btn_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InventoryActionPerformed
         // TODO add your handling code here:
+                Btn_Addinventory.setVisible(true);
+        Btn_Delete.setVisible(true);
+        Btn_Edit.setVisible(true);
     }//GEN-LAST:event_Btn_InventoryActionPerformed
 
     private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
-        // TODO add your handling code here:
+     Login Login = new Login();
+        setVisible(false);
+       Login.setVisible(true);
     }//GEN-LAST:event_Btn_LogoutActionPerformed
+
+    private void Btn_AddinventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddinventoryActionPerformed
+        Addinventory Addinventory = new Addinventory();
+      
+       Addinventory.setVisible(true);
+    }//GEN-LAST:event_Btn_AddinventoryActionPerformed
+
+    private void Btn_AddorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddorderActionPerformed
+        Addorder Addorder = new Addorder();
+       Addorder.setVisible(true);
+    }//GEN-LAST:event_Btn_AddorderActionPerformed
+
+    private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
+         Editinventory Editinventory = new Editinventory();
+       Editinventory.setVisible(true);
+    }//GEN-LAST:event_Btn_EditActionPerformed
+
+    private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_DeleteActionPerformed
+
+    private void Btn_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OrdersActionPerformed
+        Btn_Addinventory.setVisible(false);
+        Btn_Delete.setVisible(false);
+        Btn_Edit.setVisible(false);
+    }//GEN-LAST:event_Btn_OrdersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,25 +207,30 @@ public class MainMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mainmenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mainmenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mainmenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mainmenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                new Mainmenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_Addinventory;
+    private javax.swing.JButton Btn_Addorder;
+    private javax.swing.JButton Btn_Delete;
+    private javax.swing.JButton Btn_Edit;
     private javax.swing.JButton Btn_Inventory;
     private javax.swing.JButton Btn_Logout;
     private javax.swing.JButton Btn_Orders;
