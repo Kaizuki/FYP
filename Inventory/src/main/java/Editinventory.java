@@ -44,8 +44,18 @@ public class Editinventory extends javax.swing.JFrame {
         lbl_Product1.setText("Quantity");
 
         Btn_Confirm.setText("Confirm");
+        Btn_Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ConfirmActionPerformed(evt);
+            }
+        });
 
         Btn_Cancel.setText("Cancel");
+        Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_CancelActionPerformed(evt);
+            }
+        });
 
         Lbl_Location.setText("Location");
 
@@ -101,6 +111,14 @@ public class Editinventory extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Btn_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConfirmActionPerformed
+         dispose();
+    }//GEN-LAST:event_Btn_ConfirmActionPerformed
+
+    private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
+ dispose();
+    }//GEN-LAST:event_Btn_CancelActionPerformed
 
     /**
      * @param args the command line arguments

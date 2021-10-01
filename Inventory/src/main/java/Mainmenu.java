@@ -59,6 +59,11 @@ public class Mainmenu extends javax.swing.JFrame {
         });
 
         Btn_Orders.setText("View Orders");
+        Btn_Orders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_OrdersActionPerformed(evt);
+            }
+        });
 
         Btn_Logout.setText("Logout");
         Btn_Logout.addActionListener(new java.awt.event.ActionListener() {
@@ -148,27 +153,42 @@ public class Mainmenu extends javax.swing.JFrame {
 
     private void Btn_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InventoryActionPerformed
         // TODO add your handling code here:
+                Btn_Addinventory.setVisible(true);
+        Btn_Delete.setVisible(true);
+        Btn_Edit.setVisible(true);
     }//GEN-LAST:event_Btn_InventoryActionPerformed
 
     private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
-        // TODO add your handling code here:
+     Login Login = new Login();
+        setVisible(false);
+       Login.setVisible(true);
     }//GEN-LAST:event_Btn_LogoutActionPerformed
 
     private void Btn_AddinventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddinventoryActionPerformed
-        // TODO add your handling code here:
+        Addinventory Addinventory = new Addinventory();
+      
+       Addinventory.setVisible(true);
     }//GEN-LAST:event_Btn_AddinventoryActionPerformed
 
     private void Btn_AddorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddorderActionPerformed
-        // TODO add your handling code here:
+        Addorder Addorder = new Addorder();
+       Addorder.setVisible(true);
     }//GEN-LAST:event_Btn_AddorderActionPerformed
 
     private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
-        // TODO add your handling code here:
+         Editinventory Editinventory = new Editinventory();
+       Editinventory.setVisible(true);
     }//GEN-LAST:event_Btn_EditActionPerformed
 
     private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Btn_DeleteActionPerformed
+
+    private void Btn_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OrdersActionPerformed
+        Btn_Addinventory.setVisible(false);
+        Btn_Delete.setVisible(false);
+        Btn_Edit.setVisible(false);
+    }//GEN-LAST:event_Btn_OrdersActionPerformed
 
     /**
      * @param args the command line arguments

@@ -100,7 +100,9 @@ public class Suppliermainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_ConfirmorderActionPerformed
 
     private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
-        // TODO add your handling code here:
+    dispose();
+     Login Login = new Login();
+       Login.setVisible(true);
     }//GEN-LAST:event_Btn_LogoutActionPerformed
 
     /**

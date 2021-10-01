@@ -66,8 +66,18 @@ public class Addorder extends javax.swing.JFrame {
         Btn_Add.setText("Add");
 
         Btn_Confirm.setText("Confirm");
+        Btn_Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ConfirmActionPerformed(evt);
+            }
+        });
 
         Btn_Cancel.setText("Cancel");
+        Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_CancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,6 +138,14 @@ public class Addorder extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Btn_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConfirmActionPerformed
+        dispose();
+    }//GEN-LAST:event_Btn_ConfirmActionPerformed
+
+    private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
+         dispose();
+    }//GEN-LAST:event_Btn_CancelActionPerformed
 
     /**
      * @param args the command line arguments
