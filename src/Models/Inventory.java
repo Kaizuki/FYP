@@ -1,6 +1,8 @@
 package Models;
 
-public class Inventory {
+import java.io.Serializable;
+
+public class Inventory extends Models implements Serializable{
     private int inventoryId;
     private String inventoryName;
     
@@ -31,5 +33,10 @@ public class Inventory {
             " inventoryId='" + getInventoryId() + "'" +
             ", inventoryName='" + getInventoryName() + "'" +
             "}";
+    }
+
+    @Override
+    public int getModelId() {
+        return this.inventoryId;
     }    
 }

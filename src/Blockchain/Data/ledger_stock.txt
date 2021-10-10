@@ -1,62 +1,90 @@
 [
   {
     "blockIndex": 1,
-    "orderData": {
-      "orderId": 2,
-      "managerId": 21,
-      "supplierId": 22,
-      "warehouseId": 23
+    "blockchainData": {
+      "stockId": 25,
+      "inventoryId": 12,
+      "warehouseId": 32
     },
     "preHash": "0",
-    "nowHash": "LJawjUkNSw+SyOH15vvN1FQ7LwonANeHncqsEUvrC791baSmyiIeHwVNkeQMKG0LjToUdDlP1suKLi12AtH7M+1h2E2WJ7ShWlbOcqKJtSqMWbd05v13WtKt2bE90sB5/GaLvLtP420crpFU6i5WZRT90ytXqODilMsxtLheK0A\u003d",
-    "timeStamp": 1632763137885
+    "nowHash": "AwnElvLPWIVvNgtH1z+kLZs8vUy2juIRJFbRWRmvEwvDpEtooZBenty7JSg1YRX1tg/igtWeNvwkbCmyKbUaCZeUEN5iQZpQpwGogQpWWaoWSyuyPKcOPoy5DYqUG/oyuicsQfu3zcOOaWYsDyHSd/LeDYIM7pQ/2DMpQuoHyMo\u003d",
+    "timeStamp": 1633880138940
   },
   {
     "blockIndex": 2,
-    "orderData": {
-      "orderId": 2,
-      "managerId": 21,
-      "supplierId": 22,
-      "warehouseId": 23
+    "blockchainData": {
+      "stockId": 22,
+      "inventoryId": 12,
+      "warehouseId": 3
     },
-    "preHash": "LJawjUkNSw+SyOH15vvN1FQ7LwonANeHncqsEUvrC791baSmyiIeHwVNkeQMKG0LjToUdDlP1suKLi12AtH7M+1h2E2WJ7ShWlbOcqKJtSqMWbd05v13WtKt2bE90sB5/GaLvLtP420crpFU6i5WZRT90ytXqODilMsxtLheK0A\u003d",
-    "nowHash": "CfCs8EanuFKLhvP22WORz3O1vjiDPu4hM7z1iSaUQHh9HitY21FrKyL5+JeiWbRUjyHlJtzWf1ehE3BmyKffLjz5ZCc2WFfP+DuzfyoztZjt6onxgzGq4Dc/qdoMDs2rI6XEHF0dBioSRGhKzh1WTD7CHpWnN92pCLNhX3fJx5A\u003d",
-    "timeStamp": 1632763190420
+    "preHash": "AwnElvLPWIVvNgtH1z+kLZs8vUy2juIRJFbRWRmvEwvDpEtooZBenty7JSg1YRX1tg/igtWeNvwkbCmyKbUaCZeUEN5iQZpQpwGogQpWWaoWSyuyPKcOPoy5DYqUG/oyuicsQfu3zcOOaWYsDyHSd/LeDYIM7pQ/2DMpQuoHyMo\u003d",
+    "nowHash": "VHmFe7ZT8zaqkRDL6ELv5iKIpd1QCa65MKJJODouGB6zMp4YTHJjRFwWY9cddezdAVO/vF7AyzYZrznhQV4WBBmobSuTXdvaH++2EhC0nAyxYn3U/PGS49H/cygJ1E5U/EW393jLKr2xnDhfSD/W6yuPYo6SGtDH/9cmi8+ZcHY\u003d",
+    "timeStamp": 1633880138945
   },
   {
     "blockIndex": 3,
-    "orderData": {
-      "orderId": 2,
-      "managerId": 21,
-      "supplierId": 22,
-      "warehouseId": 23
+    "blockchainData": {
+      "stockId": 25,
+      "inventoryId": 12,
+      "warehouseId": 32
     },
-    "preHash": "CfCs8EanuFKLhvP22WORz3O1vjiDPu4hM7z1iSaUQHh9HitY21FrKyL5+JeiWbRUjyHlJtzWf1ehE3BmyKffLjz5ZCc2WFfP+DuzfyoztZjt6onxgzGq4Dc/qdoMDs2rI6XEHF0dBioSRGhKzh1WTD7CHpWnN92pCLNhX3fJx5A\u003d",
-    "nowHash": "XFDr1jqBE/E1tJ6wgqKg8eNZGBrp26L96sQsiKx+X/Rfg0h87qNdzXOsvEdDyVkK9/p4WQK9NG3w2/m9DMewQ/Q8C4xmSTQIzE2B6PD/HUImejXzwwLQ+OXUksSjK52as7wxtEBCKslVxmP2n04tT9zBinNymOMdjdtt+XL4e1s\u003d",
-    "timeStamp": 1632763206815
+    "preHash": "VHmFe7ZT8zaqkRDL6ELv5iKIpd1QCa65MKJJODouGB6zMp4YTHJjRFwWY9cddezdAVO/vF7AyzYZrznhQV4WBBmobSuTXdvaH++2EhC0nAyxYn3U/PGS49H/cygJ1E5U/EW393jLKr2xnDhfSD/W6yuPYo6SGtDH/9cmi8+ZcHY\u003d",
+    "nowHash": "YK/tvoDqQDFNkbHS92RBK3leGFqtftpS8YO705Eka+tNvrVwEhPbllD8AnNkbLLzLeNBgySdGiQoBWYGbBiaP027r2pIGN/Tv/4CVbOcz1TD6IpzbIcLUQccr8rzblkhYEI2ewA+QnX3L1HqH0U1a0hwzB4PSa7sd+9G0KSOt2w\u003d",
+    "timeStamp": 1633880844692
   },
   {
     "blockIndex": 4,
-    "orderData": {
-      "orderId": 2,
-      "managerId": 21,
-      "supplierId": 22,
-      "warehouseId": 23
+    "blockchainData": {
+      "stockId": 22,
+      "inventoryId": 12,
+      "warehouseId": 3
     },
-    "preHash": "XFDr1jqBE/E1tJ6wgqKg8eNZGBrp26L96sQsiKx+X/Rfg0h87qNdzXOsvEdDyVkK9/p4WQK9NG3w2/m9DMewQ/Q8C4xmSTQIzE2B6PD/HUImejXzwwLQ+OXUksSjK52as7wxtEBCKslVxmP2n04tT9zBinNymOMdjdtt+XL4e1s\u003d",
-    "nowHash": "KIRXYNCshKQ5Ikjn+0QknVFATz1UqOqtfj3P/OWo2s/l+a3ZwmqgDMOuameEPgX1AUaOvRfZcGMmN+qdyqUWYqWd6I44fKXPYF9sHxVh8ppdEDIyRwoBtWtgRFHJ3rm1GvyjeRQrWHHuO/QmEe0MPMA+f7jV379x6ES29ZEiynY\u003d",
-    "timeStamp": 1632763213611
+    "preHash": "YK/tvoDqQDFNkbHS92RBK3leGFqtftpS8YO705Eka+tNvrVwEhPbllD8AnNkbLLzLeNBgySdGiQoBWYGbBiaP027r2pIGN/Tv/4CVbOcz1TD6IpzbIcLUQccr8rzblkhYEI2ewA+QnX3L1HqH0U1a0hwzB4PSa7sd+9G0KSOt2w\u003d",
+    "nowHash": "bdzl5Re44gDKqNVVHnzP9jYhwwZeOO73MX5HEtlg27lHsH/9Ofd0/ZCPCSx70rF9P5dwaoMuj0ce+iye1CTVqu49qIqDUa1dH2aZ5prsNf4gKLiPdhhI2qd+jdl/A6Fjg1wd27lUoc78nSP9BoQ9/9boSqTktnA0GA8kVv38OfM\u003d",
+    "timeStamp": 1633880844712
   },
   {
     "blockIndex": 5,
-    "orderData": {
-      "orderId": 3,
-      "managerId": 31,
-      "supplierId": 32,
-      "warehouseId": 33
+    "blockchainData": {
+      "stockId": 25,
+      "inventoryId": 12,
+      "warehouseId": 32
     },
-    "preHash": "KIRXYNCshKQ5Ikjn+0QknVFATz1UqOqtfj3P/OWo2s/l+a3ZwmqgDMOuameEPgX1AUaOvRfZcGMmN+qdyqUWYqWd6I44fKXPYF9sHxVh8ppdEDIyRwoBtWtgRFHJ3rm1GvyjeRQrWHHuO/QmEe0MPMA+f7jV379x6ES29ZEiynY\u003d",
-    "nowHash": "CNV7qiAZwCrUcliTz7rTK3Dvrl6DujdvNFy6HeZslbysrOLa0hDV3irq7anpMRrem+tRPvcSZgB+xYg02Hw7M1TXCVYLhyJnNv0H8Ui1uf/b2G8qmwYG/xjroGvtzHkQja0wbxz1N/AMCNWQPxcXetSim7YtQFuaTH3JSHYce3U\u003d",
-    "timeStamp": 1632763222514
+    "preHash": "bdzl5Re44gDKqNVVHnzP9jYhwwZeOO73MX5HEtlg27lHsH/9Ofd0/ZCPCSx70rF9P5dwaoMuj0ce+iye1CTVqu49qIqDUa1dH2aZ5prsNf4gKLiPdhhI2qd+jdl/A6Fjg1wd27lUoc78nSP9BoQ9/9boSqTktnA0GA8kVv38OfM\u003d",
+    "nowHash": "WKnPXvvAc/CwgczKYMhp6QoipjmlrJfnDR2IcFHuCLpTuwXQ6Lpl/aS7X8ybwSOx+0LcAsdL1zc7mRDSqcH7XTTl01Aewz9UzdjbH5Vyb3xziFwAmjPC1CUaCii8TDhFSwjVwhBuAD+MS+iZ2XUSPZEtAQm8LzKe7rrOF1I7e8M\u003d",
+    "timeStamp": 1633880875573
+  },
+  {
+    "blockIndex": 6,
+    "blockchainData": {
+      "stockId": 22,
+      "inventoryId": 12,
+      "warehouseId": 3
+    },
+    "preHash": "WKnPXvvAc/CwgczKYMhp6QoipjmlrJfnDR2IcFHuCLpTuwXQ6Lpl/aS7X8ybwSOx+0LcAsdL1zc7mRDSqcH7XTTl01Aewz9UzdjbH5Vyb3xziFwAmjPC1CUaCii8TDhFSwjVwhBuAD+MS+iZ2XUSPZEtAQm8LzKe7rrOF1I7e8M\u003d",
+    "nowHash": "I/8tDJPjcVWh6NY4su6+viWFqLz86mtzjEI+UVjyyZsa9qFNL1UuepNd+yWcMIHAKfzo/Nwv22h5lcjrlxMYM2LsQKHw1rUB54zvrV7m8Cj19T4cwNVerIr9TCYUGBJN06r2q1QE561LjjK5fc5pqlSVjmawNfAoRhD4f/OM/BI\u003d",
+    "timeStamp": 1633880875577
+  },
+  {
+    "blockIndex": 7,
+    "blockchainData": {
+      "stockId": 25,
+      "inventoryId": 12,
+      "warehouseId": 32
+    },
+    "preHash": "I/8tDJPjcVWh6NY4su6+viWFqLz86mtzjEI+UVjyyZsa9qFNL1UuepNd+yWcMIHAKfzo/Nwv22h5lcjrlxMYM2LsQKHw1rUB54zvrV7m8Cj19T4cwNVerIr9TCYUGBJN06r2q1QE561LjjK5fc5pqlSVjmawNfAoRhD4f/OM/BI\u003d",
+    "nowHash": "F0mmob2vr/KWCy48VL1iowFQlsfnWAI3Oe5cE0FNlCxU4Ti2IFyi0N1RODW70XiM0axNLmPVQhHTs8zRIvyNhP4BpmPlNnUNkLLZZMN27WllNAcbfQxhvpryUwqU00RBBjBszpYkpn6l8nosJDTPkLB2QCA5HQnw68qPIexOpPY\u003d",
+    "timeStamp": 1633881046051
+  },
+  {
+    "blockIndex": 8,
+    "blockchainData": {
+      "stockId": 22,
+      "inventoryId": 12,
+      "warehouseId": 3
+    },
+    "preHash": "F0mmob2vr/KWCy48VL1iowFQlsfnWAI3Oe5cE0FNlCxU4Ti2IFyi0N1RODW70XiM0axNLmPVQhHTs8zRIvyNhP4BpmPlNnUNkLLZZMN27WllNAcbfQxhvpryUwqU00RBBjBszpYkpn6l8nosJDTPkLB2QCA5HQnw68qPIexOpPY\u003d",
+    "nowHash": "IWhTY+i0j5leirGMtDfLqN211ucJcNo3rVPw7HIgksfImndJImej2qWHZQ2ianseuSi9jwDrGPuDYjywlWLtTDckQhTZwu66fVgX4vHFIUxC1P13JLYDrEs3pmVsxI9YDK9fkiVwYWAqEVd/uVLeRjgZlbCqBiHieNvZWTpgdhE\u003d",
+    "timeStamp": 1633881046056
   }
 ]

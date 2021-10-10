@@ -2,7 +2,7 @@ package Models;
 
 import java.io.Serializable;
 
-public class Orders implements Serializable {
+public class Orders extends Models implements Serializable {
     private int orderId;
     private int managerId;
     private int supplierId;
@@ -55,6 +55,11 @@ public class Orders implements Serializable {
             ", supplierId='" + getSupplierId() + "'" +
             ", warehouseId='" + getWarehouseId() + "'" +
             "}";
+    }
+
+    @Override
+    public int getModelId() {
+        return this.orderId;
     }   
 
 }

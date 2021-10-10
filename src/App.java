@@ -1,29 +1,12 @@
-import Blockchain.BlockchainOperation;
 import Blockchain.BlockchainOperation.BlockType;
+import Blockchain.OrderOperation;
 import Controller.UserController;
+import Models.Inventory;
 import Models.Orders;
+import Models.Stocks;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // System.out.println("Hello, World!");
-        // Dbconnect dbconn = new Dbconnect();
-
-        // String sql = "SELECT * FROM users";
-        // try {
-        // PreparedStatement statement = dbconn.connect().prepareStatement(sql);
-        // ResultSet aa = statement.executeQuery();
-        // System.out.println("SQL Query: " + aa);
-
-        // while (aa.next()) {
-        // System.out.println(aa.getInt(1));
-        // System.out.println(aa.getString("user_name"));
-        // // System.out.println(aa.getString(3));
-        // }
-        // } catch (SQLException e) {
-        // e.printStackTrace();
-        // } finally {
-        // dbconn.disconnect();
-        // }
 
         UserController userController = new UserController();
         // userController.getUserData("peach");
@@ -31,23 +14,36 @@ public class App {
         // userController.authUser(user);
         // userController.createNewUser(user);
 
-        Orders order1 = new Orders(1, 11, 12, 13);
-        Orders order2 = new Orders(2, 21, 22, 23);
+        Orders order1 = new Orders(1, 88, 12, 13);
+        Orders order2 = new Orders(4, 12, 99, 23);
         Orders order3 = new Orders(3, 31, 32, 33);
-        
-        BlockchainOperation bc1 = new BlockchainOperation(BlockType.ORDER);
+
+        Inventory inventory1 = new Inventory(12, "Mouse");
+        Inventory inventory2 = new Inventory(13, "Keyboard");
+        Inventory inventory3 = new Inventory(15, "Headphones");
+
+        Stocks stock1 = new Stocks(22, 12, 3);
+        Stocks stock2 = new Stocks(25, 12, 32);
+        Stocks stock3 = new Stocks(26, 13, 34);
+
+        OrderOperation bc1 = new OrderOperation(BlockType.ORDER);
         bc1.createBlock(order1);
         bc1.createBlock(order2);
 
         System.out.println("BC1: " + bc1.toString());
-        
-        BlockchainOperation bc2 = new BlockchainOperation(BlockType.INVENTORY);
-        bc2.createBlock(order3);
-        bc2.createBlock(order2);
-        
-        BlockchainOperation bc3 = new BlockchainOperation(BlockType.STOCK);
-        bc3.createBlock(order3);
 
+        System.out.println("\nReading Orders Lists:\n" + bc1.getOrders().toString());
 
+        InventoryOperation bc2 = new InventoryOperation(BlockType.INVENTORY);
+        bc2.createBlock(inventory1);
+        bc2.createBlock(inventory3);
+
+        System.out.println("\nReading Inventory Lists:\n" + bc2.getInventory().toString());
+
+        StocksOperation bc3 = new StocksOperation(BlockType.STOCK);
+        bc3.createBlock(stock2);
+        bc3.createBlock(stock1);
+
+        System.out.println("\nReading Stocks Lists:\n" + bc3.getStocks().get(0).getStockId());
     }
 }

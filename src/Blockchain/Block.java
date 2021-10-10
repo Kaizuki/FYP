@@ -14,15 +14,15 @@ public class Block implements Serializable {
     public static int indexCounter;
 
     private int blockIndex;
-    private Object orderData; //*Change the name later; Doesn't suit
+    private Object blockchainData;
     private String preHash;
     private String nowHash;
     private long timeStamp;
 
     //Add new block constructor
-    public Block(Object data, String preHash, int preBlockIndex) throws Exception{
+    public Block(Object blockchainData, String preHash, int preBlockIndex) throws Exception{
         super();
-        this.orderData = data;
+        this.blockchainData = blockchainData;
         this.blockIndex = ++preBlockIndex;
         this.preHash = preHash;
         this.timeStamp = new Timestamp(System.currentTimeMillis()).getTime();
@@ -32,7 +32,7 @@ public class Block implements Serializable {
     //Verify block constructor
     public Block(int blockIndex, Object data, String preHash, long timeStamp) {
         super();
-        this.orderData = data;
+        this.blockchainData = data;
         this.blockIndex = blockIndex;
         this.preHash = preHash;
         this.timeStamp = timeStamp;
@@ -76,12 +76,12 @@ public class Block implements Serializable {
         this.blockIndex = blockIndex;
     }
 
-    public Object getOrderData() {
-        return this.orderData;
+    public Object getBlockchainData() {
+        return this.blockchainData;
     }
 
-    public void setOrderData(Object orderData) {
-        this.orderData = orderData;
+    public void setBlockchainData(Object blockchainData) {
+        this.blockchainData = blockchainData;
     }
 
     public String getPreHash() {
@@ -112,7 +112,7 @@ public class Block implements Serializable {
     public String toString() {
         return "{" +
             " blockIndex='" + getBlockIndex() + "'" +
-            ", orderData='" + getOrderData() + "'" +
+            ", orderData='" + getBlockchainData() + "'" +
             ", preHash='" + getPreHash() + "'" +
             ", nowHash='" + getNowHash() + "'" +
             ", timeStamp='" + getTimeStamp() + "'" +
