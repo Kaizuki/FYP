@@ -1,10 +1,9 @@
-package Ui;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Ui;
 
 /**
  *
@@ -61,7 +60,7 @@ public class Addorder extends javax.swing.JFrame {
 
         Cmb_Product.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lbl_Product.setText("Item");
+        lbl_Product.setText("Inventory");
 
         lbl_Product1.setText("Quantity");
 

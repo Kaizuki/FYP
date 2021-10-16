@@ -148,7 +148,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_Product">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Item"/>
+        <Property name="text" type="java.lang.String" value="Inventory"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_Product1">

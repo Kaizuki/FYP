@@ -26,44 +26,34 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="Btn_Cancel" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Component id="Btn_Delete" min="-2" pref="73" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Txt_location" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                          <Component id="Lbl_Location" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="Cmb_User" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="Lbl_User" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="Btn_Cancel" min="-2" pref="73" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="Btn_Add" min="-2" pref="73" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="Txt_Product" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                          <Component id="Lbl_Productname" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="Lbl_Productname" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Component id="Lbl_User" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Txt_Product" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="Lbl_Location" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="Txt_location" min="-2" max="-2" attributes="0"/>
+              <Component id="Cmb_User" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="56" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Btn_Delete" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Btn_Cancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Btn_Add" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -71,14 +61,29 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="Lbl_Productname">
+    <Component class="javax.swing.JLabel" name="Lbl_User">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Product Name"/>
+        <Property name="text" type="java.lang.String" value="Select User:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Btn_Add">
+    <Component class="javax.swing.JComboBox" name="Cmb_User">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="Btn_Delete">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Btn_Cancel">
@@ -88,15 +93,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_CancelActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Txt_Product">
-    </Component>
-    <Component class="javax.swing.JLabel" name="Lbl_Location">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Location"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Txt_location">
     </Component>
   </SubComponents>
 </Form>

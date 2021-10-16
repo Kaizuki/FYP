@@ -9,12 +9,12 @@ package Ui;
  *
  * @author slavi
  */
-public class Addinventory extends javax.swing.JFrame {
+public class EditStock extends javax.swing.JFrame {
 
     /**
      * Creates new form Addorder
      */
-    public Addinventory() {
+    public EditStock() {
         initComponents();
     }
 
@@ -27,18 +27,21 @@ public class Addinventory extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Lbl_Productname = new javax.swing.JLabel();
-        Btn_Add = new javax.swing.JButton();
+        Btn_Confirm = new javax.swing.JButton();
         Btn_Cancel = new javax.swing.JButton();
-        Txt_Product = new javax.swing.JTextField();
         Lbl_Location = new javax.swing.JLabel();
-        Txt_location = new javax.swing.JTextField();
+        Txt_Serial = new javax.swing.JTextField();
+        Lbl_Location1 = new javax.swing.JLabel();
+        Cmb_Status = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Lbl_Productname.setText("Product Name");
-
-        Btn_Add.setText("Add");
+        Btn_Confirm.setText("Confirm");
+        Btn_Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ConfirmActionPerformed(evt);
+            }
+        });
 
         Btn_Cancel.setText("Cancel");
         Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +50,11 @@ public class Addinventory extends javax.swing.JFrame {
             }
         });
 
-        Lbl_Location.setText("Location");
+        Lbl_Location.setText("Serial Number");
+
+        Lbl_Location1.setText("Status");
+
+        Cmb_Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,43 +64,45 @@ public class Addinventory extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Txt_location, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lbl_Location))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(Btn_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(Btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Txt_Product, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lbl_Productname))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Lbl_Location)
+                            .addComponent(Txt_Serial, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(Lbl_Location1)
+                            .addComponent(Cmb_Status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(Lbl_Productname)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_Product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addComponent(Lbl_Location)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_location, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(Txt_Serial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Lbl_Location1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cmb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Cancel)
-                    .addComponent(Btn_Add))
-                .addContainerGap())
+                    .addComponent(Btn_Confirm)
+                    .addComponent(Btn_Cancel))
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Btn_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConfirmActionPerformed
+         dispose();
+    }//GEN-LAST:event_Btn_ConfirmActionPerformed
+
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
-        dispose();
+ dispose();
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     /**
@@ -132,11 +141,11 @@ public class Addinventory extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_Add;
     private javax.swing.JButton Btn_Cancel;
+    private javax.swing.JButton Btn_Confirm;
+    private javax.swing.JComboBox<String> Cmb_Status;
     private javax.swing.JLabel Lbl_Location;
-    private javax.swing.JLabel Lbl_Productname;
-    private javax.swing.JTextField Txt_Product;
-    private javax.swing.JTextField Txt_location;
+    private javax.swing.JLabel Lbl_Location1;
+    private javax.swing.JTextField Txt_Serial;
     // End of variables declaration//GEN-END:variables
 }
