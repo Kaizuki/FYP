@@ -4,13 +4,11 @@ public class OrderDetail {
     private int orderDetailId;
     private int orderDetailQty;
     private int inventoryId;
-    private int orderId;
 
-    public OrderDetail(int orderDetailId, int orderDetailQty, int inventoryId, int orderId) {
+    public OrderDetail(int orderDetailId, int inventoryId, int orderDetailQty) {
         this.orderDetailId = orderDetailId;
-        this.orderDetailQty = orderDetailQty;
         this.inventoryId = inventoryId;
-        this.orderId = orderId;
+        this.orderDetailQty = orderDetailQty;
     }
 
     public int getOrderDetailId() {
@@ -37,21 +35,12 @@ public class OrderDetail {
         this.inventoryId = inventoryId;
     }
 
-    public int getOrderId() {
-        return this.orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
     @Override
     public String toString() {
         return "{" +
             " orderDetailId='" + getOrderDetailId() + "'" +
             ", orderDetailQty='" + getOrderDetailQty() + "'" +
             ", inventoryId='" + getInventoryId() + "'" +
-            ", orderId='" + getOrderId() + "'" +
             "}";
     }
 }

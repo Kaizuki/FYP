@@ -1,18 +1,22 @@
 package Models;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Orders extends Models implements Serializable {
     private int orderId;
     private int managerId;
     private int supplierId;
-    private int warehouseId;
+    private List<OrderDetail> orderList;
+    private String ordersStatus;
+    public static enum OrdersStatus {PENDING, ACCEPTED, REJECTED, CANCELED}
 
-    public Orders(int orderId, int managerId, int supplierId, int warehouseId) {
+    public Orders(int orderId, int managerId, int supplierId, List<OrderDetail> orderList, String ordersStatus) {
         this.orderId = orderId;
         this.managerId = managerId;
         this.supplierId = supplierId;
-        this.warehouseId = warehouseId;
+        this.orderList = orderList;
+        this.ordersStatus = ordersStatus;
     }
 
     public int getOrderId() {
@@ -39,12 +43,20 @@ public class Orders extends Models implements Serializable {
         this.supplierId = supplierId;
     }
 
-    public int getWarehouseId() {
-        return this.warehouseId;
+    public List<OrderDetail> getOrderList() {
+        return this.orderList;
     }
 
-    public void setWarehouseId(int warehouseId) {
-        this.warehouseId = warehouseId;
+    public void setOrderList(List<OrderDetail> orderList) {
+        this.orderList = orderList;
+    }
+
+    public String getOrdersStatus() {
+        return this.ordersStatus;
+    }
+
+    public void setOrdersStatus(String ordersStatus) {
+        this.ordersStatus = ordersStatus;
     }
 
     @Override
@@ -53,13 +65,13 @@ public class Orders extends Models implements Serializable {
             " orderId='" + getOrderId() + "'" +
             ", managerId='" + getManagerId() + "'" +
             ", supplierId='" + getSupplierId() + "'" +
-            ", warehouseId='" + getWarehouseId() + "'" +
+            ", orderList='" + getOrderList() + "'" +
+            ", ordersStatus='" + getOrdersStatus() + "'" +
             "}";
-    }
-
+    }   
+    
     @Override
     public int getModelId() {
         return this.orderId;
-    }   
-
+    }
 }

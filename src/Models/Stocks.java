@@ -5,12 +5,13 @@ import java.io.Serializable;
 public class Stocks extends Models implements Serializable{
     private int stockId;
     private int inventoryId;
-    private int warehouseId;
+    private String stockStatus;
+    public static enum StockStatus {AVAILABLE, SOLD, DEFECTIVE, MISSING, NOT_AVAILABLE}; 
 
-    public Stocks(int stockId, int inventoryId, int warehouseId) {
+    public Stocks(int stockId, int inventoryId, String stockStatus) {
         this.stockId = stockId;
         this.inventoryId = inventoryId;
-        this.warehouseId = warehouseId;
+        this.stockStatus = stockStatus;
     }
 
     public int getStockId() {
@@ -29,12 +30,12 @@ public class Stocks extends Models implements Serializable{
         this.inventoryId = inventoryId;
     }
 
-    public int getWarehouseId() {
-        return this.warehouseId;
+    public String getStockStatus() {
+        return this.stockStatus;
     }
 
-    public void setWarehouseId(int warehouseId) {
-        this.warehouseId = warehouseId;
+    public void setStockStatus(String stockStatus) {
+        this.stockStatus = stockStatus;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class Stocks extends Models implements Serializable{
         return "{" +
             " stockId='" + getStockId() + "'" +
             ", inventoryId='" + getInventoryId() + "'" +
-            ", warehouseId='" + getWarehouseId() + "'" +
+            ", stockStatus='" + getStockStatus() + "'" +
             "}";
     }
 
