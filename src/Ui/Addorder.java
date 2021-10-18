@@ -1,9 +1,11 @@
+package Ui;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ui;
 
 /**
  *
@@ -45,15 +47,20 @@ public class Addorder extends javax.swing.JFrame {
 
         Tbl_Orderlist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Product", "Quantity"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(Tbl_Orderlist);
 
         Lbl_Supplier.setText("Supplier");
@@ -65,6 +72,11 @@ public class Addorder extends javax.swing.JFrame {
         lbl_Product1.setText("Quantity");
 
         Btn_Add.setText("Add");
+        Btn_Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AddActionPerformed(evt);
+            }
+        });
 
         Btn_Confirm.setText("Confirm");
         Btn_Confirm.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +159,13 @@ public class Addorder extends javax.swing.JFrame {
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
          dispose();
     }//GEN-LAST:event_Btn_CancelActionPerformed
+
+    private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
+    DefaultTableModel model = (DefaultTableModel)Tbl_Orderlist.getModel();
+    
+    model.addRow(new Object[]{Cmb_Product.getSelectedItem()
+                              ,Txt_Quantity.getText()});
+    }//GEN-LAST:event_Btn_AddActionPerformed
 
     /**
      * @param args the command line arguments
