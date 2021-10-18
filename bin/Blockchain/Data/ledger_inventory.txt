@@ -1,0 +1,24 @@
+[
+  {
+    "blockIndex": 1,
+    "blockchainData": {
+      "inventoryId": "IN8ab6770b",
+      "inventoryName": "Tecware Spectre",
+      "inventoryLocation": "Shelf C4"
+    },
+    "preHash": "0",
+    "nowHash": "ZaSVJMW/QSpeMNrmpj3vN2tYCV9cJ34+rzmYQXEYF26uKqjCEp/mQd/KQ7MQObFhZOE2/sTQ8oe292qsjwb3LP97Ii3LjsdPlpMpFwLW94yIeoriUPfkueeRXdnGwf5e0jqtkAF/8qwMbfJdClayStP4bP5tmfUjLTqERdZYRJ0\u003d",
+    "timeStamp": 1634489457440
+  },
+  {
+    "blockIndex": 2,
+    "blockchainData": {
+      "inventoryId": "INb3afa434",
+      "inventoryName": "Tecware Spectre",
+      "inventoryLocation": "Shelf C4"
+    },
+    "preHash": "ZaSVJMW/QSpeMNrmpj3vN2tYCV9cJ34+rzmYQXEYF26uKqjCEp/mQd/KQ7MQObFhZOE2/sTQ8oe292qsjwb3LP97Ii3LjsdPlpMpFwLW94yIeoriUPfkueeRXdnGwf5e0jqtkAF/8qwMbfJdClayStP4bP5tmfUjLTqERdZYRJ0\u003d",
+    "nowHash": "bTC7KMsxf7Y/Nx5qT6ukLmp34MtaymlBabKy5eBgCD8ekPRBhzzIAVtMJAf8a4fISAuYDYbu+07dfCC9jRo7siyLXxCq7KDqm8g+I5cKdpVkm8UvREE2zKqb+tS/P1Xp58qCrrzieswJWSgscH2B6o2olqA4zaTu540rC2hjCas\u003d",
+    "timeStamp": 1634489484339
+  }
+]

@@ -5,6 +5,9 @@
  */
 package Ui;
 
+import Controller.UserController;
+import Models.User;
+
 /**
  *
  * @author slavi
@@ -27,16 +30,16 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Btn_Login = new javax.swing.JButton();
+        btn_Login = new javax.swing.JButton();
         txt_Username = new javax.swing.JTextField();
         lbl_Login = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Txt_Password = new javax.swing.JPasswordField();
+        txt_Password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Btn_Login.setText("Login");
-        Btn_Login.addActionListener(new java.awt.event.ActionListener() {
+        btn_Login.setText("Login");
+        btn_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_LoginActionPerformed(evt);
             }
@@ -46,7 +49,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
-        Txt_Password.addActionListener(new java.awt.event.ActionListener() {
+        txt_Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Txt_PasswordActionPerformed(evt);
             }
@@ -60,7 +63,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -69,7 +72,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_Username, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(Txt_Password))
+                            .addComponent(txt_Password))
                         .addGap(78, 78, 78)))
                 .addContainerGap())
         );
@@ -83,9 +86,9 @@ public class Login extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(Btn_Login)
+                .addComponent(btn_Login)
                 .addContainerGap())
         );
 
@@ -97,10 +100,25 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Txt_PasswordActionPerformed
 
     private void Btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LoginActionPerformed
-       Mainmenu Mainmenu = new Mainmenu();
-        setVisible(false);
-       Mainmenu.setVisible(true);
+       User loginUser = getUserCredentials();
+       UserController userController = new UserController();
+       User.currentUser = userController.authUser(loginUser);
+       if ( User.currentUser != null ) {
+    	   System.out.println("Login Successful");
+    	   setVisible(false);
+    	   Mainmenu Mainmenu = new Mainmenu();
+           Mainmenu.setVisible(true);
+       } else {
+    	   System.out.println("Incorrect Username or Password!");
+       }
     }//GEN-LAST:event_Btn_LoginActionPerformed
+    
+    private User getUserCredentials() {
+    	String username = txt_Username.getText();
+        String password = new String(txt_Password.getPassword());
+        System.out.println("Username: " + username + "\nPassword: " + password);
+        return new User(username, password);
+    }
 
     /**
      * @param args the command line arguments
@@ -138,8 +156,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_Login;
-    private javax.swing.JPasswordField Txt_Password;
+    private javax.swing.JButton btn_Login;
+    private javax.swing.JPasswordField txt_Password;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbl_Login;
     private javax.swing.JTextField txt_Username;

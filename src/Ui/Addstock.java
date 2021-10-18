@@ -5,6 +5,8 @@
  */
 package Ui;
 
+import Models.User;
+
 /**
  *
  * @author slavi

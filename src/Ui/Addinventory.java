@@ -7,6 +7,8 @@ package Ui;
 
 import javax.swing.table.DefaultTableModel;
 
+import Models.User;
+
 /**
  *
  * @author slavi

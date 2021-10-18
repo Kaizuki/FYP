@@ -5,6 +5,11 @@ import javax.swing.JDialog;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import Models.User;
+import Models.User.UserRoles;
+
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,11 +28,13 @@ public class Mainmenu extends javax.swing.JFrame {
      */
     public Mainmenu() {
         initComponents();
-        Pnl_Order.setVisible(false);
-        Btn_Addorder.setVisible(false);
-        Btn_Cancelorder.setVisible(false);
+        sortComponents();
+//        Pnl_Order.setVisible(false);
+//        btn_AddOrder.setVisible(false);
+//        btn_Cancelorder.setVisible(false);
         Tbl_Inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Tbl_Stock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        System.out.println("Welcome " + User.currentUser.getUserName());
 //        if(role = staff){
 //       Btn_Createuser.setVisible(false);
 //       Btn_Deleteuser.setVisible(false);
@@ -36,6 +43,135 @@ public class Mainmenu extends javax.swing.JFrame {
 //    }
            
     }
+
+    private void sortComponents() {
+    	//Default configuration
+    	Pnl_Inventory.setVisible(true);
+    	Pnl_Order.setVisible(false);
+    	btn_AddOrder.setVisible(false);
+    	btn_CancelOrder.setVisible(false);
+
+    	UserRoles currentRole = UserRoles.valueOf(User.currentUser.getUserRole());
+    	switch (currentRole) {
+		case MANAGER: {
+			System.out.println("Manager Role");
+			
+			break;
+		}
+		case STAFF: {
+			System.out.println("Staff Role");
+			Pnl_Inventory.setVisible(true);
+			btn_AddInventory.setVisible(false);
+			btn_AddStock.setVisible(true);
+			btn_EditStock.setVisible(true);
+			btn_AddOrder.setVisible(false);
+			btn_CancelOrder.setVisible(false);
+			btn_CreateUser.setVisible(false);
+			btn_DeleteUser.setVisible(false);
+			break;
+		}
+		case SUPPLIER: {
+			System.out.println("Supplier Role");
+			Pnl_Inventory.setVisible(false);
+			btn_ViewInventory.setVisible(false);
+			btn_AddInventory.setVisible(false);
+			btn_AddStock.setVisible(false);
+			btn_EditStock.setVisible(false);
+	    	Pnl_Order.setVisible(true);
+	    	btn_AddOrder.setVisible(false);
+			btn_CancelOrder.setVisible(false);
+			btn_CreateUser.setVisible(false);
+			btn_DeleteUser.setVisible(false);
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + currentRole.toString());
+		}
+    }
+    
+    private void sortInventoryComponents() {
+    	Pnl_Inventory.setVisible(true);
+    	btn_AddStock.setVisible(true);
+		btn_EditStock.setVisible(true);
+		Pnl_Order.setVisible(false);
+		btn_AddOrder.setVisible(false);
+		btn_CancelOrder.setVisible(false);
+    	UserRoles currentRole = UserRoles.valueOf(User.currentUser.getUserRole());
+    	switch (currentRole) {
+		case MANAGER: {
+			System.out.println("Manager Role");
+			btn_AddInventory.setVisible(true);
+			btn_CreateUser.setVisible(true);
+			btn_DeleteUser.setVisible(true);
+			break;
+		}
+		case STAFF: {
+			System.out.println("Staff Role");
+			btn_AddInventory.setVisible(false);
+			btn_CreateUser.setVisible(false);
+			btn_DeleteUser.setVisible(false);
+			
+			break;
+		}
+		case SUPPLIER: {
+			System.out.println("Supplier Role");
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + currentRole.toString());
+		}
+    }
+    
+    private void sortOrdersComponents() {
+    	Pnl_Inventory.setVisible(false);
+    	btn_AddInventory.setVisible(false);
+    	btn_AddStock.setVisible(false);
+    	btn_EditStock.setVisible(false);
+    	Pnl_Order.setVisible(true);
+    	btn_CreateUser.setVisible(false);
+    	btn_DeleteUser.setVisible(false);
+        
+    	UserRoles currentRole = UserRoles.valueOf(User.currentUser.getUserRole());
+    	switch (currentRole) {
+		case MANAGER: {
+			System.out.println("Manager Role");
+			btn_AddOrder.setVisible(true);
+			btn_CancelOrder.setVisible(true);
+			break;
+		}
+		case STAFF: {
+			System.out.println("Staff Role");
+			btn_AddOrder.setVisible(false);
+			btn_CancelOrder.setVisible(false);
+			break;
+		}
+		case SUPPLIER: {
+			System.out.println("Supplier Role");
+			btn_AddOrder.setVisible(false);
+			btn_CancelOrder.setVisible(false);
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + currentRole.toString());
+		}
+    }
+    
+//    private void sortComponents() {
+//    	String s = UserRoles.MANAGER.toString();
+//    	switch (User.currentUser.getUserRole()) {
+//		case UserRoles.MANAGER.toString(): {
+//			System.out.println("Manager Role");
+//		}
+//		case UserRoles.STAFF.toString(): {
+//			System.out.println("Staff Role");
+//		}
+//		case UserRoles.SUPPLIER.toString(): {
+//			System.out.println("Supplier Role");
+//		}
+//		default:
+//			throw new IllegalArgumentException("Unexpected value: " + User.currentUser.getUserRole().toString());
+//		}
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,16 +185,16 @@ public class Mainmenu extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        Btn_Inventory = new javax.swing.JButton();
-        Btn_Orders = new javax.swing.JButton();
-        Btn_Logout = new javax.swing.JButton();
-        Btn_Cancelorder = new javax.swing.JButton();
-        Btn_Addinventory = new javax.swing.JButton();
-        Btn_Deleteuser = new javax.swing.JButton();
-        Btn_Edit = new javax.swing.JButton();
-        Btn_Createuser = new javax.swing.JButton();
-        Btn_Addorder = new javax.swing.JButton();
-        Btn_Addstock = new javax.swing.JButton();
+        btn_ViewInventory = new javax.swing.JButton();
+        btn_ViewOrders = new javax.swing.JButton();
+        btn_Logout = new javax.swing.JButton();
+        btn_CancelOrder = new javax.swing.JButton();
+        btn_AddInventory = new javax.swing.JButton();
+        btn_DeleteUser = new javax.swing.JButton();
+        btn_EditStock = new javax.swing.JButton();
+        btn_CreateUser = new javax.swing.JButton();
+        btn_AddOrder = new javax.swing.JButton();
+        btn_AddStock = new javax.swing.JButton();
         Layer = new javax.swing.JLayeredPane();
         Pnl_Order = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -88,85 +224,85 @@ public class Mainmenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Btn_Inventory.setText("View Inventory");
-        Btn_Inventory.addActionListener(new java.awt.event.ActionListener() {
+        btn_ViewInventory.setText("View Inventory");
+        btn_ViewInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_InventoryActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 22, 224, 39));
+        getContentPane().add(btn_ViewInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 22, 224, 39));
 
-        Btn_Orders.setText("View Orders");
-        Btn_Orders.addActionListener(new java.awt.event.ActionListener() {
+        btn_ViewOrders.setText("View Orders");
+        btn_ViewOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_OrdersActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Orders, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 67, 224, 39));
+        getContentPane().add(btn_ViewOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 67, 224, 39));
 
-        Btn_Logout.setText("Logout");
-        Btn_Logout.addActionListener(new java.awt.event.ActionListener() {
+        btn_Logout.setText("Logout");
+        btn_Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_LogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 90, 40));
+        getContentPane().add(btn_Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 90, 40));
 
-        Btn_Cancelorder.setText("Cancel Order");
-        Btn_Cancelorder.addActionListener(new java.awt.event.ActionListener() {
+        btn_CancelOrder.setText("Cancel Order");
+        btn_CancelOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_CancelorderActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Cancelorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 114, 39));
+        getContentPane().add(btn_CancelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 114, 39));
 
-        Btn_Addinventory.setText("Add Inventory");
-        Btn_Addinventory.addActionListener(new java.awt.event.ActionListener() {
+        btn_AddInventory.setText("Add Inventory");
+        btn_AddInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AddinventoryActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Addinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 110, 39));
+        getContentPane().add(btn_AddInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 110, 39));
 
-        Btn_Deleteuser.setText("Delete User");
-        Btn_Deleteuser.addActionListener(new java.awt.event.ActionListener() {
+        btn_DeleteUser.setText("Delete User");
+        btn_DeleteUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_DeleteuserActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Deleteuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 39));
+        getContentPane().add(btn_DeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 39));
 
-        Btn_Edit.setText("Edit");
-        Btn_Edit.addActionListener(new java.awt.event.ActionListener() {
+        btn_EditStock.setText("Edit Stock");
+        btn_EditStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_EditActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 114, 39));
+        getContentPane().add(btn_EditStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 114, 39));
 
-        Btn_Createuser.setText("Create User");
-        Btn_Createuser.addActionListener(new java.awt.event.ActionListener() {
+        btn_CreateUser.setText("Create User");
+        btn_CreateUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_CreateuserActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Createuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 110, 39));
+        getContentPane().add(btn_CreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 110, 39));
 
-        Btn_Addorder.setText("Add Order");
-        Btn_Addorder.addActionListener(new java.awt.event.ActionListener() {
+        btn_AddOrder.setText("Add Order");
+        btn_AddOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AddorderActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Addorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 114, 39));
+        getContentPane().add(btn_AddOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 114, 39));
 
-        Btn_Addstock.setText("Add Stock");
-        Btn_Addstock.addActionListener(new java.awt.event.ActionListener() {
+        btn_AddStock.setText("Add Stock");
+        btn_AddStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AddstockActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Addstock, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 110, 39));
+        getContentPane().add(btn_AddStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 110, 39));
 
         Tbl_Order.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -312,13 +448,14 @@ public class Mainmenu extends javax.swing.JFrame {
 //    } else
            
         
-                Btn_Addinventory.setVisible(true);
-                Btn_Addstock.setVisible(true);
-                Btn_Edit.setVisible(true);
-        Btn_Addorder.setVisible(false);
-        Btn_Cancelorder.setVisible(false);
-        Pnl_Order.setVisible(false);
-        Pnl_Inventory.setVisible(true);
+//    	Pnl_Inventory.setVisible(true);
+//        btn_AddInventory.setVisible(true);
+//        btn_AddStock.setVisible(true);
+//        btn_EditStock.setVisible(true);
+//        Pnl_Order.setVisible(false);
+//        btn_AddOrder.setVisible(false);
+//        btn_Cancelorder.setVisible(false);
+    	sortInventoryComponents();
     }//GEN-LAST:event_Btn_InventoryActionPerformed
 
     private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
@@ -365,14 +502,14 @@ public class Mainmenu extends javax.swing.JFrame {
 //    } else
         
         
-        Btn_Addinventory.setVisible(false);
-        Btn_Addstock.setVisible(false);
-        Btn_Edit.setVisible(false);
-        Btn_Cancelorder.setVisible(true);
-        Btn_Addorder.setVisible(true);
-        Pnl_Inventory.setVisible(false);
-        Pnl_Order.setVisible(true);
-        
+//        btn_AddInventory.setVisible(false);
+//        btn_AddStock.setVisible(false);
+//        btn_EditStock.setVisible(false);
+//        btn_Cancelorder.setVisible(true);
+//        btn_AddOrder.setVisible(true);
+//        Pnl_Inventory.setVisible(false);
+//        Pnl_Order.setVisible(true);
+        sortOrdersComponents();
     }//GEN-LAST:event_Btn_OrdersActionPerformed
 
     private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
@@ -462,16 +599,16 @@ public class Mainmenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_Addinventory;
-    private javax.swing.JButton Btn_Addorder;
-    private javax.swing.JButton Btn_Addstock;
-    private javax.swing.JButton Btn_Cancelorder;
-    private javax.swing.JButton Btn_Createuser;
-    private javax.swing.JButton Btn_Deleteuser;
-    private javax.swing.JButton Btn_Edit;
-    private javax.swing.JButton Btn_Inventory;
-    private javax.swing.JButton Btn_Logout;
-    private javax.swing.JButton Btn_Orders;
+    private javax.swing.JButton btn_AddInventory;
+    private javax.swing.JButton btn_AddOrder;
+    private javax.swing.JButton btn_AddStock;
+    private javax.swing.JButton btn_CancelOrder;
+    private javax.swing.JButton btn_CreateUser;
+    private javax.swing.JButton btn_DeleteUser;
+    private javax.swing.JButton btn_EditStock;
+    private javax.swing.JButton btn_ViewInventory;
+    private javax.swing.JButton btn_Logout;
+    private javax.swing.JButton btn_ViewOrders;
     private javax.swing.JLayeredPane Layer;
     private javax.swing.JPanel Pnl_Inventory;
     private javax.swing.JPanel Pnl_Order;

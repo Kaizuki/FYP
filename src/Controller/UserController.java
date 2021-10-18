@@ -22,13 +22,17 @@ public class UserController {
             System.out.println(user.toString());
         }
     }
-
-    public void authUser(User user) {
+    public User authUser(User user) {
         boolean authResult = userDao.authUser(user);
-        if (authResult)
-            System.out.println("Correct Credential");
-        else
-            System.out.println("Incorrect Credential");
+        if (authResult) {
+            User authUser = userDao.getUser(user.getUserName());
+        	System.out.println("Correct Credential");
+        	return authUser;
+        }
+        else {
+        	System.out.println("Incorrect Credential");
+        	return null;
+        }
     }
 
     public void createNewUser(String userName, String userPass, String userEmail, String userRole) {

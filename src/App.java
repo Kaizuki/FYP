@@ -12,6 +12,7 @@ import Models.Orders;
 import Models.Orders.OrdersStatus;
 import Models.Stocks;
 import Models.Stocks.StockStatus;
+import Models.User.UserRoles;
 import Models.User;
 
 public class App {
@@ -19,8 +20,9 @@ public class App {
 
         UserController userController = new UserController();
         // userController.getUserData("peach");
-        User user = new User("peach", "peach", "peach@gmail.com", "manager");
-        // userController.createNewUser("peach3", "peach", "peach@gmail.com", UserRoles.SUPPLIER.toString());
+        // User user = new User("eli", "eli", "peach@gmail.com", "manager");
+        userController.createNewUser("eli", "eli", "eliwoo@gmail.com", UserRoles.MANAGER.toString());
+        // userController.createNewUser("peach2", "peach", "eliwoo@gmail.com", UserRoles.STAFF.toString());
         // userController.deleteUser("peach");
         // userController.authUser(user);
         // userController.createNewUser(user);
@@ -83,10 +85,10 @@ public class App {
             
             StocksController stocksController = new StocksController();
             // stocksController.createStocks(stockMouse1.getStockId(), stockMouse1.getInventoryId(), StockStatus.MISSING);
-            stocksController.updateStocks("22", stockMouse1.getInventoryId(), StockStatus.AVAILABLE);
+            // stocksController.updateStocks("22", stockMouse1.getInventoryId(), StockStatus.AVAILABLE);
             // stocksController.createUpdateStocks("1e98a29a", stockMouse1.getInventoryId(), StockStatus.DEFECTIVE);
             // stocksController.createUpdateStocks(stockMouse2.getStockId(), stockMouse2.getInventoryId(), StockStatus.NOT_AVAILABLE);
-            System.out.println("Stocks List: " + stocksController.getStocks());
+            // System.out.println("Stocks List: " + stocksController.getStocks());
 
         } catch (Exception e) {
             e.printStackTrace();

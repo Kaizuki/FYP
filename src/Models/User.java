@@ -7,6 +7,7 @@ public class User {
     private String userEmail;
     private String userRole;
     public static enum UserRoles {MANAGER, STAFF, SUPPLIER}
+    public static User currentUser;
 
     public User(String userId, String userName, String userPass, String userEmail, String userRole) {
         this.userId = userId;
@@ -21,6 +22,11 @@ public class User {
         this.userPass = userPass;
         this.userEmail = userEmail;
         this.userRole = userRole;
+    }
+
+    public User(String userName, String userPass) {
+    	this.userName = userName;
+    	this.userPass = userPass;
     }
 
     public String getUserId() {
