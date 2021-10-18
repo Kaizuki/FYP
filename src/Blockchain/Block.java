@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.sql.Timestamp;
-
 import Blockchain.Data.Config;
 import DigitalSignature.DigitalSignature;
 

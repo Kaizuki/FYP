@@ -2,12 +2,11 @@ package Blockchain;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import Models.Orders;
 
-public class OrderOperation extends BlockchainOperation{
+public class OrdersOperation extends BlockchainOperation{
 
-    public OrderOperation(BlockType blockType) {
+    public OrdersOperation(BlockType blockType) {
         super(blockType);
     }
 
@@ -19,13 +18,16 @@ public class OrderOperation extends BlockchainOperation{
                 ( (Orders) blockOrders.getBlockchainData() ).getOrderId(),
                 ( (Orders) blockOrders.getBlockchainData() ).getManagerId(),
                 ( (Orders) blockOrders.getBlockchainData() ).getSupplierId(),
-                ( (Orders) blockOrders.getBlockchainData() ).getWarehouseId()
+                ( (Orders) blockOrders.getBlockchainData() ).getOrdersList(),
+                ( (Orders) blockOrders.getBlockchainData() ).getOrdersStatus()
                 )
             );
         }
         return filteredOrders;
     }
 
-
-    
+    public Orders getSingleOrder(String orderId) {
+        List<Orders> ordersList = getOrders();
+        return (Orders) ordersList.stream().filter(order -> order.getOrderId().equals(orderId)).findAny().orElse(null);
+    }
 }

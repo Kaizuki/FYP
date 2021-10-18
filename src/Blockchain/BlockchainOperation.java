@@ -6,9 +6,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import com.google.gson.GsonBuilder;
-
 import Blockchain.Data.Config;
 import Models.Models;
 
@@ -40,6 +38,7 @@ public class BlockchainOperation {
                 ledgerFile = Config.LEDGER_STOCK_FILE;
                 break;
         }
+        blockchainFunction = new Blockchain(bcFile, ledgerFile);
     }
 
     private void initBlock(Object data) throws Exception {
@@ -63,13 +62,12 @@ public class BlockchainOperation {
     }
 
     public void createBlock(Object data) throws Exception {
-        blockchainFunction = new Blockchain(bcFile, ledgerFile);
         blockPosition(data, bcFile);
     }
 
     private void blockPosition(Object data, String filePath) throws Exception {
         File file = new File(filePath);
-        // File file = new File(Config.BC_OBJ_FILE);
+
         if (file.exists() && !file.isDirectory()) {
             nextBlock(data);
         }
@@ -92,7 +90,7 @@ public class BlockchainOperation {
             }
             
             for (Block newLists : filteredBlockchain) {
-                if ( ( (Models) block.getBlockchainData() ).getModelId() == ( ((Models) newLists.getBlockchainData()).getModelId() ) ) {
+                if ( ( (Models) block.getBlockchainData() ).getModelId() .equals( ((Models) newLists.getBlockchainData()).getModelId() ) ) {
                     check = true;
                     break;
                 }
@@ -104,11 +102,23 @@ public class BlockchainOperation {
         }
     }
 
+    public boolean chkDuplicateId(String modelId) {
+        LinkedList<Block> tempBlockchain = getBlockchain();
+        List<Block> listBlockchain = tempBlockchain.stream().collect(Collectors.toList());
+        for (Block block : listBlockchain) {
+            if ( ((Models) block.getBlockchainData()).getModelId().equals(modelId) )
+                return false;
+        }
+        return true;
+    }
+
     protected LinkedList<Block> getBlockchain() {
         File file = new File(bcFile);
-    
+
         if (file.exists() && !file.isDirectory()) {
             this.blockchain = blockchainFunction.getBlockchain();
+        } else {
+            System.out.println("FILE not found");
         }
     
         return this.blockchain;

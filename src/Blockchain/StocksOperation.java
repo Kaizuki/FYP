@@ -1,8 +1,6 @@
+package Blockchain;
 import java.util.ArrayList;
 import java.util.List;
-
-import Blockchain.Block;
-import Blockchain.BlockchainOperation;
 import Models.Stocks;
 
 public class StocksOperation extends BlockchainOperation {
@@ -14,11 +12,11 @@ public class StocksOperation extends BlockchainOperation {
     public List<Stocks> getStocks() {
         List<Stocks> filteredStocks = new ArrayList<Stocks>();
         removeDuplicateData();
-        for (Block blockOrders : filteredBlockchain) {
+        for (Block blockStocks : filteredBlockchain) {
             filteredStocks.add(new Stocks(
-                ( (Stocks) blockOrders.getBlockchainData() ).getStockId(),
-                ( (Stocks) blockOrders.getBlockchainData() ).getInventoryId(),
-                ( (Stocks) blockOrders.getBlockchainData() ).getWarehouseId()
+                ( (Stocks) blockStocks.getBlockchainData() ).getStockId(),
+                ( (Stocks) blockStocks.getBlockchainData() ).getInventoryId(),
+                ( (Stocks) blockStocks.getBlockchainData() ).getStockStatus()
                 )
             );
         }

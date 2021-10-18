@@ -1,8 +1,6 @@
+package Blockchain;
 import java.util.ArrayList;
 import java.util.List;
-
-import Blockchain.Block;
-import Blockchain.BlockchainOperation;
 import Models.Inventory;
 
 public class InventoryOperation extends BlockchainOperation{
@@ -17,7 +15,8 @@ public class InventoryOperation extends BlockchainOperation{
         for (Block blockInventory : filteredBlockchain) {
             filteredInventory.add(new Inventory(
                 ( (Inventory) blockInventory.getBlockchainData()).getInventoryId(),
-                ( (Inventory) blockInventory.getBlockchainData()).getInventoryName()
+                ( (Inventory) blockInventory.getBlockchainData()).getInventoryName(),
+                ( (Inventory) blockInventory.getBlockchainData()).getInventoryLocation()
                 )
             );
         }
