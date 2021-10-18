@@ -1,21 +1,20 @@
-package Ui;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Ui;
 
 /**
  *
  * @author slavi
  */
-public class Editinventory extends javax.swing.JFrame {
+public class EditStock extends javax.swing.JFrame {
 
     /**
      * Creates new form Addorder
      */
-    public Editinventory() {
+    public EditStock() {
         initComponents();
     }
 
@@ -28,22 +27,14 @@ public class Editinventory extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Cmb_User = new javax.swing.JComboBox<>();
-        Lbl_Supplier = new javax.swing.JLabel();
-        lbl_Product1 = new javax.swing.JLabel();
-        Txt_Quantity = new javax.swing.JTextField();
         Btn_Confirm = new javax.swing.JButton();
         Btn_Cancel = new javax.swing.JButton();
         Lbl_Location = new javax.swing.JLabel();
-        Txt_location = new javax.swing.JTextField();
+        Txt_Serial = new javax.swing.JTextField();
+        Lbl_Location1 = new javax.swing.JLabel();
+        Cmb_Status = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Cmb_User.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        Lbl_Supplier.setText("Product");
-
-        lbl_Product1.setText("Quantity");
 
         Btn_Confirm.setText("Confirm");
         Btn_Confirm.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +50,11 @@ public class Editinventory extends javax.swing.JFrame {
             }
         });
 
-        Lbl_Location.setText("Location");
+        Lbl_Location.setText("Serial Number");
+
+        Lbl_Location1.setText("Status");
+
+        Cmb_Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,42 +64,30 @@ public class Editinventory extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                .addComponent(Btn_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Cmb_User, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Lbl_Supplier)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(Txt_Quantity, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_Product1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(Btn_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Lbl_Location)
-                            .addComponent(Txt_location, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Txt_Serial, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(Lbl_Location1)
+                            .addComponent(Cmb_Status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(Lbl_Supplier)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cmb_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_Product1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
                 .addComponent(Lbl_Location)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_location, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(Txt_Serial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Lbl_Location1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cmb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn_Confirm)
                     .addComponent(Btn_Cancel))
@@ -115,11 +98,15 @@ public class Editinventory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConfirmActionPerformed
-         dispose();
+        Mainmenu Mainmenu = new Mainmenu();
+        Mainmenu.setVisible(true); 
+        dispose();
     }//GEN-LAST:event_Btn_ConfirmActionPerformed
 
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
- dispose();
+        Mainmenu Mainmenu = new Mainmenu();
+        Mainmenu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     /**
@@ -160,11 +147,9 @@ public class Editinventory extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Cancel;
     private javax.swing.JButton Btn_Confirm;
-    private javax.swing.JComboBox<String> Cmb_User;
+    private javax.swing.JComboBox<String> Cmb_Status;
     private javax.swing.JLabel Lbl_Location;
-    private javax.swing.JLabel Lbl_Supplier;
-    private javax.swing.JTextField Txt_Quantity;
-    private javax.swing.JTextField Txt_location;
-    private javax.swing.JLabel lbl_Product1;
+    private javax.swing.JLabel Lbl_Location1;
+    private javax.swing.JTextField Txt_Serial;
     // End of variables declaration//GEN-END:variables
 }

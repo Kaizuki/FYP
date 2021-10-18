@@ -1,10 +1,16 @@
+
 package Ui;
+
+import javax.swing.JDialog;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 
 /**
  *
@@ -17,6 +23,18 @@ public class Mainmenu extends javax.swing.JFrame {
      */
     public Mainmenu() {
         initComponents();
+        Pnl_Order.setVisible(false);
+        Btn_Addorder.setVisible(false);
+        Btn_Cancelorder.setVisible(false);
+        Tbl_Inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        Tbl_Stock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//        if(role = staff){
+//       Btn_Createuser.setVisible(false);
+//       Btn_Deleteuser.setVisible(false);
+//       Btn_Addorder.setVisible(false);
+//       Btn_Cancelorder.setVisible(false);
+//    }
+           
     }
 
     /**
@@ -28,19 +46,30 @@ public class Mainmenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tbl_View = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         Btn_Inventory = new javax.swing.JButton();
         Btn_Orders = new javax.swing.JButton();
         Btn_Logout = new javax.swing.JButton();
-        Btn_Addorder = new javax.swing.JButton();
+        Btn_Cancelorder = new javax.swing.JButton();
         Btn_Addinventory = new javax.swing.JButton();
+        Btn_Deleteuser = new javax.swing.JButton();
         Btn_Edit = new javax.swing.JButton();
-        Btn_Delete = new javax.swing.JButton();
+        Btn_Createuser = new javax.swing.JButton();
+        Btn_Addorder = new javax.swing.JButton();
+        Btn_Addstock = new javax.swing.JButton();
+        Layer = new javax.swing.JLayeredPane();
+        Pnl_Order = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Tbl_Order = new javax.swing.JTable();
+        Pnl_Inventory = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        Tbl_Inventory = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        Tbl_Stock = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Tbl_View.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -51,7 +80,13 @@ public class Mainmenu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Tbl_View);
+        jScrollPane3.setViewportView(jTable1);
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Inventory.setText("View Inventory");
         Btn_Inventory.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +94,7 @@ public class Mainmenu extends javax.swing.JFrame {
                 Btn_InventoryActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 22, 224, 39));
 
         Btn_Orders.setText("View Orders");
         Btn_Orders.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +102,7 @@ public class Mainmenu extends javax.swing.JFrame {
                 Btn_OrdersActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Orders, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 67, 224, 39));
 
         Btn_Logout.setText("Logout");
         Btn_Logout.addActionListener(new java.awt.event.ActionListener() {
@@ -73,13 +110,15 @@ public class Mainmenu extends javax.swing.JFrame {
                 Btn_LogoutActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 90, 40));
 
-        Btn_Addorder.setText("Add Order");
-        Btn_Addorder.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Cancelorder.setText("Cancel Order");
+        Btn_Cancelorder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AddorderActionPerformed(evt);
+                Btn_CancelorderActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Cancelorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 114, 39));
 
         Btn_Addinventory.setText("Add Inventory");
         Btn_Addinventory.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +126,15 @@ public class Mainmenu extends javax.swing.JFrame {
                 Btn_AddinventoryActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Addinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 110, 39));
+
+        Btn_Deleteuser.setText("Delete User");
+        Btn_Deleteuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_DeleteuserActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_Deleteuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 39));
 
         Btn_Edit.setText("Edit");
         Btn_Edit.addActionListener(new java.awt.event.ActionListener() {
@@ -94,70 +142,183 @@ public class Mainmenu extends javax.swing.JFrame {
                 Btn_EditActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 114, 39));
 
-        Btn_Delete.setText("Delete");
-        Btn_Delete.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Createuser.setText("Create User");
+        Btn_Createuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_DeleteActionPerformed(evt);
+                Btn_CreateuserActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Createuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 110, 39));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Btn_Addinventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Btn_Addorder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Btn_Edit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Btn_Logout)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(Btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Btn_Orders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Btn_Inventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+        Btn_Addorder.setText("Add Order");
+        Btn_Addorder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AddorderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_Addorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 114, 39));
+
+        Btn_Addstock.setText("Add Stock");
+        Btn_Addstock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AddstockActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_Addstock, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 110, 39));
+
+        Tbl_Order.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Supplier"
+            }
+        ));
+        jScrollPane2.setViewportView(Tbl_Order);
+        if (Tbl_Order.getColumnModel().getColumnCount() > 0) {
+            Tbl_Order.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        javax.swing.GroupLayout Pnl_OrderLayout = new javax.swing.GroupLayout(Pnl_Order);
+        Pnl_Order.setLayout(Pnl_OrderLayout);
+        Pnl_OrderLayout.setHorizontalGroup(
+            Pnl_OrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+        );
+        Pnl_OrderLayout.setVerticalGroup(
+            Pnl_OrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Pnl_OrderLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Btn_Inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Btn_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Btn_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Btn_Addorder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Btn_Addinventory, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Btn_Logout))))
-                .addContainerGap(14, Short.MAX_VALUE))
+
+        Tbl_Inventory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Product"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Tbl_Inventory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tbl_InventoryMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Tbl_InventoryMousePressed(evt);
+            }
+        });
+        jScrollPane4.setViewportView(Tbl_Inventory);
+
+        Tbl_Stock.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Product", "Serial Number", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Tbl_Stock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tbl_StockMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Tbl_StockMousePressed(evt);
+            }
+        });
+        jScrollPane5.setViewportView(Tbl_Stock);
+
+        javax.swing.GroupLayout Pnl_InventoryLayout = new javax.swing.GroupLayout(Pnl_Inventory);
+        Pnl_Inventory.setLayout(Pnl_InventoryLayout);
+        Pnl_InventoryLayout.setHorizontalGroup(
+            Pnl_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Pnl_InventoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Pnl_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+                .addContainerGap())
         );
+        Pnl_InventoryLayout.setVerticalGroup(
+            Pnl_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_InventoryLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+        );
+
+        Layer.setLayer(Pnl_Order, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Layer.setLayer(Pnl_Inventory, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout LayerLayout = new javax.swing.GroupLayout(Layer);
+        Layer.setLayout(LayerLayout);
+        LayerLayout.setHorizontalGroup(
+            LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Pnl_Order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Pnl_Inventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        LayerLayout.setVerticalGroup(
+            LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LayerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Pnl_Order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(LayerLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Pnl_Inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(Layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 500, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InventoryActionPerformed
         // TODO add your handling code here:
+        
+//        if(role = staff){
+//       Btn_Createuser.setVisible(false);
+//       Btn_Deleteuser.setVisible(false);
+//       Btn_Addorder.setVisible(false);
+//       Btn_Cancelorder.setVisible(false);
+//       Btn_Addinventory.setvisible(false);
+//                Btn_Addstock.setVisible(true);
+//                Btn_Edit.setVisible(true);
+//                Pnl_Order.setVisible(false);
+//                Pnl_Inventory.setVisible(true);
+//    } else
+           
+        
                 Btn_Addinventory.setVisible(true);
-        Btn_Delete.setVisible(true);
-        Btn_Edit.setVisible(true);
+                Btn_Addstock.setVisible(true);
+                Btn_Edit.setVisible(true);
+        Btn_Addorder.setVisible(false);
+        Btn_Cancelorder.setVisible(false);
+        Pnl_Order.setVisible(false);
+        Pnl_Inventory.setVisible(true);
     }//GEN-LAST:event_Btn_InventoryActionPerformed
 
     private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
@@ -170,27 +331,99 @@ public class Mainmenu extends javax.swing.JFrame {
         Addinventory Addinventory = new Addinventory();
       
        Addinventory.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_Btn_AddinventoryActionPerformed
+
+    public static void Addinventorytotable(Object[] dataRow)
+    {
+        DefaultTableModel model = (DefaultTableModel)Tbl_Inventory.getModel();
+        model.addRow(dataRow);
+    }
+    
+    private void Btn_CancelorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelorderActionPerformed
+        
+    }//GEN-LAST:event_Btn_CancelorderActionPerformed
+
+    private void Btn_DeleteuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteuserActionPerformed
+         Deleteuser Deleteuser = new Deleteuser();
+       Deleteuser.setVisible(true);
+       setVisible(false);
+    }//GEN-LAST:event_Btn_DeleteuserActionPerformed
+
+    private void Btn_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OrdersActionPerformed
+
+//        if(role = staff){
+//       Btn_Createuser.setVisible(false);
+//       Btn_Deleteuser.setVisible(false);
+//       Btn_Addorder.setVisible(false);
+//       Btn_Cancelorder.setVisible(false);
+//       Btn_Addinventory.setvisible(false);
+//                Btn_Addstock.setVisible(false);
+//                Btn_Edit.setVisible(false);
+//                Pnl_Order.setVisible(true);
+//                Pnl_Inventory.setVisible(false);
+//    } else
+        
+        
+        Btn_Addinventory.setVisible(false);
+        Btn_Addstock.setVisible(false);
+        Btn_Edit.setVisible(false);
+        Btn_Cancelorder.setVisible(true);
+        Btn_Addorder.setVisible(true);
+        Pnl_Inventory.setVisible(false);
+        Pnl_Order.setVisible(true);
+        
+    }//GEN-LAST:event_Btn_OrdersActionPerformed
+
+    private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
+ EditStock EditStock = new EditStock();
+       EditStock.setVisible(true);
+       setVisible(false);
+    }//GEN-LAST:event_Btn_EditActionPerformed
+
+    private void Btn_CreateuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CreateuserActionPerformed
+        Adduser Adduser = new Adduser();
+       Adduser.setVisible(true);
+       setVisible(false);
+    }//GEN-LAST:event_Btn_CreateuserActionPerformed
 
     private void Btn_AddorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddorderActionPerformed
         Addorder Addorder = new Addorder();
        Addorder.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_Btn_AddorderActionPerformed
 
-    private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
-         Editinventory Editinventory = new Editinventory();
-       Editinventory.setVisible(true);
-    }//GEN-LAST:event_Btn_EditActionPerformed
+    private void Btn_AddstockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddstockActionPerformed
+       Addstock Addstock = new Addstock();
+       Addstock.setVisible(true);
+       setVisible(false);
+    }//GEN-LAST:event_Btn_AddstockActionPerformed
 
-    private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_DeleteActionPerformed
+    private void Tbl_InventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMouseClicked
+     
+        
+    
+    }//GEN-LAST:event_Tbl_InventoryMouseClicked
 
-    private void Btn_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OrdersActionPerformed
-        Btn_Addinventory.setVisible(false);
-        Btn_Delete.setVisible(false);
-        Btn_Edit.setVisible(false);
-    }//GEN-LAST:event_Btn_OrdersActionPerformed
+    private void Tbl_StockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_StockMouseClicked
+          
+    }//GEN-LAST:event_Tbl_StockMouseClicked
+
+    private void Tbl_StockMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_StockMousePressed
+         if(Tbl_Stock.getSelectionModel().isSelectionEmpty()){
+        System.out.println("stock is empty");
+    } else{
+            Tbl_Inventory.getSelectionModel().clearSelection();
+        }
+    }//GEN-LAST:event_Tbl_StockMousePressed
+
+    private void Tbl_InventoryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMousePressed
+       if(Tbl_Inventory.getSelectionModel().isSelectionEmpty()){
+        System.out.println("inventory is selected");
+    } else{
+            Tbl_Stock.getSelectionModel().clearSelection();
+        }
+    }//GEN-LAST:event_Tbl_InventoryMousePressed
 
     /**
      * @param args the command line arguments
@@ -231,12 +464,25 @@ public class Mainmenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Addinventory;
     private javax.swing.JButton Btn_Addorder;
-    private javax.swing.JButton Btn_Delete;
+    private javax.swing.JButton Btn_Addstock;
+    private javax.swing.JButton Btn_Cancelorder;
+    private javax.swing.JButton Btn_Createuser;
+    private javax.swing.JButton Btn_Deleteuser;
     private javax.swing.JButton Btn_Edit;
     private javax.swing.JButton Btn_Inventory;
     private javax.swing.JButton Btn_Logout;
     private javax.swing.JButton Btn_Orders;
-    private javax.swing.JTable Tbl_View;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLayeredPane Layer;
+    private javax.swing.JPanel Pnl_Inventory;
+    private javax.swing.JPanel Pnl_Order;
+    private static javax.swing.JTable Tbl_Inventory;
+    private javax.swing.JTable Tbl_Order;
+    private javax.swing.JTable Tbl_Stock;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
