@@ -153,11 +153,16 @@ public class Addorder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConfirmActionPerformed
+        Mainmenu Mainmenu = new Mainmenu();
+        Mainmenu.setVisible(true);
         dispose();
+        
     }//GEN-LAST:event_Btn_ConfirmActionPerformed
 
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
-         dispose();
+        Mainmenu Mainmenu = new Mainmenu();
+        Mainmenu.setVisible(true); 
+        dispose();
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed

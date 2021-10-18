@@ -1,7 +1,9 @@
 
 package Ui;
 
+import javax.swing.JDialog;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,7 +28,12 @@ public class Mainmenu extends javax.swing.JFrame {
         Btn_Cancelorder.setVisible(false);
         Tbl_Inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Tbl_Stock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+//        if(role = staff){
+//       Btn_Createuser.setVisible(false);
+//       Btn_Deleteuser.setVisible(false);
+//       Btn_Addorder.setVisible(false);
+//       Btn_Cancelorder.setVisible(false);
+//    }
            
     }
 
@@ -47,9 +54,9 @@ public class Mainmenu extends javax.swing.JFrame {
         Btn_Logout = new javax.swing.JButton();
         Btn_Cancelorder = new javax.swing.JButton();
         Btn_Addinventory = new javax.swing.JButton();
-        Btn_Deleteyuser = new javax.swing.JButton();
+        Btn_Deleteuser = new javax.swing.JButton();
         Btn_Edit = new javax.swing.JButton();
-        Btn_Createuser1 = new javax.swing.JButton();
+        Btn_Createuser = new javax.swing.JButton();
         Btn_Addorder = new javax.swing.JButton();
         Btn_Addstock = new javax.swing.JButton();
         Layer = new javax.swing.JLayeredPane();
@@ -121,13 +128,13 @@ public class Mainmenu extends javax.swing.JFrame {
         });
         getContentPane().add(Btn_Addinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 110, 39));
 
-        Btn_Deleteyuser.setText("Delete User");
-        Btn_Deleteyuser.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Deleteuser.setText("Delete User");
+        Btn_Deleteuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_DeleteyuserActionPerformed(evt);
+                Btn_DeleteuserActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Deleteyuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 39));
+        getContentPane().add(Btn_Deleteuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 39));
 
         Btn_Edit.setText("Edit");
         Btn_Edit.addActionListener(new java.awt.event.ActionListener() {
@@ -137,13 +144,13 @@ public class Mainmenu extends javax.swing.JFrame {
         });
         getContentPane().add(Btn_Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 114, 39));
 
-        Btn_Createuser1.setText("Create User");
-        Btn_Createuser1.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Createuser.setText("Create User");
+        Btn_Createuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Createuser1ActionPerformed(evt);
+                Btn_CreateuserActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Createuser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 110, 39));
+        getContentPane().add(Btn_Createuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 110, 39));
 
         Btn_Addorder.setText("Add Order");
         Btn_Addorder.addActionListener(new java.awt.event.ActionListener() {
@@ -163,10 +170,7 @@ public class Mainmenu extends javax.swing.JFrame {
 
         Tbl_Order.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "Supplier"
@@ -192,10 +196,7 @@ public class Mainmenu extends javax.swing.JFrame {
 
         Tbl_Inventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "Product"
@@ -221,10 +222,7 @@ public class Mainmenu extends javax.swing.JFrame {
 
         Tbl_Stock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Product", "Serial Number", "Status"
@@ -300,6 +298,20 @@ public class Mainmenu extends javax.swing.JFrame {
 
     private void Btn_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InventoryActionPerformed
         // TODO add your handling code here:
+        
+//        if(role = staff){
+//       Btn_Createuser.setVisible(false);
+//       Btn_Deleteuser.setVisible(false);
+//       Btn_Addorder.setVisible(false);
+//       Btn_Cancelorder.setVisible(false);
+//       Btn_Addinventory.setvisible(false);
+//                Btn_Addstock.setVisible(true);
+//                Btn_Edit.setVisible(true);
+//                Pnl_Order.setVisible(false);
+//                Pnl_Inventory.setVisible(true);
+//    } else
+           
+        
                 Btn_Addinventory.setVisible(true);
                 Btn_Addstock.setVisible(true);
                 Btn_Edit.setVisible(true);
@@ -319,18 +331,40 @@ public class Mainmenu extends javax.swing.JFrame {
         Addinventory Addinventory = new Addinventory();
       
        Addinventory.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_Btn_AddinventoryActionPerformed
 
+    public static void Addinventorytotable(Object[] dataRow)
+    {
+        DefaultTableModel model = (DefaultTableModel)Tbl_Inventory.getModel();
+        model.addRow(dataRow);
+    }
+    
     private void Btn_CancelorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelorderActionPerformed
         
     }//GEN-LAST:event_Btn_CancelorderActionPerformed
 
-    private void Btn_DeleteyuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteyuserActionPerformed
+    private void Btn_DeleteuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteuserActionPerformed
          Deleteuser Deleteuser = new Deleteuser();
        Deleteuser.setVisible(true);
-    }//GEN-LAST:event_Btn_DeleteyuserActionPerformed
+       setVisible(false);
+    }//GEN-LAST:event_Btn_DeleteuserActionPerformed
 
     private void Btn_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OrdersActionPerformed
+
+//        if(role = staff){
+//       Btn_Createuser.setVisible(false);
+//       Btn_Deleteuser.setVisible(false);
+//       Btn_Addorder.setVisible(false);
+//       Btn_Cancelorder.setVisible(false);
+//       Btn_Addinventory.setvisible(false);
+//                Btn_Addstock.setVisible(false);
+//                Btn_Edit.setVisible(false);
+//                Pnl_Order.setVisible(true);
+//                Pnl_Inventory.setVisible(false);
+//    } else
+        
+        
         Btn_Addinventory.setVisible(false);
         Btn_Addstock.setVisible(false);
         Btn_Edit.setVisible(false);
@@ -338,30 +372,31 @@ public class Mainmenu extends javax.swing.JFrame {
         Btn_Addorder.setVisible(true);
         Pnl_Inventory.setVisible(false);
         Pnl_Order.setVisible(true);
-        //Tbl_Viewstock.setVisible(false);
-        //Tbl_Viewinventory.setVisible(false);
-     //   Tbl_Vieworder.setVisible(true);
-     //   jPanel
+        
     }//GEN-LAST:event_Btn_OrdersActionPerformed
 
     private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
  EditStock EditStock = new EditStock();
-       EditStock.setVisible(true);    
+       EditStock.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_Btn_EditActionPerformed
 
-    private void Btn_Createuser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Createuser1ActionPerformed
+    private void Btn_CreateuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CreateuserActionPerformed
         Adduser Adduser = new Adduser();
        Adduser.setVisible(true);
-    }//GEN-LAST:event_Btn_Createuser1ActionPerformed
+       setVisible(false);
+    }//GEN-LAST:event_Btn_CreateuserActionPerformed
 
     private void Btn_AddorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddorderActionPerformed
         Addorder Addorder = new Addorder();
        Addorder.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_Btn_AddorderActionPerformed
 
     private void Btn_AddstockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddstockActionPerformed
        Addstock Addstock = new Addstock();
        Addstock.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_Btn_AddstockActionPerformed
 
     private void Tbl_InventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMouseClicked
@@ -431,8 +466,8 @@ public class Mainmenu extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Addorder;
     private javax.swing.JButton Btn_Addstock;
     private javax.swing.JButton Btn_Cancelorder;
-    private javax.swing.JButton Btn_Createuser1;
-    private javax.swing.JButton Btn_Deleteyuser;
+    private javax.swing.JButton Btn_Createuser;
+    private javax.swing.JButton Btn_Deleteuser;
     private javax.swing.JButton Btn_Edit;
     private javax.swing.JButton Btn_Inventory;
     private javax.swing.JButton Btn_Logout;
@@ -440,7 +475,7 @@ public class Mainmenu extends javax.swing.JFrame {
     private javax.swing.JLayeredPane Layer;
     private javax.swing.JPanel Pnl_Inventory;
     private javax.swing.JPanel Pnl_Order;
-    private javax.swing.JTable Tbl_Inventory;
+    private static javax.swing.JTable Tbl_Inventory;
     private javax.swing.JTable Tbl_Order;
     private javax.swing.JTable Tbl_Stock;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;

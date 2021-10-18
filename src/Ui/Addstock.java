@@ -50,6 +50,11 @@ public class Addstock extends javax.swing.JFrame {
         Lbl_Quantity.setText("Serial Number");
 
         Btn_Add.setText("Add");
+        Btn_Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AddActionPerformed(evt);
+            }
+        });
 
         Btn_Cancel.setText("Cancel");
         Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -125,8 +130,16 @@ public class Addstock extends javax.swing.JFrame {
     }//GEN-LAST:event_Cmb_StatusActionPerformed
 
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
+        Mainmenu Mainmenu = new Mainmenu();
+        Mainmenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_Btn_CancelActionPerformed
+
+    private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
+        Mainmenu Mainmenu = new Mainmenu();
+        Mainmenu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Btn_AddActionPerformed
 
     /**
      * @param args the command line arguments
