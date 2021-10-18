@@ -1,6 +1,8 @@
 package Models;
 
-public class OrderDetail {
+import java.io.Serializable;
+
+public class OrderDetail implements Serializable {
     private int orderDetailId;
     private int orderDetailQty;
     private int inventoryId;

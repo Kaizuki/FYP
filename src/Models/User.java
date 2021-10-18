@@ -1,16 +1,14 @@
 package Models;
 
 public class User {
-    private int userId;
+    private String userId;
     private String userName;
     private String userPass;
     private String userEmail;
     private String userRole;
+    public static enum UserRoles {MANAGER, STAFF, SUPPLIER}
 
-    public User() {
-    }
-
-    public User(int userId, String userName, String userPass, String userEmail, String userRole) {
+    public User(String userId, String userName, String userPass, String userEmail, String userRole) {
         this.userId = userId;
         this.userName = userName;
         this.userPass = userPass;
@@ -25,11 +23,11 @@ public class User {
         this.userRole = userRole;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return this.userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

@@ -4,51 +4,58 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Orders extends Models implements Serializable {
-    private int orderId;
-    private int managerId;
-    private int supplierId;
-    private List<OrderDetail> orderList;
+    private String orderId;
+    private String managerId;
+    private String supplierId;
+    private List<OrderDetail> ordersList;
     private String ordersStatus;
     public static enum OrdersStatus {PENDING, ACCEPTED, REJECTED, CANCELED}
 
-    public Orders(int orderId, int managerId, int supplierId, List<OrderDetail> orderList, String ordersStatus) {
+    public Orders(String orderId, String managerId, String supplierId, List<OrderDetail> ordersList, String ordersStatus) {
         this.orderId = orderId;
         this.managerId = managerId;
         this.supplierId = supplierId;
-        this.orderList = orderList;
+        this.ordersList = ordersList;
         this.ordersStatus = ordersStatus;
     }
 
-    public int getOrderId() {
+    public Orders(String managerId, String supplierId, List<OrderDetail> ordersList, String ordersStatus) {
+        this.managerId = managerId;
+        this.supplierId = supplierId;
+        this.ordersList = ordersList;
+        this.ordersStatus = ordersStatus;
+    }
+
+    public String getOrderId() {
         return this.orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
-    public int getManagerId() {
+    public String getManagerId() {
         return this.managerId;
     }
 
-    public void setManagerId(int managerId) {
+    public void setManagerId(String managerId) {
         this.managerId = managerId;
     }
 
-    public int getSupplierId() {
+    public String getSupplierId() {
         return this.supplierId;
     }
 
-    public void setSupplierId(int supplierId) {
+    public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
     }
 
-    public List<OrderDetail> getOrderList() {
-        return this.orderList;
+    public List<OrderDetail> getOrdersList() {
+        return this.ordersList;
     }
 
-    public void setOrderList(List<OrderDetail> orderList) {
-        this.orderList = orderList;
+    public void setOrdersList(List<OrderDetail> ordersList) {
+        this.ordersList = ordersList;
     }
 
     public String getOrdersStatus() {
@@ -65,13 +72,13 @@ public class Orders extends Models implements Serializable {
             " orderId='" + getOrderId() + "'" +
             ", managerId='" + getManagerId() + "'" +
             ", supplierId='" + getSupplierId() + "'" +
-            ", orderList='" + getOrderList() + "'" +
+            ", orderList='" + getOrdersList() + "'" +
             ", ordersStatus='" + getOrdersStatus() + "'" +
             "}";
     }   
     
     @Override
-    public int getModelId() {
+    public String getModelId() {
         return this.orderId;
     }
 }

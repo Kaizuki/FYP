@@ -3,21 +3,26 @@ package Models;
 import java.io.Serializable;
 
 public class Inventory extends Models implements Serializable{
-    private int inventoryId;
+    private String inventoryId;
     private String inventoryName; //!Cannot have duplicate name, must be unique
     private String inventoryLocation;
     
-    public Inventory(int inventoryId, String inventoryName, String inventoryLocation) {
+    public Inventory(String inventoryId, String inventoryName, String inventoryLocation) {
         this.inventoryId = inventoryId;
         this.inventoryName = inventoryName;
         this.inventoryLocation = inventoryLocation;
     }
 
-    public int getInventoryId() {
+    public Inventory(String inventoryName, String inventoryLocation) {
+        this.inventoryName = inventoryName;
+        this.inventoryLocation = inventoryLocation;
+    }
+
+    public String getInventoryId() {
         return this.inventoryId;
     }
 
-    public void setInventoryId(int inventoryId) {
+    public void setInventoryId(String inventoryId) {
         this.inventoryId = inventoryId;
     }
 
@@ -47,7 +52,7 @@ public class Inventory extends Models implements Serializable{
     }
 
     @Override
-    public int getModelId() {
+    public String getModelId() {
         return this.inventoryId;
     }    
 }

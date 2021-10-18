@@ -1,5 +1,5 @@
 package Models;
 
 public abstract class Models {
-    public abstract int getModelId();
+    public abstract String getModelId();
 }
