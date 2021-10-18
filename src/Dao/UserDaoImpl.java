@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import Models.User;
 import Helper.DatabaseConnection;
+import Helper.IdGenerator;
 
 public class UserDaoImpl implements UserDao {
 
@@ -34,7 +35,7 @@ public class UserDaoImpl implements UserDao {
 
             // Extracting data from resultset and mapping onto User object
             while (rs.next()) {
-                User user = new User(rs.getInt(1), // user_id
+                User user = new User(rs.getString(1), // user_id
                         rs.getString(2), // user_name
                         rs.getString(3), // user_pass
                         rs.getString(4), //user_email
@@ -63,7 +64,7 @@ public class UserDaoImpl implements UserDao {
 
             // Extracting data from resultset and mapping onto User object
             while (rs.next()) {
-                user = new User(rs.getInt(1), // user_id
+                user = new User(rs.getString(1), // user_id
                         rs.getString(2), // user_name
                         rs.getString(3), // user_pass
                         rs.getString(4), // user_email
@@ -98,20 +99,21 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean createUser(User user) {
-        String sqlQuery = "INSERT INTO users (user_username, user_password, user_email, user_role) "
-                + "VALUES (?, ?, ?, ?)";
+        String sqlQuery = "INSERT INTO users (user_id, user_username, user_password, user_email, user_role) "
+                + "VALUES (?, ?, ?, ?, ?)";
         try {
             boolean duplicateResult = chkDuplicateUser(user.getUserName());
             if (!duplicateResult) {
-                resetIdCount();
+                // resetIdCount();
                 PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
-                st.setString(1, user.getUserName());
+                st.setString(1, "US" + IdGenerator.generateUUID());
+                st.setString(2, user.getUserName());
 
                 // st.setString(2, user.getUserPass());
-                st.setString(2, hash(user.getUserPass()));
+                st.setString(3, hash(user.getUserPass()));
 
-                st.setString(3, "kelvinhoh1520@hotmail.com");
-                st.setString(4, "manager");
+                st.setString(4, user.getUserEmail());
+                st.setString(5, user.getUserRole());
 
                 int row = st.executeUpdate(); // Executeupdate would return the number of rows successfully inserted
                 logger.log(Level.INFO, "Insert [users] new user " + user.getUserName() + " to DB.");
@@ -137,8 +139,24 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void deleteUser(User user) {
+    public boolean deleteUser(String userName) {
+        String sqlQuery = "DELETE FROM users WHERE user_username = ?";
+        try {
+            PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
+            st.setString(1, userName);
+            int row = st.executeUpdate();
 
+            if (row > 0)
+                return true;
+            else
+                return false;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            dbConnect.disconnect();
+        }
     }
 
     @Override

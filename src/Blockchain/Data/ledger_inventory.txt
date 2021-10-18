@@ -2,81 +2,23 @@
   {
     "blockIndex": 1,
     "blockchainData": {
-      "inventoryId": 12,
-      "inventoryName": "Mouse"
+      "inventoryId": "IN8ab6770b",
+      "inventoryName": "Tecware Spectre",
+      "inventoryLocation": "Shelf C4"
     },
     "preHash": "0",
-    "nowHash": "iGGhWKZ4o83a56M+evqm1OUDM/3uVoACDx7lRaHXlMPUMjDyAib9ExY1f0jtKPAioYsjA3KG84qlz4J8QGsR7mYWzHywjvfA+6OOjJPSSQ6wgenPfScgxxqybnX2JD2gok/y/MJTEBBUceUvku3PW6n1puYls8yIB6dOEkx1F3I\u003d",
-    "timeStamp": 1633880138929
+    "nowHash": "ZaSVJMW/QSpeMNrmpj3vN2tYCV9cJ34+rzmYQXEYF26uKqjCEp/mQd/KQ7MQObFhZOE2/sTQ8oe292qsjwb3LP97Ii3LjsdPlpMpFwLW94yIeoriUPfkueeRXdnGwf5e0jqtkAF/8qwMbfJdClayStP4bP5tmfUjLTqERdZYRJ0\u003d",
+    "timeStamp": 1634489457440
   },
   {
     "blockIndex": 2,
     "blockchainData": {
-      "inventoryId": 15,
-      "inventoryName": "Headphones"
+      "inventoryId": "INb3afa434",
+      "inventoryName": "Tecware Spectre",
+      "inventoryLocation": "Shelf C4"
     },
-    "preHash": "iGGhWKZ4o83a56M+evqm1OUDM/3uVoACDx7lRaHXlMPUMjDyAib9ExY1f0jtKPAioYsjA3KG84qlz4J8QGsR7mYWzHywjvfA+6OOjJPSSQ6wgenPfScgxxqybnX2JD2gok/y/MJTEBBUceUvku3PW6n1puYls8yIB6dOEkx1F3I\u003d",
-    "nowHash": "G+uxddV+hOpJntmsg5UuxvIoao3Mpwy2BFUPrRZfhLR0c7vEUqJY83inq6AemkkKQVbhG36CZrgMCSnX+NZheli9pQNuu255Zu5pJVrtRs3R3Xws0fz6SyCpfoCOwPxVh7jHweXqPYkp0pcex4NVnx/LuY5mTEP8fujRhDXMTUI\u003d",
-    "timeStamp": 1633880138934
-  },
-  {
-    "blockIndex": 3,
-    "blockchainData": {
-      "inventoryId": 12,
-      "inventoryName": "Mouse"
-    },
-    "preHash": "G+uxddV+hOpJntmsg5UuxvIoao3Mpwy2BFUPrRZfhLR0c7vEUqJY83inq6AemkkKQVbhG36CZrgMCSnX+NZheli9pQNuu255Zu5pJVrtRs3R3Xws0fz6SyCpfoCOwPxVh7jHweXqPYkp0pcex4NVnx/LuY5mTEP8fujRhDXMTUI\u003d",
-    "nowHash": "dvOCMpfkE38VeCN7VLqN+ajmPZvSYVNv1ebMJdYHKhhc0TL8Yuv+O+yiqmjtph7jqR7spC2p7JAtY0jpIGTDFKn9uR+Zce+WaxBPxs532jJin+P8k2+xGAs+6nu0buN4gpHjibOCZk6Wt9eQOlpfGpjG1r6eGeA2tsCnWdeyH6s\u003d",
-    "timeStamp": 1633880844681
-  },
-  {
-    "blockIndex": 4,
-    "blockchainData": {
-      "inventoryId": 15,
-      "inventoryName": "Headphones"
-    },
-    "preHash": "dvOCMpfkE38VeCN7VLqN+ajmPZvSYVNv1ebMJdYHKhhc0TL8Yuv+O+yiqmjtph7jqR7spC2p7JAtY0jpIGTDFKn9uR+Zce+WaxBPxs532jJin+P8k2+xGAs+6nu0buN4gpHjibOCZk6Wt9eQOlpfGpjG1r6eGeA2tsCnWdeyH6s\u003d",
-    "nowHash": "L19WyTB4JfyhMVjaa3EtlrrQn+OxwQv+mFPsAzD8ZrEXZwbzajlS+hwA30wLPIgovuemrwlQPOtGMtgKKHvCDyX7wUEv6P4oEK9mQbPin8Hw/h5u5DsNyXlIGKpXqXelycsCHNCoNZ3yo4SucbTWI6GoA7Vtd6StBI3bQjK7HWU\u003d",
-    "timeStamp": 1633880844685
-  },
-  {
-    "blockIndex": 5,
-    "blockchainData": {
-      "inventoryId": 12,
-      "inventoryName": "Mouse"
-    },
-    "preHash": "L19WyTB4JfyhMVjaa3EtlrrQn+OxwQv+mFPsAzD8ZrEXZwbzajlS+hwA30wLPIgovuemrwlQPOtGMtgKKHvCDyX7wUEv6P4oEK9mQbPin8Hw/h5u5DsNyXlIGKpXqXelycsCHNCoNZ3yo4SucbTWI6GoA7Vtd6StBI3bQjK7HWU\u003d",
-    "nowHash": "JD6opq2LdrCAWShhbCzOmwNbT1Gfvj8Trnn3dBTSRY/9rt5p3BzJaGkrzqCX46I8NjNsatFU4oVu6zk2G7kYcLTGC9mpR1eBeDRFVnyU0ChZOgDMWhUgWoR49v/OTmFBvwycVUklqorBw7go+7nTlQ5NN+hq2T4zcKUA0vVuc+M\u003d",
-    "timeStamp": 1633880875562
-  },
-  {
-    "blockIndex": 6,
-    "blockchainData": {
-      "inventoryId": 15,
-      "inventoryName": "Headphones"
-    },
-    "preHash": "JD6opq2LdrCAWShhbCzOmwNbT1Gfvj8Trnn3dBTSRY/9rt5p3BzJaGkrzqCX46I8NjNsatFU4oVu6zk2G7kYcLTGC9mpR1eBeDRFVnyU0ChZOgDMWhUgWoR49v/OTmFBvwycVUklqorBw7go+7nTlQ5NN+hq2T4zcKUA0vVuc+M\u003d",
-    "nowHash": "DMU3tsxW1EHeNMuJ03m/gTD5W23yHLgiQeZmDFofaKlJlXCKnKVgEKfXNsFR5Wus+9Aqroof1/5aLGUk0pTSdq+EL/mkUCD1ab40ayLgsHcvLhCfLsIyQvIIvcBPGto6cR/0USgEpfqgWuGYngH2CExvSrze/Ru7i2zNKlWTgR0\u003d",
-    "timeStamp": 1633880875566
-  },
-  {
-    "blockIndex": 7,
-    "blockchainData": {
-      "inventoryId": 12,
-      "inventoryName": "Mouse"
-    },
-    "preHash": "DMU3tsxW1EHeNMuJ03m/gTD5W23yHLgiQeZmDFofaKlJlXCKnKVgEKfXNsFR5Wus+9Aqroof1/5aLGUk0pTSdq+EL/mkUCD1ab40ayLgsHcvLhCfLsIyQvIIvcBPGto6cR/0USgEpfqgWuGYngH2CExvSrze/Ru7i2zNKlWTgR0\u003d",
-    "nowHash": "hVC1GaQiyrs2ePMoC0piFcejQXg1o7jb0rke5NFaDq68Ch4CSm5Z/5TODWtMWTP+4Fj9Khq6G1+5nAS7AQpTCJqmZCvvye1mSnMOydK4R4CoCB9pYGcbOw+o5vKccP5HatQMuPMhIHLEt9xS36rk4Fr9UNeSCuWfmtdg2EpcdK4\u003d",
-    "timeStamp": 1633881046038
-  },
-  {
-    "blockIndex": 8,
-    "blockchainData": {
-      "inventoryId": 15,
-      "inventoryName": "Headphones"
-    },
-    "preHash": "hVC1GaQiyrs2ePMoC0piFcejQXg1o7jb0rke5NFaDq68Ch4CSm5Z/5TODWtMWTP+4Fj9Khq6G1+5nAS7AQpTCJqmZCvvye1mSnMOydK4R4CoCB9pYGcbOw+o5vKccP5HatQMuPMhIHLEt9xS36rk4Fr9UNeSCuWfmtdg2EpcdK4\u003d",
-    "nowHash": "IeTkfOPAiPHH9mBr2HRjaWZMLOmmvFlYgfDyk5BALNvpk+ZFcNROIYaT/K5ml3VjMDZ3FGNoGa/1OpZswacO72Ip8H16Mxjblo8CD4bvXB1gUw/cLbO+9hr+nMSclGqWi7ffgzGIZ2mFwu8KBI5/haHp+2XtrgbKZMjS/QEcD/U\u003d",
-    "timeStamp": 1633881046043
+    "preHash": "ZaSVJMW/QSpeMNrmpj3vN2tYCV9cJ34+rzmYQXEYF26uKqjCEp/mQd/KQ7MQObFhZOE2/sTQ8oe292qsjwb3LP97Ii3LjsdPlpMpFwLW94yIeoriUPfkueeRXdnGwf5e0jqtkAF/8qwMbfJdClayStP4bP5tmfUjLTqERdZYRJ0\u003d",
+    "nowHash": "bTC7KMsxf7Y/Nx5qT6ukLmp34MtaymlBabKy5eBgCD8ekPRBhzzIAVtMJAf8a4fISAuYDYbu+07dfCC9jRo7siyLXxCq7KDqm8g+I5cKdpVkm8UvREE2zKqb+tS/P1Xp58qCrrzieswJWSgscH2B6o2olqA4zaTu540rC2hjCas\u003d",
+    "timeStamp": 1634489484339
   }
 ]

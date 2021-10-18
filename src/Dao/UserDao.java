@@ -7,6 +7,6 @@ public interface UserDao {
     public User getUser(String username);
     public boolean createUser(User user);
     public void updateUser(User user);
-    public void deleteUser(User user);
+    public boolean deleteUser(String user);
     public boolean authUser(User user);
 }

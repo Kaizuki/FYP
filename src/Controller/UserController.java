@@ -31,12 +31,20 @@ public class UserController {
             System.out.println("Incorrect Credential");
     }
 
-    public void createNewUser(User user) {
-        boolean insertResult = userDao.createUser(user);
+    public void createNewUser(String userName, String userPass, String userEmail, String userRole) {
+        boolean insertResult = userDao.createUser(new User(userName, userPass, userEmail, userRole));
         if (insertResult)
             System.out.println("Inserted successfully!");
         else
             System.out.println("Inserted failed");
+    }
+
+    public void deleteUser(String userName) {
+        boolean deleteResult = userDao.deleteUser(userName);
+        if (deleteResult)
+            System.out.println("User: " + userName + " deleted successfully!");
+        else
+            System.out.println("User: " + userName + " Failed to delete!");
     }
 
 }

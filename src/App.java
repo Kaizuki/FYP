@@ -1,49 +1,95 @@
-import Blockchain.BlockchainOperation.BlockType;
-import Blockchain.OrderOperation;
+import java.util.Arrays;
+import java.util.List;
+
+import Controller.InventoryController;
+import Controller.OrdersController;
+import Controller.StocksController;
 import Controller.UserController;
+import Helper.IdGenerator;
 import Models.Inventory;
+import Models.OrderDetail;
 import Models.Orders;
+import Models.Orders.OrdersStatus;
 import Models.Stocks;
+import Models.Stocks.StockStatus;
+import Models.User;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
         UserController userController = new UserController();
         // userController.getUserData("peach");
-        // User user = new User("peach", "peach", "peach@gmail.com", "manager");
+        User user = new User("peach", "peach", "peach@gmail.com", "manager");
+        // userController.createNewUser("peach3", "peach", "peach@gmail.com", UserRoles.SUPPLIER.toString());
+        // userController.deleteUser("peach");
         // userController.authUser(user);
         // userController.createNewUser(user);
+        OrderDetail mouseOrder = new OrderDetail(111, 12, 100);
+        OrderDetail mouseOrder2 = new OrderDetail(111, 12, 60);
+        OrderDetail keyboardOrder = new OrderDetail(112, 13, 90);
+        OrderDetail headsetOrder = new OrderDetail(113, 15, 80);
 
-        Orders order1 = new Orders(1, 88, 12, 13);
-        Orders order2 = new Orders(4, 12, 99, 23);
-        Orders order3 = new Orders(3, 31, 32, 33);
+        List<OrderDetail> groupOrder = Arrays.asList(mouseOrder, keyboardOrder);
+        // List<OrderDetail> groupOrder = new ArrayList<OrderDetail>();
+        // groupOrder.add(mouseOrder);
+        // groupOrder.add(keyboardOrder);
+        List<OrderDetail> groupOrder1 = Arrays.asList(mouseOrder, headsetOrder, mouseOrder2);
+        List<OrderDetail> groupOrder2 = Arrays.asList(keyboardOrder, mouseOrder2, headsetOrder);
 
-        Inventory inventory1 = new Inventory(12, "Mouse");
-        Inventory inventory2 = new Inventory(13, "Keyboard");
-        Inventory inventory3 = new Inventory(15, "Headphones");
+        Orders order1 = new Orders("OD685a0555", "12", groupOrder, OrdersStatus.PENDING.toString());
+        Orders order2 = new Orders("ODfa4ee6c9", "86", "14", groupOrder1, OrdersStatus.PENDING.toString());
+        Orders order3 = new Orders("88", "14", groupOrder2, OrdersStatus.PENDING.toString());
 
-        Stocks stock1 = new Stocks(22, 12, 3);
-        Stocks stock2 = new Stocks(25, 12, 32);
-        Stocks stock3 = new Stocks(26, 13, 34);
+        Inventory inventory1 = new Inventory("Mouse G102", "Shelf B2");
+        Inventory inventory2 = new Inventory("Tecware Spectre", "Shelf C4");
+        Inventory inventory3 = new Inventory("Razer Kraken", "Shelf K3");
 
-        OrderOperation bc1 = new OrderOperation(BlockType.ORDER);
-        bc1.createBlock(order1);
-        bc1.createBlock(order2);
+        Stocks stockMouse1 = new Stocks("22", "44", StockStatus.AVAILABLE.toString());
+        Stocks stockMouse2 = new Stocks(IdGenerator.generateUUID(), "12", StockStatus.AVAILABLE.toString());
+        Stocks stockKeyboard1 = new Stocks(IdGenerator.generateUUID(), "13", StockStatus.DEFECTIVE.toString());
 
-        System.out.println("BC1: " + bc1.toString());
+        // OrdersOperation bc1 = new OrdersOperation(BlockType.ORDER);
+        // bc1.createBlock(order1);
+        // bc1.createBlock(order2);
+        // System.out.println("BC1: " + bc1.toString());
+        // System.out.println("\nReading Orders Lists:\n" + bc1.getOrders().toString());
 
-        System.out.println("\nReading Orders Lists:\n" + bc1.getOrders().toString());
+        // InventoryOperation bc2 = new InventoryOperation(BlockType.INVENTORY);
+        // bc2.createBlock(inventory1);
+        // bc2.createBlock(inventory3);
+        // System.out.println("\nReading Inventory Lists:\n" + bc2.getInventory().toString());
 
-        InventoryOperation bc2 = new InventoryOperation(BlockType.INVENTORY);
-        bc2.createBlock(inventory1);
-        bc2.createBlock(inventory3);
+        // StocksOperation bc3 = new StocksOperation(BlockType.STOCK);
+        // bc3.createBlock(stockMouse2);
+        // bc3.createBlock(stockMouse1);
+        // System.out.println("\nReading Stocks Lists:\n" + bc3.getStocks().get(0).getStockId());
+        try {
+            InventoryController inventoryController = new InventoryController();
+            // inventoryController.createInventory(inventory2.getInventoryName(), inventory2.getInventoryLocation());
+            // inventoryController.createInventory(inventory1.getInventoryName(), "Shelf H8");
+            // inventoryController.createInventory(inventory3.getInventoryName(), inventory3.getInventoryLocation());
 
-        System.out.println("\nReading Inventory Lists:\n" + bc2.getInventory().toString());
+            // System.out.println("Inventory List: " + inventoryController.getInventory());
+            // inventoryController.printUUID();
 
-        StocksOperation bc3 = new StocksOperation(BlockType.STOCK);
-        bc3.createBlock(stock2);
-        bc3.createBlock(stock1);
+            OrdersController ordersController = new OrdersController();
+            // ordersController.createOrders(order1.getManagerId(), order1.getSupplierId(), order1.getOrdersList());
+            // ordersController.createOrders(order2.getManagerId(), order2.getSupplierId(), order2.getOrdersList());
+            // ordersController.deleteOrder(505 , order1.getManagerId(), order1.getSupplierId(), order1.getOrdersList());
+            // System.out.println("First Order List: " + ordersController.getOrders().get(0).getOrdersList().toString());
+            // ordersController.confirmOrders("ODea18b662", order2.getManagerId(), order2.getSupplierId(), order2.getOrdersList(), OrdersStatus.REJECTED);
+            // ordersController.deleteOrder("ODea18b662" , order2.getManagerId(), order2.getSupplierId(), order2.getOrdersList());
+            // System.out.println("Orders List: " + ordersController.getOrders());
+            
+            StocksController stocksController = new StocksController();
+            // stocksController.createStocks(stockMouse1.getStockId(), stockMouse1.getInventoryId(), StockStatus.MISSING);
+            stocksController.updateStocks("22", stockMouse1.getInventoryId(), StockStatus.AVAILABLE);
+            // stocksController.createUpdateStocks("1e98a29a", stockMouse1.getInventoryId(), StockStatus.DEFECTIVE);
+            // stocksController.createUpdateStocks(stockMouse2.getStockId(), stockMouse2.getInventoryId(), StockStatus.NOT_AVAILABLE);
+            System.out.println("Stocks List: " + stocksController.getStocks());
 
-        System.out.println("\nReading Stocks Lists:\n" + bc3.getStocks().get(0).getStockId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

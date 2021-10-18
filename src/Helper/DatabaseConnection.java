@@ -7,7 +7,7 @@ public class DatabaseConnection {
     //* Database connection constants
     private static final String DB_URL = "jdbc:mysql://localhost:3306/inventory_system";
     private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "root";
+    private static final String DB_PASSWORD = "";
 
     //* Init connection and properties object
     private static Connection connection;
