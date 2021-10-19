@@ -48,23 +48,24 @@ public class Deleteuser extends javax.swing.JFrame {
         cmb_User = new javax.swing.JComboBox<>();
         btn_Delete = new javax.swing.JButton();
         btn_Cancel = new javax.swing.JButton();
-        cmb_User.setModel(new DefaultComboBoxModel());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl_User.setText("Select User:");
 
+        cmb_User.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         btn_Delete.setText("Delete");
         btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_DeleteActionPerformed(evt);
+                btn_DeleteActionPerformed(evt);
             }
         });
 
         btn_Cancel.setText("Cancel");
         btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_CancelActionPerformed(evt);
+                btn_CancelActionPerformed(evt);
             }
         });
 
@@ -103,17 +104,17 @@ public class Deleteuser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
+    private void btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelActionPerformed
         Mainmenu Mainmenu = new Mainmenu();
         Mainmenu.setVisible(true);
         dispose();
-    }//GEN-LAST:event_Btn_CancelActionPerformed
+    }//GEN-LAST:event_btn_CancelActionPerformed
 
-    private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
+    private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
         String selectedUser = cmb_User.getSelectedItem().toString();
         userController.deleteUser(selectedUser);
         getUsers();
-    }//GEN-LAST:event_Btn_DeleteActionPerformed
+    }//GEN-LAST:event_btn_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
