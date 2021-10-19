@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.List;
+
 import Dao.UserDao;
 import Dao.UserDaoImpl;
 import Models.User;
@@ -17,11 +19,10 @@ public class UserController {
             System.out.println("User " + username + " not found");
     }
 
-    public void getAllUserData() {
-        for (User user : userDao.getAllUsers()) {
-            System.out.println(user.toString());
-        }
+    public List<User> getAllUserData() {
+    	return userDao.getAllUsers();
     }
+
     public User authUser(User user) {
         boolean authResult = userDao.authUser(user);
         if (authResult) {

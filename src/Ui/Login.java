@@ -7,6 +7,7 @@ package Ui;
 
 import Controller.UserController;
 import Models.User;
+import Models.User.UserRoles;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -106,18 +108,36 @@ public class Login extends javax.swing.JFrame {
        if ( User.currentUser != null ) {
     	   System.out.println("Login Successful");
     	   setVisible(false);
-    	   Mainmenu Mainmenu = new Mainmenu();
-           Mainmenu.setVisible(true);
+    	   displayHomePage();
        } else {
     	   System.out.println("Incorrect Username or Password!");
        }
     }//GEN-LAST:event_Btn_LoginActionPerformed
-    
+
     private User getUserCredentials() {
     	String username = txt_Username.getText();
         String password = new String(txt_Password.getPassword());
         System.out.println("Username: " + username + "\nPassword: " + password);
         return new User(username, password);
+    }
+
+    private void displayHomePage() {
+    	Mainmenu mainmenu = new Mainmenu();
+
+    	switch ( UserRoles.valueOf(User.currentUser.getUserRole())) {
+			case MANAGER: {
+				mainmenu.setVisible(true);
+				break;
+			}
+			case STAFF: {
+				mainmenu.setVisible(true);
+				break;
+			}
+			case SUPPLIER: {
+				Suppliermainmenu suppliermainmenu = new Suppliermainmenu();
+				suppliermainmenu.setVisible(true);
+			}
+    	}
     }
 
     /**

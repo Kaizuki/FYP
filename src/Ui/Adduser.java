@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package Ui;
+import javax.swing.DefaultComboBoxModel;
+
+import Controller.UserController;
+import Models.User;
+import Models.User.UserRoles;
 
 /**
  *
@@ -16,6 +21,7 @@ public class Adduser extends javax.swing.JFrame {
      */
     public Adduser() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -27,46 +33,45 @@ public class Adduser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Txt_Password1 = new javax.swing.JPasswordField();
         Lbl_Quantity1 = new javax.swing.JLabel();
-        Lbl_Product = new javax.swing.JLabel();
-        Lbl_Quantity = new javax.swing.JLabel();
-        Btn_Add = new javax.swing.JButton();
-        Btn_Cancel = new javax.swing.JButton();
-        Txt_Username = new javax.swing.JTextField();
-        Lbl_Location = new javax.swing.JLabel();
-        Txt_Password = new javax.swing.JPasswordField();
-        Lbl_Quantity2 = new javax.swing.JLabel();
-        Txt_Email = new javax.swing.JTextField();
-        Cmb_Role = new javax.swing.JComboBox<>();
+        lbl_Username = new javax.swing.JLabel();
+        lbl_Password = new javax.swing.JLabel();
+        btn_AddUser = new javax.swing.JButton();
+        btn_Cancel = new javax.swing.JButton();
+        txt_Username = new javax.swing.JTextField();
+        lbl_Role = new javax.swing.JLabel();
+        txt_Password = new javax.swing.JPasswordField();
+        lbl_Email = new javax.swing.JLabel();
+        txt_Email = new javax.swing.JTextField();
+        cmb_UserRole = new javax.swing.JComboBox<>();
 
         Lbl_Quantity1.setText("Password");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Lbl_Product.setText("Username");
+        lbl_Username.setText("Username");
 
-        Lbl_Quantity.setText("Password");
+        lbl_Password.setText("Password");
 
-        Btn_Add.setText("Add");
-        Btn_Add.addActionListener(new java.awt.event.ActionListener() {
+        btn_AddUser.setText("Add User");
+        btn_AddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AddActionPerformed(evt);
             }
         });
 
-        Btn_Cancel.setText("Cancel");
-        Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+        btn_Cancel.setText("Cancel");
+        btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_CancelActionPerformed(evt);
             }
         });
 
-        Lbl_Location.setText("Role");
+        lbl_Role.setText("Role");
 
-        Lbl_Quantity2.setText("Email");
+        lbl_Email.setText("Email");
 
-        Cmb_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_UserRole.setModel(new DefaultComboBoxModel(UserRoles.values()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,45 +83,45 @@ public class Adduser extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(Btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Lbl_Quantity)
-                            .addComponent(Txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lbl_Product))
+                                .addComponent(btn_AddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_Password)
+                            .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Username))
                         .addContainerGap(42, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lbl_Location)
-                            .addComponent(Txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lbl_Quantity2)
-                            .addComponent(Txt_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_Role)
+                            .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Email)
+                            .addComponent(txt_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_UserRole, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(Lbl_Product)
+                .addComponent(lbl_Username)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Lbl_Quantity)
+                .addComponent(lbl_Password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Lbl_Quantity2)
+                .addComponent(lbl_Email)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Txt_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Lbl_Location)
+                .addComponent(lbl_Role)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_UserRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Cancel)
-                    .addComponent(Btn_Add))
+                    .addComponent(btn_Cancel)
+                    .addComponent(btn_AddUser))
                 .addContainerGap())
         );
 
@@ -130,10 +135,19 @@ public class Adduser extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
-        Mainmenu Mainmenu = new Mainmenu();
-        Mainmenu.setVisible(true);
-        dispose();
+       User newUser = getNewUserInfo();
+       UserController userController = new UserController();
+       userController.createNewUser(newUser.getUserName(), newUser.getUserPass(), newUser.getUserEmail(), newUser.getUserRole());
     }//GEN-LAST:event_Btn_AddActionPerformed
+    
+    private User getNewUserInfo() {
+    	String userName = txt_Username.getText();
+    	String userPass = new String(txt_Password.getPassword());
+    	String userEmail = txt_Email.getText();
+    	String userRole = cmb_UserRole.getSelectedItem().toString();
+    	User newUser = new User(userName, userPass, userEmail, userRole);
+    	return newUser;
+    }
 
     /**
      * @param args the command line arguments
@@ -172,17 +186,16 @@ public class Adduser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_Add;
-    private javax.swing.JButton Btn_Cancel;
-    private javax.swing.JComboBox<String> Cmb_Role;
-    private javax.swing.JLabel Lbl_Location;
-    private javax.swing.JLabel Lbl_Product;
-    private javax.swing.JLabel Lbl_Quantity;
+    private javax.swing.JButton btn_AddUser;
+    private javax.swing.JButton btn_Cancel;
+    private javax.swing.JComboBox<String> cmb_UserRole;
+    private javax.swing.JLabel lbl_Role;
+    private javax.swing.JLabel lbl_Username;
+    private javax.swing.JLabel lbl_Password;
     private javax.swing.JLabel Lbl_Quantity1;
-    private javax.swing.JLabel Lbl_Quantity2;
-    private javax.swing.JTextField Txt_Email;
-    private javax.swing.JPasswordField Txt_Password;
-    private javax.swing.JPasswordField Txt_Password1;
-    private javax.swing.JTextField Txt_Username;
+    private javax.swing.JLabel lbl_Email;
+    private javax.swing.JTextField txt_Email;
+    private javax.swing.JPasswordField txt_Password;
+    private javax.swing.JTextField txt_Username;
     // End of variables declaration//GEN-END:variables
 }

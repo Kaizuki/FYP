@@ -20,6 +20,7 @@ public class Addorder extends javax.swing.JFrame {
      */
     public Addorder() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

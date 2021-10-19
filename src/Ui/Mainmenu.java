@@ -29,12 +29,13 @@ public class Mainmenu extends javax.swing.JFrame {
     public Mainmenu() {
         initComponents();
         sortComponents();
+        setLocationRelativeTo(null);
 //        Pnl_Order.setVisible(false);
 //        btn_AddOrder.setVisible(false);
 //        btn_Cancelorder.setVisible(false);
         Tbl_Inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Tbl_Stock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        System.out.println("Welcome " + User.currentUser.getUserName());
+        System.out.println("Welcome " + User.currentUser.getUserRole()  + " "  +  User.currentUser.getUserName());
 //        if(role = staff){
 //       Btn_Createuser.setVisible(false);
 //       Btn_Deleteuser.setVisible(false);
@@ -53,13 +54,10 @@ public class Mainmenu extends javax.swing.JFrame {
 
     	UserRoles currentRole = UserRoles.valueOf(User.currentUser.getUserRole());
     	switch (currentRole) {
-		case MANAGER: {
-			System.out.println("Manager Role");
-			
+		case MANAGER: {			
 			break;
 		}
 		case STAFF: {
-			System.out.println("Staff Role");
 			Pnl_Inventory.setVisible(true);
 			btn_AddInventory.setVisible(false);
 			btn_AddStock.setVisible(true);
@@ -71,7 +69,6 @@ public class Mainmenu extends javax.swing.JFrame {
 			break;
 		}
 		case SUPPLIER: {
-			System.out.println("Supplier Role");
 			Pnl_Inventory.setVisible(false);
 			btn_ViewInventory.setVisible(false);
 			btn_AddInventory.setVisible(false);
@@ -99,14 +96,12 @@ public class Mainmenu extends javax.swing.JFrame {
     	UserRoles currentRole = UserRoles.valueOf(User.currentUser.getUserRole());
     	switch (currentRole) {
 		case MANAGER: {
-			System.out.println("Manager Role");
 			btn_AddInventory.setVisible(true);
 			btn_CreateUser.setVisible(true);
 			btn_DeleteUser.setVisible(true);
 			break;
 		}
 		case STAFF: {
-			System.out.println("Staff Role");
 			btn_AddInventory.setVisible(false);
 			btn_CreateUser.setVisible(false);
 			btn_DeleteUser.setVisible(false);
@@ -114,7 +109,6 @@ public class Mainmenu extends javax.swing.JFrame {
 			break;
 		}
 		case SUPPLIER: {
-			System.out.println("Supplier Role");
 			break;
 		}
 		default:
@@ -134,19 +128,16 @@ public class Mainmenu extends javax.swing.JFrame {
     	UserRoles currentRole = UserRoles.valueOf(User.currentUser.getUserRole());
     	switch (currentRole) {
 		case MANAGER: {
-			System.out.println("Manager Role");
 			btn_AddOrder.setVisible(true);
 			btn_CancelOrder.setVisible(true);
 			break;
 		}
 		case STAFF: {
-			System.out.println("Staff Role");
 			btn_AddOrder.setVisible(false);
 			btn_CancelOrder.setVisible(false);
 			break;
 		}
 		case SUPPLIER: {
-			System.out.println("Supplier Role");
 			btn_AddOrder.setVisible(false);
 			btn_CancelOrder.setVisible(false);
 			break;

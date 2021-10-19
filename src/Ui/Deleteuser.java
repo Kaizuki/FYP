@@ -4,18 +4,35 @@
  * and open the template in the editor.
  */
 package Ui;
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+
+import Controller.UserController;
+import Models.User;
 
 /**
  *
  * @author slavi
  */
 public class Deleteuser extends javax.swing.JFrame {
-
+	UserController userController;
     /**
      * Creates new form DeleteUser
      */
     public Deleteuser() {
+    	userController = new UserController();
         initComponents();
+        getUsers();
+        setLocationRelativeTo(null);
+    }
+
+    private void getUsers() {
+    	cmb_User.removeAllItems();
+    	List<User> userList =  userController.getAllUserData();
+    	for (User user : userList) {
+			cmb_User.addItem(user.getUserName());
+		}
     }
 
     /**
@@ -27,26 +44,25 @@ public class Deleteuser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Lbl_User = new javax.swing.JLabel();
-        Cmb_User = new javax.swing.JComboBox<>();
-        Btn_Delete = new javax.swing.JButton();
-        Btn_Cancel = new javax.swing.JButton();
+        lbl_User = new javax.swing.JLabel();
+        cmb_User = new javax.swing.JComboBox<>();
+        btn_Delete = new javax.swing.JButton();
+        btn_Cancel = new javax.swing.JButton();
+        cmb_User.setModel(new DefaultComboBoxModel());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Lbl_User.setText("Select User:");
+        lbl_User.setText("Select User:");
 
-        Cmb_User.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        Btn_Delete.setText("Delete");
-        Btn_Delete.addActionListener(new java.awt.event.ActionListener() {
+        btn_Delete.setText("Delete");
+        btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_DeleteActionPerformed(evt);
             }
         });
 
-        Btn_Cancel.setText("Cancel");
-        Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+        btn_Cancel.setText("Cancel");
+        btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_CancelActionPerformed(evt);
             }
@@ -60,13 +76,13 @@ public class Deleteuser extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(Btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Cmb_User, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lbl_User))
+                            .addComponent(cmb_User, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_User))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -74,13 +90,13 @@ public class Deleteuser extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(Lbl_User)
+                .addComponent(lbl_User)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cmb_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Delete)
-                    .addComponent(Btn_Cancel))
+                    .addComponent(btn_Delete)
+                    .addComponent(btn_Cancel))
                 .addContainerGap())
         );
 
@@ -94,9 +110,9 @@ public class Deleteuser extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
-        Mainmenu Mainmenu = new Mainmenu();
-        Mainmenu.setVisible(true);
-        dispose();
+        String selectedUser = cmb_User.getSelectedItem().toString();
+        userController.deleteUser(selectedUser);
+        getUsers();
     }//GEN-LAST:event_Btn_DeleteActionPerformed
 
     /**
@@ -136,9 +152,9 @@ public class Deleteuser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_Cancel;
-    private javax.swing.JButton Btn_Delete;
-    private javax.swing.JComboBox<String> Cmb_User;
-    private javax.swing.JLabel Lbl_User;
+    private javax.swing.JButton btn_Cancel;
+    private javax.swing.JButton btn_Delete;
+    private javax.swing.JComboBox<String> cmb_User;
+    private javax.swing.JLabel lbl_User;
     // End of variables declaration//GEN-END:variables
 }

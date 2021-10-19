@@ -16,6 +16,7 @@ public class Suppliermainmenu extends javax.swing.JFrame {
      */
     public Suppliermainmenu() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -144,7 +145,7 @@ public class Suppliermainmenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mainmenu().setVisible(true);
+                new Suppliermainmenu().setVisible(true);
             }
         });
     }

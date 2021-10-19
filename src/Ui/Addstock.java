@@ -18,6 +18,7 @@ public class Addstock extends javax.swing.JFrame {
      */
     public Addstock() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

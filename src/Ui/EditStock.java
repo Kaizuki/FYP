@@ -16,6 +16,7 @@ public class EditStock extends javax.swing.JFrame {
      */
     public EditStock() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
