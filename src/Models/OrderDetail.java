@@ -3,21 +3,21 @@ package Models;
 import java.io.Serializable;
 
 public class OrderDetail implements Serializable {
-    private int orderDetailId;
+    private String orderDetailId;
     private int orderDetailQty;
-    private int inventoryId;
+    private String inventoryId;
 
-    public OrderDetail(int orderDetailId, int inventoryId, int orderDetailQty) {
+    public OrderDetail(String orderDetailId, String inventoryId, int orderDetailQty) {
         this.orderDetailId = orderDetailId;
         this.inventoryId = inventoryId;
         this.orderDetailQty = orderDetailQty;
     }
 
-    public int getOrderDetailId() {
+    public String getOrderDetailId() {
         return this.orderDetailId;
     }
 
-    public void setOrderDetailId(int orderDetailId) {
+    public void setOrderDetailId(String orderDetailId) {
         this.orderDetailId = orderDetailId;
     }
 
@@ -29,11 +29,11 @@ public class OrderDetail implements Serializable {
         this.orderDetailQty = orderDetailQty;
     }
 
-    public int getInventoryId() {
+    public String getInventoryId() {
         return this.inventoryId;
     }
 
-    public void setInventoryId(int inventoryId) {
+    public void setInventoryId(String inventoryId) {
         this.inventoryId = inventoryId;
     }
 

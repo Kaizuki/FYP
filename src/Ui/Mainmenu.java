@@ -5,10 +5,21 @@ import javax.swing.JDialog;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.InventoryController;
+import Controller.OrdersController;
+import Controller.StocksController;
+import Controller.UserController;
+import Models.Inventory;
+import Models.Orders;
+import Models.Stocks;
 import Models.User;
 import Models.User.UserRoles;
 
+import java.util.List;
+
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,23 +37,26 @@ public class Mainmenu extends javax.swing.JFrame {
     /**
      * Creates new form MainMenu
      */
+	InventoryController inventoryController;
+	StocksController stocksController;
+	OrdersController ordersController;
+	UserController userController;
+	String selectedInventoryRow;
+	String selectedOrdersRow;
+
     public Mainmenu() {
+    	inventoryController = new InventoryController();
+    	stocksController = new StocksController();
+    	ordersController = new OrdersController();
+    	userController = new UserController();
         initComponents();
         sortComponents();
         setLocationRelativeTo(null);
-//        Pnl_Order.setVisible(false);
-//        btn_AddOrder.setVisible(false);
-//        btn_Cancelorder.setVisible(false);
-        Tbl_Inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Tbl_Stock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        fillInventoryTable();
+//        fillOrdersTable();
+        tbl_Inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tbl_Stock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         System.out.println("Welcome " + User.currentUser.getUserRole()  + " "  +  User.currentUser.getUserName());
-//        if(role = staff){
-//       Btn_Createuser.setVisible(false);
-//       Btn_Deleteuser.setVisible(false);
-//       Btn_Addorder.setVisible(false);
-//       Btn_Cancelorder.setVisible(false);
-//    }
-           
     }
 
     private void sortComponents() {
@@ -146,23 +160,6 @@ public class Mainmenu extends javax.swing.JFrame {
 			throw new IllegalArgumentException("Unexpected value: " + currentRole.toString());
 		}
     }
-    
-//    private void sortComponents() {
-//    	String s = UserRoles.MANAGER.toString();
-//    	switch (User.currentUser.getUserRole()) {
-//		case UserRoles.MANAGER.toString(): {
-//			System.out.println("Manager Role");
-//		}
-//		case UserRoles.STAFF.toString(): {
-//			System.out.println("Staff Role");
-//		}
-//		case UserRoles.SUPPLIER.toString(): {
-//			System.out.println("Supplier Role");
-//		}
-//		default:
-//			throw new IllegalArgumentException("Unexpected value: " + User.currentUser.getUserRole().toString());
-//		}
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,7 +171,6 @@ public class Mainmenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         btn_ViewInventory = new javax.swing.JButton();
         btn_ViewOrders = new javax.swing.JButton();
@@ -189,25 +185,18 @@ public class Mainmenu extends javax.swing.JFrame {
         Layer = new javax.swing.JLayeredPane();
         Pnl_Order = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Tbl_Order = new javax.swing.JTable();
+        tbl_Order = new javax.swing.JTable();
+        tbl_Order.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mousePressed(MouseEvent e) {
+        		selectedOrdersRow = tbl_Order.getValueAt(tbl_Order.getSelectedRow(), 0).toString();  
+        	}
+        });
         Pnl_Inventory = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        Tbl_Inventory = new javax.swing.JTable();
+        tbl_Inventory = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        Tbl_Stock = new javax.swing.JTable();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable1);
+        tbl_Stock = new javax.swing.JTable();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -295,17 +284,17 @@ public class Mainmenu extends javax.swing.JFrame {
         });
         getContentPane().add(btn_AddStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 110, 39));
 
-        Tbl_Order.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Order.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Supplier"
+                "Order ID", "Manager Name", "Supplier Name", "Order Status"
             }
         ));
-        jScrollPane2.setViewportView(Tbl_Order);
-        if (Tbl_Order.getColumnModel().getColumnCount() > 0) {
-            Tbl_Order.getColumnModel().getColumn(1).setResizable(false);
+        jScrollPane2.setViewportView(tbl_Order);
+        if (tbl_Order.getColumnModel().getColumnCount() > 0) {
+            tbl_Order.getColumnModel().getColumn(1).setResizable(false);
         }
 
         javax.swing.GroupLayout Pnl_OrderLayout = new javax.swing.GroupLayout(Pnl_Order);
@@ -321,38 +310,28 @@ public class Mainmenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Tbl_Inventory.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Product"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        Tbl_Inventory.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_Inventory.setModel(new DefaultTableModel(
+        	new Object[][] {
+        	},
+        	new String[] {
+        		"Inventory ID", "Product Name", "Location"
+        	}
+        ));
+        tbl_Inventory.setDefaultEditor(Object.class, null);
+        tbl_Inventory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tbl_InventoryMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                Tbl_InventoryMousePressed(evt);
+//                Tbl_InventoryMousePressed(evt);
             }
         });
-        jScrollPane4.setViewportView(Tbl_Inventory);
+        jScrollPane4.setViewportView(tbl_Inventory);
 
-        Tbl_Stock.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
+        tbl_Stock.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
             new String [] {
-                "ID", "Product", "Serial Number", "Status"
+                "Stock ID", "Inventory ID", "Stock Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -363,7 +342,7 @@ public class Mainmenu extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        Tbl_Stock.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_Stock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tbl_StockMouseClicked(evt);
             }
@@ -371,7 +350,7 @@ public class Mainmenu extends javax.swing.JFrame {
                 Tbl_StockMousePressed(evt);
             }
         });
-        jScrollPane5.setViewportView(Tbl_Stock);
+        jScrollPane5.setViewportView(tbl_Stock);
 
         javax.swing.GroupLayout Pnl_InventoryLayout = new javax.swing.GroupLayout(Pnl_Inventory);
         Pnl_Inventory.setLayout(Pnl_InventoryLayout);
@@ -424,29 +403,8 @@ public class Mainmenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InventoryActionPerformed
-        // TODO add your handling code here:
-        
-//        if(role = staff){
-//       Btn_Createuser.setVisible(false);
-//       Btn_Deleteuser.setVisible(false);
-//       Btn_Addorder.setVisible(false);
-//       Btn_Cancelorder.setVisible(false);
-//       Btn_Addinventory.setvisible(false);
-//                Btn_Addstock.setVisible(true);
-//                Btn_Edit.setVisible(true);
-//                Pnl_Order.setVisible(false);
-//                Pnl_Inventory.setVisible(true);
-//    } else
-           
-        
-//    	Pnl_Inventory.setVisible(true);
-//        btn_AddInventory.setVisible(true);
-//        btn_AddStock.setVisible(true);
-//        btn_EditStock.setVisible(true);
-//        Pnl_Order.setVisible(false);
-//        btn_AddOrder.setVisible(false);
-//        btn_Cancelorder.setVisible(false);
     	sortInventoryComponents();
+    	fillInventoryTable();
     }//GEN-LAST:event_Btn_InventoryActionPerformed
 
     private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
@@ -462,14 +420,30 @@ public class Mainmenu extends javax.swing.JFrame {
        setVisible(false);
     }//GEN-LAST:event_Btn_AddinventoryActionPerformed
 
-    public static void Addinventorytotable(Object[] dataRow)
+    private void fillInventoryTable()
     {
-        DefaultTableModel model = (DefaultTableModel)Tbl_Inventory.getModel();
-        model.addRow(dataRow);
+    	List<Inventory> inventoryList = inventoryController.getInventory();
+    	DefaultTableModel model = (DefaultTableModel)tbl_Inventory.getModel();
+    	model.setRowCount(0);
+    	for (Inventory inventory : inventoryList) {
+			model.addRow( new Object[] {inventory.getInventoryId(), inventory.getInventoryName(), inventory.getInventoryLocation()} );
+		}
+    }
+
+    private void fillStocksTable(String inventoryId) {
+    	List<Stocks> stocksList = stocksController.getGroupStocks(inventoryId);
+    	DefaultTableModel model = (DefaultTableModel)tbl_Stock.getModel();
+    	model.setRowCount(0);
+    	for (Stocks stocks : stocksList) {
+			model.addRow( new Object[] {stocks.getStockId(), stocks.getInventoryId(), stocks.getStockStatus()} );
+		}
+    	
     }
     
     private void Btn_CancelorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelorderActionPerformed
-        
+    	Orders searchOrder = ordersController.getSingleOrder(selectedOrdersRow);
+    	ordersController.deleteOrder(searchOrder.getOrderId(), searchOrder.getManagerId(), searchOrder.getSupplierId(), searchOrder.getOrdersList());
+    	fillOrdersTable();
     }//GEN-LAST:event_Btn_CancelorderActionPerformed
 
     private void Btn_DeleteuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteuserActionPerformed
@@ -479,29 +453,31 @@ public class Mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_DeleteuserActionPerformed
 
     private void Btn_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OrdersActionPerformed
-
-//        if(role = staff){
-//       Btn_Createuser.setVisible(false);
-//       Btn_Deleteuser.setVisible(false);
-//       Btn_Addorder.setVisible(false);
-//       Btn_Cancelorder.setVisible(false);
-//       Btn_Addinventory.setvisible(false);
-//                Btn_Addstock.setVisible(false);
-//                Btn_Edit.setVisible(false);
-//                Pnl_Order.setVisible(true);
-//                Pnl_Inventory.setVisible(false);
-//    } else
+    	fillOrdersTable();
+    	sortOrdersComponents();
         
-        
-//        btn_AddInventory.setVisible(false);
-//        btn_AddStock.setVisible(false);
-//        btn_EditStock.setVisible(false);
-//        btn_Cancelorder.setVisible(true);
-//        btn_AddOrder.setVisible(true);
-//        Pnl_Inventory.setVisible(false);
-//        Pnl_Order.setVisible(true);
-        sortOrdersComponents();
     }//GEN-LAST:event_Btn_OrdersActionPerformed
+
+    private void fillOrdersTable() {
+    	List<Orders> ordersList = ordersController.getOrders();
+    	DefaultTableModel model = (DefaultTableModel)tbl_Order.getModel();
+    	String managerName, supplierName;
+    	model.setRowCount(0);
+    	for (Orders orders : ordersList) {
+    		managerName = getUser(orders.getManagerId()).getUserName() ;
+    		supplierName = getUser(orders.getSupplierId()).getUserName();
+			model.addRow(new Object[] {orders.getOrderId(), managerName, supplierName, orders.getOrdersStatus() });
+		}
+    }
+
+    private User getUser(String userId) {
+    	User user = userController.getUserDataWithID(userId);
+    	if (user == null) {
+    		return new User();
+    	} else {
+    		return user;
+    	}
+    }
 
     private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
  EditStock EditStock = new EditStock();
@@ -528,9 +504,8 @@ public class Mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_AddstockActionPerformed
 
     private void Tbl_InventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMouseClicked
-     
-        
-    
+    	selectedInventoryRow = tbl_Inventory.getValueAt(tbl_Inventory.getSelectedRow(), 0).toString();  
+    	fillStocksTable(selectedInventoryRow);
     }//GEN-LAST:event_Tbl_InventoryMouseClicked
 
     private void Tbl_StockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_StockMouseClicked
@@ -538,20 +513,20 @@ public class Mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_Tbl_StockMouseClicked
 
     private void Tbl_StockMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_StockMousePressed
-         if(Tbl_Stock.getSelectionModel().isSelectionEmpty()){
+         if(tbl_Stock.getSelectionModel().isSelectionEmpty()){
         System.out.println("stock is empty");
     } else{
-            Tbl_Inventory.getSelectionModel().clearSelection();
+            tbl_Inventory.getSelectionModel().clearSelection();
         }
     }//GEN-LAST:event_Tbl_StockMousePressed
 
-    private void Tbl_InventoryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMousePressed
-       if(Tbl_Inventory.getSelectionModel().isSelectionEmpty()){
-        System.out.println("inventory is selected");
-    } else{
-            Tbl_Stock.getSelectionModel().clearSelection();
-        }
-    }//GEN-LAST:event_Tbl_InventoryMousePressed
+//    private void Tbl_InventoryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMousePressed
+//       if(tbl_Inventory.getSelectionModel().isSelectionEmpty()){
+//        System.out.println("inventory is selected");
+//    } else{
+//            tbl_Stock.getSelectionModel().clearSelection();
+//        }
+//    }//GEN-LAST:event_Tbl_InventoryMousePressed
 
     /**
      * @param args the command line arguments
@@ -603,14 +578,13 @@ public class Mainmenu extends javax.swing.JFrame {
     private javax.swing.JLayeredPane Layer;
     private javax.swing.JPanel Pnl_Inventory;
     private javax.swing.JPanel Pnl_Order;
-    private static javax.swing.JTable Tbl_Inventory;
-    private javax.swing.JTable Tbl_Order;
-    private javax.swing.JTable Tbl_Stock;
+    private static javax.swing.JTable tbl_Inventory;
+    private javax.swing.JTable tbl_Order;
+    private javax.swing.JTable tbl_Stock;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

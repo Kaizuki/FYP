@@ -7,18 +7,40 @@ package Ui;
 
 import Models.User;
 
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+
+import Controller.InventoryController;
+import Controller.StocksController;
+import Models.Inventory;
+import Models.Stocks;
+import Models.Stocks.StockStatus;
+
 /**
  *
  * @author slavi
  */
 public class Addstock extends javax.swing.JFrame {
-
+	InventoryController inventoryController;
+	StocksController stocksController;
+	List<Inventory> inventoryList;
     /**
      * Creates new form AddUser
      */
     public Addstock() {
+    	inventoryController = new InventoryController();
+    	stocksController = new StocksController();
         initComponents();
+        getInventoryList();
         setLocationRelativeTo(null);
+    }
+    
+    private void getInventoryList() {
+    	inventoryList = inventoryController.getInventory();
+    	for (Inventory inventory : inventoryList) {
+			cmb_Inventory.addItem(inventory.getInventoryName());
+		}
     }
 
     /**
@@ -30,48 +52,41 @@ public class Addstock extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Txt_Password1 = new javax.swing.JPasswordField();
-        Lbl_Quantity1 = new javax.swing.JLabel();
-        Lbl_Product1 = new javax.swing.JLabel();
-        Lbl_Product = new javax.swing.JLabel();
-        Lbl_Quantity = new javax.swing.JLabel();
-        Btn_Add = new javax.swing.JButton();
-        Btn_Cancel = new javax.swing.JButton();
-        Txt_Serialnumber = new javax.swing.JPasswordField();
-        Cmb_Inventory = new javax.swing.JComboBox<>();
-        Lbl_Product2 = new javax.swing.JLabel();
-        Cmb_Status = new javax.swing.JComboBox<>();
-
-        Lbl_Quantity1.setText("Password");
-
-        Lbl_Product1.setText("Product Name");
+        lbl_Inventory = new javax.swing.JLabel();
+        lbl_StockId = new javax.swing.JLabel();
+        btn_Add = new javax.swing.JButton();
+        btn_Cancel = new javax.swing.JButton();
+        txt_StockId = new javax.swing.JTextField();
+        cmb_Inventory = new javax.swing.JComboBox<>();
+        lbl_StockStatus = new javax.swing.JLabel();
+        cmb_StockStatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Lbl_Product.setText("Product Name");
+        lbl_Inventory.setText("Product Name");
 
-        Lbl_Quantity.setText("Serial Number");
+        lbl_StockId.setText("Stock ID");
 
-        Btn_Add.setText("Add");
-        Btn_Add.addActionListener(new java.awt.event.ActionListener() {
+        btn_Add.setText("Add");
+        btn_Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AddActionPerformed(evt);
             }
         });
 
-        Btn_Cancel.setText("Cancel");
-        Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+        btn_Cancel.setText("Cancel");
+        btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_CancelActionPerformed(evt);
             }
         });
 
-        Cmb_Inventory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_Inventory.setModel(new javax.swing.DefaultComboBoxModel<>());
 
-        Lbl_Product2.setText("Status");
+        lbl_StockStatus.setText("Status");
 
-        Cmb_Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Cmb_Status.addActionListener(new java.awt.event.ActionListener() {
+        cmb_StockStatus.setModel(new DefaultComboBoxModel(StockStatus.values()));
+        cmb_StockStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Cmb_StatusActionPerformed(evt);
             }
@@ -87,39 +102,39 @@ public class Addstock extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(Btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Lbl_Quantity)
-                            .addComponent(Lbl_Product))
+                                .addComponent(btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_StockId)
+                            .addComponent(lbl_Inventory))
                         .addContainerGap(42, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Cmb_Inventory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Txt_Serialnumber, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                            .addComponent(Lbl_Product2)
-                            .addComponent(Cmb_Status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cmb_Inventory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_StockId, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(lbl_StockStatus)
+                            .addComponent(cmb_StockStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(Lbl_Product)
+                .addComponent(lbl_Inventory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cmb_Inventory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_Inventory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Lbl_Quantity)
+                .addComponent(lbl_StockId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_Serialnumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_StockId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Lbl_Product2)
+                .addComponent(lbl_StockStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cmb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_StockStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Cancel)
-                    .addComponent(Btn_Add))
+                    .addComponent(btn_Cancel)
+                    .addComponent(btn_Add))
                 .addContainerGap())
         );
 
@@ -127,9 +142,9 @@ public class Addstock extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Cmb_StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cmb_StatusActionPerformed
-        Cmb_Status.addItem("Available");
-        Cmb_Status.addItem("Sold");
-        Cmb_Status.addItem("Defective");
+        cmb_StockStatus.addItem("Available");
+        cmb_StockStatus.addItem("Sold");
+        cmb_StockStatus.addItem("Defective");
     }//GEN-LAST:event_Cmb_StatusActionPerformed
 
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
@@ -139,11 +154,21 @@ public class Addstock extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
-        Mainmenu Mainmenu = new Mainmenu();
-        Mainmenu.setVisible(true);
-        dispose();
+//        Mainmenu Mainmenu = new Mainmenu();
+//        Mainmenu.setVisible(true);
+//        dispose();
+    	Stocks newStock = getStockData();
+    	stocksController.createStocks(newStock.getStockId(), newStock.getInventoryId(), newStock.getStockStatus());
+    	
     }//GEN-LAST:event_Btn_AddActionPerformed
 
+	private Stocks getStockData() {
+		String selectedInventory = cmb_Inventory.getSelectedItem().toString();
+		String inventoryId = inventoryList.stream().filter( inventory -> inventory.getInventoryName().equals(selectedInventory) ).findFirst().orElse(null).getInventoryId();
+		String stockId = txt_StockId.getText();
+		String stockStatus = cmb_StockStatus.getSelectedItem().toString();
+		return new Stocks(stockId, inventoryId, stockStatus);
+	}
     /**
      * @param args the command line arguments
      */
@@ -174,22 +199,19 @@ public class Addstock extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Adduser().setVisible(true);
+                new Addstock().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_Add;
-    private javax.swing.JButton Btn_Cancel;
-    private javax.swing.JComboBox<String> Cmb_Inventory;
-    private javax.swing.JComboBox<String> Cmb_Status;
-    private javax.swing.JLabel Lbl_Product;
-    private javax.swing.JLabel Lbl_Product1;
-    private javax.swing.JLabel Lbl_Product2;
-    private javax.swing.JLabel Lbl_Quantity;
-    private javax.swing.JLabel Lbl_Quantity1;
-    private javax.swing.JPasswordField Txt_Password1;
-    private javax.swing.JPasswordField Txt_Serialnumber;
+    private javax.swing.JButton btn_Add;
+    private javax.swing.JButton btn_Cancel;
+    private javax.swing.JComboBox<String> cmb_Inventory;
+    private javax.swing.JComboBox<String> cmb_StockStatus;
+    private javax.swing.JLabel lbl_Inventory;
+    private javax.swing.JLabel lbl_StockStatus;
+    private javax.swing.JLabel lbl_StockId;
+    private javax.swing.JTextField txt_StockId;
     // End of variables declaration//GEN-END:variables
 }

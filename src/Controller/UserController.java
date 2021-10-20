@@ -11,12 +11,28 @@ public class UserController {
 
     //! TODO: Remeber to convert all the return methods accordingly
     
-    public void getUserData(String username) {
-        User user  = userDao.getUser(username);
-        if (user != null)  
-            System.out.println(user.toString());
-        else
-            System.out.println("User " + username + " not found");
+    public User getUserDataWithID(String userId) {
+        User user  = userDao.getUserWithID(userId);
+        if (userId == null) {
+        	return null;
+        } else {
+        	if (user != null)  
+                return user;
+            else
+                return null;
+        }
+    }
+
+    public User getUserData(String userName) {
+        User user  = userDao.getUser(userName);
+        if (userName == null) {
+        	return null;
+        } else {
+        	if (user != null)  
+                return user;
+            else
+                return null;
+        }
     }
 
     public List<User> getAllUserData() {

@@ -1,7 +1,21 @@
 package Ui;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.InventoryController;
+import Controller.OrdersController;
+import Controller.UserController;
+import Helper.IdGenerator;
+import Models.Inventory;
+import Models.OrderDetail;
+import Models.Orders;
 import Models.User;
+import Models.User.UserRoles;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,12 +29,29 @@ import Models.User;
  */
 public class Addorder extends javax.swing.JFrame {
 
+	OrdersController ordersController;
+	InventoryController inventoryController;
+	UserController userController;
     /**
      * Creates new form Addorder
      */
     public Addorder() {
+    	ordersController = new OrdersController();
+    	inventoryController = new InventoryController();
+    	userController = new UserController();
         initComponents();
+        populateCombobox();
         setLocationRelativeTo(null);
+    }
+
+    private void populateCombobox() {
+    	List<String> supplierList = userController.getAllUserData().stream()
+    			.filter(supplier -> supplier.getUserRole().equals(UserRoles.SUPPLIER.toString()))
+				.map(User::getUserName)
+				.collect(Collectors.toList());
+    	List <String> inventoryList = inventoryController.getInventory().stream().map(Inventory::getInventoryName).collect(Collectors.toList());
+    	cmb_OrderSupplier.setModel(new DefaultComboBoxModel(supplierList.toArray()));
+    	cmb_InventoryName.setModel(new DefaultComboBoxModel(inventoryList.toArray()));
     }
 
     /**
@@ -32,28 +63,28 @@ public class Addorder extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Cmb_User = new javax.swing.JComboBox<>();
+        cmb_OrderSupplier = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tbl_Orderlist = new javax.swing.JTable();
-        Lbl_Supplier = new javax.swing.JLabel();
-        Cmb_Product = new javax.swing.JComboBox<>();
-        lbl_Product = new javax.swing.JLabel();
-        lbl_Product1 = new javax.swing.JLabel();
-        Txt_Quantity = new javax.swing.JTextField();
-        Btn_Add = new javax.swing.JButton();
-        Btn_Confirm = new javax.swing.JButton();
-        Btn_Cancel = new javax.swing.JButton();
+        tbl_OrderList = new javax.swing.JTable();
+        lbl_Supplier = new javax.swing.JLabel();
+        cmb_InventoryName = new javax.swing.JComboBox<>();
+        lbl_Inventory = new javax.swing.JLabel();
+        lbl_OrderQuantity = new javax.swing.JLabel();
+        txt_OrderQuantity = new javax.swing.JTextField();
+        btn_Add = new javax.swing.JButton();
+        btn_Confirm = new javax.swing.JButton();
+        btn_Cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Cmb_User.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_OrderSupplier.setModel(new javax.swing.DefaultComboBoxModel<>());
 
-        Tbl_Orderlist.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_OrderList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Product", "Quantity"
+                "Product Name", "Quantity"
             }
         ) {
             Class[] types = new Class [] {
@@ -64,32 +95,32 @@ public class Addorder extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(Tbl_Orderlist);
+        jScrollPane1.setViewportView(tbl_OrderList);
 
-        Lbl_Supplier.setText("Supplier");
+        lbl_Supplier.setText("Supplier");
 
-        Cmb_Product.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_InventoryName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lbl_Product.setText("Inventory");
+        lbl_Inventory.setText("Inventory");
 
-        lbl_Product1.setText("Quantity");
+        lbl_OrderQuantity.setText("Quantity");
 
-        Btn_Add.setText("Add");
-        Btn_Add.addActionListener(new java.awt.event.ActionListener() {
+        btn_Add.setText("Add");
+        btn_Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AddActionPerformed(evt);
             }
         });
 
-        Btn_Confirm.setText("Confirm");
-        Btn_Confirm.addActionListener(new java.awt.event.ActionListener() {
+        btn_Confirm.setText("Confirm");
+        btn_Confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_ConfirmActionPerformed(evt);
             }
         });
 
-        Btn_Cancel.setText("Cancel");
-        Btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+        btn_Cancel.setText("Cancel");
+        btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_CancelActionPerformed(evt);
             }
@@ -105,21 +136,21 @@ public class Addorder extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Cmb_User, 0, 122, Short.MAX_VALUE)
-                                .addComponent(Lbl_Supplier)
-                                .addComponent(Cmb_Product, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lbl_Product)
+                                .addComponent(cmb_OrderSupplier, 0, 122, Short.MAX_VALUE)
+                                .addComponent(lbl_Supplier)
+                                .addComponent(cmb_InventoryName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbl_Inventory)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Txt_Quantity, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_Product1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(txt_OrderQuantity, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_OrderQuantity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addComponent(Btn_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -132,23 +163,23 @@ public class Addorder extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(Lbl_Supplier)
+                .addComponent(lbl_Supplier)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cmb_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_OrderSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_Product)
+                .addComponent(lbl_Inventory)
                 .addGap(4, 4, 4)
-                .addComponent(Cmb_Product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_InventoryName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_Product1)
+                .addComponent(lbl_OrderQuantity)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Txt_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_OrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Btn_Add)
+                .addComponent(btn_Add)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Confirm)
-                    .addComponent(Btn_Cancel))
+                    .addComponent(btn_Confirm)
+                    .addComponent(btn_Cancel))
                 .addGap(17, 17, 17))
         );
 
@@ -156,11 +187,31 @@ public class Addorder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConfirmActionPerformed
+    	getOrderData();
         Mainmenu Mainmenu = new Mainmenu();
         Mainmenu.setVisible(true);
-        dispose();
-        
+        dispose();        
     }//GEN-LAST:event_Btn_ConfirmActionPerformed
+
+    private List<OrderDetail> getTableData() {
+    	System.out.println("Table row: " + tbl_OrderList.getRowCount());
+    	List <OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+    	for (int count = 0; count < tbl_OrderList.getRowCount(); count++) {
+			orderDetails.add( new OrderDetail( "OD" + IdGenerator.generateUUID(), 
+				tbl_OrderList.getValueAt(count, 0).toString(), 
+				Integer.parseInt( tbl_OrderList.getValueAt(count, 1).toString() )
+			));
+		}
+    	return orderDetails;
+    }
+
+    private void getOrderData() {
+    	String managerId = User.currentUser.getUserId();
+    	String supplierName = cmb_OrderSupplier.getSelectedItem().toString();
+    	String supplierId = userController.getUserData(supplierName).getUserId();
+    	List<OrderDetail> orderList = getTableData();
+    	ordersController.createOrders(managerId, supplierId, orderList);
+    }
 
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
         Mainmenu Mainmenu = new Mainmenu();
@@ -169,10 +220,10 @@ public class Addorder extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
-    DefaultTableModel model = (DefaultTableModel)Tbl_Orderlist.getModel();
+    DefaultTableModel model = (DefaultTableModel)tbl_OrderList.getModel();
     
-    model.addRow(new Object[]{Cmb_Product.getSelectedItem()
-                              ,Txt_Quantity.getText()});
+    model.addRow(new Object[]{cmb_InventoryName.getSelectedItem()
+                              ,txt_OrderQuantity.getText()});
     }//GEN-LAST:event_Btn_AddActionPerformed
 
     /**
@@ -211,16 +262,16 @@ public class Addorder extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_Add;
-    private javax.swing.JButton Btn_Cancel;
-    private javax.swing.JButton Btn_Confirm;
-    private javax.swing.JComboBox<String> Cmb_Product;
-    private javax.swing.JComboBox<String> Cmb_User;
-    private javax.swing.JLabel Lbl_Supplier;
-    private javax.swing.JTable Tbl_Orderlist;
-    private javax.swing.JTextField Txt_Quantity;
+    private javax.swing.JButton btn_Add;
+    private javax.swing.JButton btn_Cancel;
+    private javax.swing.JButton btn_Confirm;
+    private javax.swing.JComboBox<String> cmb_InventoryName;
+    private javax.swing.JComboBox<String> cmb_OrderSupplier;
+    private javax.swing.JLabel lbl_Supplier;
+    private javax.swing.JTable tbl_OrderList;
+    private javax.swing.JTextField txt_OrderQuantity;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_Product;
-    private javax.swing.JLabel lbl_Product1;
+    private javax.swing.JLabel lbl_Inventory;
+    private javax.swing.JLabel lbl_OrderQuantity;
     // End of variables declaration//GEN-END:variables
 }

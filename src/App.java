@@ -21,15 +21,15 @@ public class App {
         UserController userController = new UserController();
         // userController.getUserData("peach");
         // User user = new User("eli", "eli", "peach@gmail.com", "manager");
-        userController.createNewUser("eli", "eli", "eliwoo@gmail.com", UserRoles.MANAGER.toString());
+        userController.createNewUser("sricomputer", "sricomputer", "allit@gmail.com", UserRoles.SUPPLIER.toString());
         // userController.createNewUser("peach2", "peach", "eliwoo@gmail.com", UserRoles.STAFF.toString());
         // userController.deleteUser("peach");
         // userController.authUser(user);
         // userController.createNewUser(user);
-        OrderDetail mouseOrder = new OrderDetail(111, 12, 100);
-        OrderDetail mouseOrder2 = new OrderDetail(111, 12, 60);
-        OrderDetail keyboardOrder = new OrderDetail(112, 13, 90);
-        OrderDetail headsetOrder = new OrderDetail(113, 15, 80);
+        OrderDetail mouseOrder = new OrderDetail("111", "12", 100);
+        OrderDetail mouseOrder2 = new OrderDetail("111", "12", 60);
+        OrderDetail keyboardOrder = new OrderDetail("112", "13", 90);
+        OrderDetail headsetOrder = new OrderDetail("113", "15", 80);
 
         List<OrderDetail> groupOrder = Arrays.asList(mouseOrder, keyboardOrder);
         // List<OrderDetail> groupOrder = new ArrayList<OrderDetail>();

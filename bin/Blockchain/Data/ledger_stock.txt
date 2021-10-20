@@ -53,5 +53,71 @@
     "preHash": "C0Exq3S/KQko2y1m8rxCyigvEKvBNUsYKfIduZ2L3cEbiXRw0VImjVXzIdGu2IQUNT+kYsBUBjwiiB+1OKSiZ9ttbKC8CgJU+H4eQuPQpZhpZi/s3arRmYRnEAB7CeKC3NnVfaL5/Nl04peuNyu3EGb08GvfLSsxmrl5Mcpz2Ho\u003d",
     "nowHash": "CXkmqeQb4XSM5go8RBoCmt0J6SqyimoibsPZuusQNPKJVwSeX+RZ877LKO/rVuRHUSFQnQndFNFq4E7N2M96lcRw9cVs+XM8h66RpwMlN4+CTtkmhIlPmVjemFhFRIaftzLOWmVnoLSRGBi2u93TIgwMcH3wQwpp7B5EFduAGto\u003d",
     "timeStamp": 1634542348113
+  },
+  {
+    "blockIndex": 6,
+    "blockchainData": {
+      "stockId": "SSm1",
+      "inventoryId": "IN0ea46722",
+      "stockStatus": "AVAILABLE"
+    },
+    "preHash": "CXkmqeQb4XSM5go8RBoCmt0J6SqyimoibsPZuusQNPKJVwSeX+RZ877LKO/rVuRHUSFQnQndFNFq4E7N2M96lcRw9cVs+XM8h66RpwMlN4+CTtkmhIlPmVjemFhFRIaftzLOWmVnoLSRGBi2u93TIgwMcH3wQwpp7B5EFduAGto\u003d",
+    "nowHash": "CKM2wyOi8imOrQhCR+cn4rGHN/I6rayo61qQFYskc9bJdNxNRt4+tV4l8P6oje42WiFr6QMjalz8nC4kRgoOSvrDmoUg5LJpCWElnQzF8rmgVAHVGnffxx6VuaErd76VjlepZ3669pbWgg02YTDP3VkMKhtykbaXxztj7JQGofM\u003d",
+    "timeStamp": 1634630719108
+  },
+  {
+    "blockIndex": 7,
+    "blockchainData": {
+      "stockId": "",
+      "inventoryId": "IN0ea46722",
+      "stockStatus": "AVAILABLE"
+    },
+    "preHash": "CKM2wyOi8imOrQhCR+cn4rGHN/I6rayo61qQFYskc9bJdNxNRt4+tV4l8P6oje42WiFr6QMjalz8nC4kRgoOSvrDmoUg5LJpCWElnQzF8rmgVAHVGnffxx6VuaErd76VjlepZ3669pbWgg02YTDP3VkMKhtykbaXxztj7JQGofM\u003d",
+    "nowHash": "WSOQ/rknan68aebCqb3AzLE8Cd07yXsfDPUD0uJS74pdX23l9VfIzZ7HT8WIWZIb2J/KfEI2sr8KuH+kU6GxGwfYt1tnistmA83um/DAi10SBobHIHEUCEkpjCpDMMxY7Zhzt8Zgj+FqM5/1XbCCHhJ6KWsmPNG8sdhxa9+Y9Co\u003d",
+    "timeStamp": 1634630803514
+  },
+  {
+    "blockIndex": 8,
+    "blockchainData": {
+      "stockId": "SSm1",
+      "inventoryId": "IN0ea46722",
+      "stockStatus": "SOLD"
+    },
+    "preHash": "WSOQ/rknan68aebCqb3AzLE8Cd07yXsfDPUD0uJS74pdX23l9VfIzZ7HT8WIWZIb2J/KfEI2sr8KuH+kU6GxGwfYt1tnistmA83um/DAi10SBobHIHEUCEkpjCpDMMxY7Zhzt8Zgj+FqM5/1XbCCHhJ6KWsmPNG8sdhxa9+Y9Co\u003d",
+    "nowHash": "gBjcNkn3Z9ThgesojWawwXi5ut601lFerS8jYKmDTIqOoZjYz0qSBXOuBIZ0PFHUYbNtQOSKDZJrB0dXcNPLzYKJwKUOnsnwnS4O8IqL4KETue+l9oVcCxtuVGLiIDeA5aTNxKb0A24iuNn54rSy5lcSe5/MIy/mi8TIN+umnL4\u003d",
+    "timeStamp": 1634636614855
+  },
+  {
+    "blockIndex": 9,
+    "blockchainData": {
+      "stockId": "SSm1",
+      "inventoryId": "IN0ea46722",
+      "stockStatus": "DEFECTIVE"
+    },
+    "preHash": "gBjcNkn3Z9ThgesojWawwXi5ut601lFerS8jYKmDTIqOoZjYz0qSBXOuBIZ0PFHUYbNtQOSKDZJrB0dXcNPLzYKJwKUOnsnwnS4O8IqL4KETue+l9oVcCxtuVGLiIDeA5aTNxKb0A24iuNn54rSy5lcSe5/MIy/mi8TIN+umnL4\u003d",
+    "nowHash": "LAQ/jLRsg5LiFVaRBG2gyq4J3m3gSHaU0S0N0sfrcXK4bT74a30O1IxbQ7hC0mtHZSTF2hLW06DWk3Yh2TeP6HQAcgnZtvHQcmDuJVFCh/2Cm0ATEjrv9MXKeOejbX6Cu4rSomW6EQqDx8H+KsCOjMTyCXek+JzgMGzD3HskE7k\u003d",
+    "timeStamp": 1634636623506
+  },
+  {
+    "blockIndex": 10,
+    "blockchainData": {
+      "stockId": "SSm1",
+      "inventoryId": "IN0ea46722",
+      "stockStatus": "MISSING"
+    },
+    "preHash": "LAQ/jLRsg5LiFVaRBG2gyq4J3m3gSHaU0S0N0sfrcXK4bT74a30O1IxbQ7hC0mtHZSTF2hLW06DWk3Yh2TeP6HQAcgnZtvHQcmDuJVFCh/2Cm0ATEjrv9MXKeOejbX6Cu4rSomW6EQqDx8H+KsCOjMTyCXek+JzgMGzD3HskE7k\u003d",
+    "nowHash": "XBqxw6v701E476Y39eNqMwEcdku5ByYQFhO5FGcqmx0gN1ObJ7VH66hDu1YW0IXxxaFOzvxw+2hFzkoP4xZK+Sega/T6m1rwHbOSOcBiJzY92f7aEKCKCegfywbzHkMiW3zzDozMjvwHWIowIfIJPILZHtVvWzbBTvXcjkCfhBo\u003d",
+    "timeStamp": 1634636765960
+  },
+  {
+    "blockIndex": 11,
+    "blockchainData": {
+      "stockId": "G2022",
+      "inventoryId": "IN156ece41",
+      "stockStatus": "AVAILABLE"
+    },
+    "preHash": "XBqxw6v701E476Y39eNqMwEcdku5ByYQFhO5FGcqmx0gN1ObJ7VH66hDu1YW0IXxxaFOzvxw+2hFzkoP4xZK+Sega/T6m1rwHbOSOcBiJzY92f7aEKCKCegfywbzHkMiW3zzDozMjvwHWIowIfIJPILZHtVvWzbBTvXcjkCfhBo\u003d",
+    "nowHash": "hch86my5Ei77Nv2V88pSGBlGzrSFKBKsRDHzFBTR+0CHCh28JS8KU3krnGeJHGxIZIb54GmgpFTbRtlFQIgy6rC+wpM9tlIuUKfhxvqxO3o+qQ4kE+g/o4LBlX0E4CMq9TPbJrQFZAyBHJutbGgzlUUrOp5diXgSdO0MCIjJ014\u003d",
+    "timeStamp": 1634636806537
   }
 ]

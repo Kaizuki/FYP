@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.List;
 
 import Blockchain.BlockchainOperation.BlockType;
@@ -10,13 +12,25 @@ import Models.Inventory;
 public class InventoryController {
 
     InventoryOperation inventoryOperation;
+    Logger logger = Logger.getLogger(InventoryController.class.getName());
 
     public InventoryController() {
         inventoryOperation = new InventoryOperation(BlockType.INVENTORY);
     }
 
-    public void createInventory(String inventoryName, String inventoryLocation) throws Exception {
-        inventoryOperation.createBlock(new Inventory("IN" + IdGenerator.generateUUID(), inventoryName, inventoryLocation));
+    public void createInventory(String inventoryName, String inventoryLocation) {
+        try {
+            if (inventoryOperation.chkDuplicateInventory(inventoryName)) {
+                logger.log(Level.INFO, "Adding new [inventory, "+ inventoryName  +"] to blockchain.");
+                inventoryOperation.createBlock(new Inventory("IN" + IdGenerator.generateUUID(), inventoryName, inventoryLocation));
+                System.out.println("Inventory added successfully!");
+            } else {
+                System.out.println("Duplicated Inventory Name Found");
+            }
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     public List<Inventory> getInventory() {

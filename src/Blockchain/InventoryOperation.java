@@ -1,6 +1,9 @@
 package Blockchain;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import Models.Inventory;
 
 public class InventoryOperation extends BlockchainOperation{
@@ -21,5 +24,15 @@ public class InventoryOperation extends BlockchainOperation{
             );
         }
         return filteredInventory;
+    }
+
+    public boolean chkDuplicateInventory(String inventoryName) {
+        LinkedList<Block> tempBlockchain = getBlockchain();
+        List<Block> listBlockchain = tempBlockchain.stream().collect(Collectors.toList());
+        for (Block block : listBlockchain) {
+            if ( ((Inventory) block.getBlockchainData()).getInventoryName().equals(inventoryName) )
+                return false;
+        }
+        return true;
     }
 }
