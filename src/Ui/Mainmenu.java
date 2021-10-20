@@ -184,7 +184,7 @@ public class Mainmenu extends javax.swing.JFrame {
         btn_AddStock = new javax.swing.JButton();
         Layer = new javax.swing.JLayeredPane();
         Pnl_Order = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
         tbl_Order = new javax.swing.JTable();
         tbl_Order.addMouseListener(new MouseAdapter() {
         	@Override
@@ -192,11 +192,27 @@ public class Mainmenu extends javax.swing.JFrame {
         		selectedOrdersRow = tbl_Order.getValueAt(tbl_Order.getSelectedRow(), 0).toString();  
         	}
         });
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tbl_Orderdetail = new javax.swing.JTable();
         Pnl_Inventory = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_Inventory = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl_Stock = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -207,23 +223,23 @@ public class Mainmenu extends javax.swing.JFrame {
         btn_ViewInventory.setText("View Inventory");
         btn_ViewInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_InventoryActionPerformed(evt);
+                btn_ViewInventoryActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_ViewInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 22, 224, 39));
+        getContentPane().add(btn_ViewInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 224, 39));
 
         btn_ViewOrders.setText("View Orders");
         btn_ViewOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_OrdersActionPerformed(evt);
+                btn_ViewOrdersActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_ViewOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 67, 224, 39));
+        getContentPane().add(btn_ViewOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 224, 39));
 
         btn_Logout.setText("Logout");
         btn_Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_LogoutActionPerformed(evt);
+                btn_LogoutActionPerformed(evt);
             }
         });
         getContentPane().add(btn_Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 90, 40));
@@ -231,58 +247,58 @@ public class Mainmenu extends javax.swing.JFrame {
         btn_CancelOrder.setText("Cancel Order");
         btn_CancelOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_CancelorderActionPerformed(evt);
+                btn_CancelOrderActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_CancelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 114, 39));
+        getContentPane().add(btn_CancelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 114, 39));
 
         btn_AddInventory.setText("Add Inventory");
         btn_AddInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AddinventoryActionPerformed(evt);
+                btn_AddInventoryActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_AddInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 110, 39));
+        getContentPane().add(btn_AddInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 39));
 
         btn_DeleteUser.setText("Delete User");
         btn_DeleteUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_DeleteuserActionPerformed(evt);
+                btn_DeleteUserActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_DeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 39));
+        getContentPane().add(btn_DeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 110, 39));
 
-        btn_EditStock.setText("Edit Stock");
+        btn_EditStock.setText("Edit");
         btn_EditStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_EditActionPerformed(evt);
+                btn_EditStockActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_EditStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 114, 39));
+        getContentPane().add(btn_EditStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 114, 39));
 
         btn_CreateUser.setText("Create User");
         btn_CreateUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_CreateuserActionPerformed(evt);
+                btn_CreateUserActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_CreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 110, 39));
+        getContentPane().add(btn_CreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 110, 39));
 
         btn_AddOrder.setText("Add Order");
         btn_AddOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AddorderActionPerformed(evt);
+                btn_AddOrderActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_AddOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 114, 39));
+        getContentPane().add(btn_AddOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 114, 39));
 
         btn_AddStock.setText("Add Stock");
         btn_AddStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AddstockActionPerformed(evt);
+                btn_AddStockActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_AddStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 110, 39));
+        getContentPane().add(btn_AddStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 110, 39));
 
         tbl_Order.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -292,21 +308,44 @@ public class Mainmenu extends javax.swing.JFrame {
                 "Order ID", "Manager Name", "Supplier Name", "Order Status"
             }
         ));
-        jScrollPane2.setViewportView(tbl_Order);
+        tbl_Order.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Tbl_OrderMousePressed(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tbl_Order);
         if (tbl_Order.getColumnModel().getColumnCount() > 0) {
             tbl_Order.getColumnModel().getColumn(1).setResizable(false);
         }
+
+        Tbl_Orderdetail.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product", "Quantity"
+            }
+        ));
+        jScrollPane1.setViewportView(Tbl_Orderdetail);
 
         javax.swing.GroupLayout Pnl_OrderLayout = new javax.swing.GroupLayout(Pnl_Order);
         Pnl_Order.setLayout(Pnl_OrderLayout);
         Pnl_OrderLayout.setHorizontalGroup(
             Pnl_OrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(Pnl_OrderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Pnl_OrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         Pnl_OrderLayout.setVerticalGroup(
             Pnl_OrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pnl_OrderLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -399,26 +438,31 @@ public class Mainmenu extends javax.swing.JFrame {
 
         getContentPane().add(Layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 500, 430));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Welcome, ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InventoryActionPerformed
-    	sortInventoryComponents();
+    private void btn_ViewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewInventoryActionPerformed
+        // TODO add your handling code here:
+        sortInventoryComponents();
     	fillInventoryTable();
-    }//GEN-LAST:event_Btn_InventoryActionPerformed
+    }//GEN-LAST:event_btn_ViewInventoryActionPerformed
 
-    private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
+    private void btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LogoutActionPerformed
      Login Login = new Login();
         setVisible(false);
        Login.setVisible(true);
-    }//GEN-LAST:event_Btn_LogoutActionPerformed
+    }//GEN-LAST:event_btn_LogoutActionPerformed
 
-    private void Btn_AddinventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddinventoryActionPerformed
+    private void btn_AddInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddInventoryActionPerformed
         Addinventory Addinventory = new Addinventory();
       
        Addinventory.setVisible(true);
        setVisible(false);
-    }//GEN-LAST:event_Btn_AddinventoryActionPerformed
+    }//GEN-LAST:event_btn_AddInventoryActionPerformed
 
     private void fillInventoryTable()
     {
@@ -440,23 +484,22 @@ public class Mainmenu extends javax.swing.JFrame {
     	
     }
     
-    private void Btn_CancelorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelorderActionPerformed
-    	Orders searchOrder = ordersController.getSingleOrder(selectedOrdersRow);
+    private void btn_CancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelOrderActionPerformed
+        Orders searchOrder = ordersController.getSingleOrder(selectedOrdersRow);
     	ordersController.deleteOrder(searchOrder.getOrderId(), searchOrder.getManagerId(), searchOrder.getSupplierId(), searchOrder.getOrdersList());
     	fillOrdersTable();
-    }//GEN-LAST:event_Btn_CancelorderActionPerformed
+    }//GEN-LAST:event_btn_CancelOrderActionPerformed
 
-    private void Btn_DeleteuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteuserActionPerformed
+    private void btn_DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteUserActionPerformed
          Deleteuser Deleteuser = new Deleteuser();
        Deleteuser.setVisible(true);
        setVisible(false);
-    }//GEN-LAST:event_Btn_DeleteuserActionPerformed
+    }//GEN-LAST:event_btn_DeleteUserActionPerformed
 
-    private void Btn_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OrdersActionPerformed
-    	fillOrdersTable();
+    private void btn_ViewOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewOrdersActionPerformed
+        fillOrdersTable();
     	sortOrdersComponents();
-        
-    }//GEN-LAST:event_Btn_OrdersActionPerformed
+    }//GEN-LAST:event_btn_ViewOrdersActionPerformed
 
     private void fillOrdersTable() {
     	List<Orders> ordersList = ordersController.getOrders();
@@ -479,29 +522,29 @@ public class Mainmenu extends javax.swing.JFrame {
     	}
     }
 
-    private void Btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EditActionPerformed
+    private void btn_EditStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditStockActionPerformed
  EditStock EditStock = new EditStock();
        EditStock.setVisible(true);
        setVisible(false);
-    }//GEN-LAST:event_Btn_EditActionPerformed
+    }//GEN-LAST:event_btn_EditStockActionPerformed
 
-    private void Btn_CreateuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CreateuserActionPerformed
+    private void btn_CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CreateUserActionPerformed
         Adduser Adduser = new Adduser();
        Adduser.setVisible(true);
        setVisible(false);
-    }//GEN-LAST:event_Btn_CreateuserActionPerformed
+    }//GEN-LAST:event_btn_CreateUserActionPerformed
 
-    private void Btn_AddorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddorderActionPerformed
+    private void btn_AddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddOrderActionPerformed
         Addorder Addorder = new Addorder();
        Addorder.setVisible(true);
        setVisible(false);
-    }//GEN-LAST:event_Btn_AddorderActionPerformed
+    }//GEN-LAST:event_btn_AddOrderActionPerformed
 
-    private void Btn_AddstockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddstockActionPerformed
+    private void btn_AddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddStockActionPerformed
        Addstock Addstock = new Addstock();
        Addstock.setVisible(true);
        setVisible(false);
-    }//GEN-LAST:event_Btn_AddstockActionPerformed
+    }//GEN-LAST:event_btn_AddStockActionPerformed
 
     private void Tbl_InventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMouseClicked
     	selectedInventoryRow = tbl_Inventory.getValueAt(tbl_Inventory.getSelectedRow(), 0).toString();  
@@ -527,6 +570,10 @@ public class Mainmenu extends javax.swing.JFrame {
 //            tbl_Stock.getSelectionModel().clearSelection();
 //        }
 //    }//GEN-LAST:event_Tbl_InventoryMousePressed
+
+    private void Tbl_OrderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_OrderMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tbl_OrderMousePressed
 
     /**
      * @param args the command line arguments
@@ -565,6 +612,13 @@ public class Mainmenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane Layer;
+    private javax.swing.JPanel Pnl_Inventory;
+    private javax.swing.JPanel Pnl_Order;
+    private static javax.swing.JTable tbl_Inventory;
+    private javax.swing.JTable tbl_Order;
+    private javax.swing.JTable Tbl_Orderdetail;
+    private javax.swing.JTable tbl_Stock;
     private javax.swing.JButton btn_AddInventory;
     private javax.swing.JButton btn_AddOrder;
     private javax.swing.JButton btn_AddStock;
@@ -572,19 +626,16 @@ public class Mainmenu extends javax.swing.JFrame {
     private javax.swing.JButton btn_CreateUser;
     private javax.swing.JButton btn_DeleteUser;
     private javax.swing.JButton btn_EditStock;
-    private javax.swing.JButton btn_ViewInventory;
     private javax.swing.JButton btn_Logout;
+    private javax.swing.JButton btn_ViewInventory;
     private javax.swing.JButton btn_ViewOrders;
-    private javax.swing.JLayeredPane Layer;
-    private javax.swing.JPanel Pnl_Inventory;
-    private javax.swing.JPanel Pnl_Order;
-    private static javax.swing.JTable tbl_Inventory;
-    private javax.swing.JTable tbl_Order;
-    private javax.swing.JTable tbl_Stock;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

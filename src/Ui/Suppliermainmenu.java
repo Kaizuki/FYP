@@ -5,6 +5,8 @@
  */
 package Ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author slavi
@@ -33,15 +35,14 @@ public class Suppliermainmenu extends javax.swing.JFrame {
         Btn_Confirmorder = new javax.swing.JButton();
         Btn_Rejectorder = new javax.swing.JButton();
         Btn_Logout = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Tbl_Orderdetail = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Tbl_View.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Order ID"
@@ -65,6 +66,11 @@ public class Suppliermainmenu extends javax.swing.JFrame {
         });
 
         Btn_Rejectorder.setText("Reject Order");
+        Btn_Rejectorder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_RejectorderActionPerformed(evt);
+            }
+        });
 
         Btn_Logout.setText("Logout");
         Btn_Logout.addActionListener(new java.awt.event.ActionListener() {
@@ -73,40 +79,68 @@ public class Suppliermainmenu extends javax.swing.JFrame {
             }
         });
 
+        Tbl_Orderdetail.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product", "Quantity"
+            }
+        ));
+        jScrollPane2.setViewportView(Tbl_Orderdetail);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Btn_Confirmorder, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn_Rejectorder, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn_Logout))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Btn_Confirmorder, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Btn_Rejectorder, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Btn_Logout))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(Btn_Confirmorder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(Btn_Rejectorder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90)
-                        .addComponent(Btn_Logout)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(Btn_Logout))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_ConfirmorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConfirmorderActionPerformed
-        // TODO add your handling code here:
+   int response = JOptionPane.showConfirmDialog(this , "Are you sure you want to approve this order?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if(response==JOptionPane.YES_OPTION){
+            //if yes 
+        } else if (response == JOptionPane.NO_OPTION){
+            //if no
+        } else if (response == JOptionPane.CANCEL_OPTION){
+            //if cancel
+        }
+        
+        
     }//GEN-LAST:event_Btn_ConfirmorderActionPerformed
 
     private void Btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LogoutActionPerformed
@@ -114,6 +148,18 @@ public class Suppliermainmenu extends javax.swing.JFrame {
      Login Login = new Login();
        Login.setVisible(true);
     }//GEN-LAST:event_Btn_LogoutActionPerformed
+
+    private void Btn_RejectorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RejectorderActionPerformed
+        int response = JOptionPane.showConfirmDialog(this , "Are you sure you want to reject this order?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if(response==JOptionPane.YES_OPTION){
+            //if yes 
+        } else if (response == JOptionPane.NO_OPTION){
+            //if no
+        } else if (response == JOptionPane.CANCEL_OPTION){
+            //if cancel
+        }
+    }//GEN-LAST:event_Btn_RejectorderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,7 +200,9 @@ public class Suppliermainmenu extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Confirmorder;
     private javax.swing.JButton Btn_Logout;
     private javax.swing.JButton Btn_Rejectorder;
+    private javax.swing.JTable Tbl_Orderdetail;
     private javax.swing.JTable Tbl_View;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

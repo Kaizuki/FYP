@@ -32,31 +32,37 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="Btn_Cancel" min="-2" pref="73" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="Btn_Add" min="-2" pref="73" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="Lbl_Quantity" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Txt_Username" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                          <Component id="Lbl_Product" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lbl_Role" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_Password" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="lbl_Emaill" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_Email" alignment="0" pref="122" max="32767" attributes="0"/>
+                          <Component id="cmb_UserRole" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Lbl_Location" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Txt_Password" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                          <Component id="Lbl_Quantity2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Txt_Email" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                          <Component id="Cmb_Role" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="Lbl_Message" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="Btn_Cancel" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="Btn_Add" min="-2" pref="73" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lbl_Password" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_Username" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <Component id="lbl_Username" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -66,22 +72,24 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="Lbl_Product" min="-2" max="-2" attributes="0"/>
+              <Component id="lbl_Username" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Txt_Username" min="-2" max="-2" attributes="0"/>
+              <Component id="txt_Username" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Lbl_Quantity" min="-2" max="-2" attributes="0"/>
+              <Component id="lbl_Password" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Txt_Password" min="-2" max="-2" attributes="0"/>
+              <Component id="txt_Password" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Lbl_Quantity2" min="-2" max="-2" attributes="0"/>
+              <Component id="lbl_Emaill" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="Txt_Email" min="-2" max="-2" attributes="0"/>
+              <Component id="txt_Email" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="Lbl_Location" min="-2" max="-2" attributes="0"/>
+              <Component id="lbl_Role" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Cmb_Role" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="cmb_UserRole" min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Lbl_Message" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Btn_Cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Btn_Add" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -92,12 +100,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="Lbl_Product">
+    <Component class="javax.swing.JLabel" name="lbl_Username">
       <Properties>
         <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Lbl_Quantity">
+    <Component class="javax.swing.JLabel" name="lbl_Password">
       <Properties>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
@@ -118,23 +126,23 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_CancelActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Txt_Username">
+    <Component class="javax.swing.JTextField" name="txt_Username">
     </Component>
-    <Component class="javax.swing.JLabel" name="Lbl_Location">
+    <Component class="javax.swing.JLabel" name="lbl_Role">
       <Properties>
         <Property name="text" type="java.lang.String" value="Role"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="Txt_Password">
+    <Component class="javax.swing.JPasswordField" name="txt_Password">
     </Component>
-    <Component class="javax.swing.JLabel" name="Lbl_Quantity2">
+    <Component class="javax.swing.JLabel" name="lbl_Emaill">
       <Properties>
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Txt_Email">
+    <Component class="javax.swing.JTextField" name="txt_Email">
     </Component>
-    <Component class="javax.swing.JComboBox" name="Cmb_Role">
+    <Component class="javax.swing.JComboBox" name="cmb_UserRole">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -148,6 +156,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Lbl_Message">
     </Component>
   </SubComponents>
 </Form>

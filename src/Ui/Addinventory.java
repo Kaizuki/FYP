@@ -75,6 +75,7 @@ public class Addinventory extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_Message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
@@ -93,8 +94,11 @@ public class Addinventory extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_InventoryLocation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
                 .addComponent(txt_InventoryLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_Message, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Cancel)
                     .addComponent(btn_AddInventory))
@@ -168,7 +172,9 @@ public class Addinventory extends javax.swing.JFrame {
     private javax.swing.JButton btn_Cancel;
     private javax.swing.JLabel lbl_InventoryLocation;
     private javax.swing.JLabel lbl_InventoryName;
+    private javax.swing.JLabel lbl_Message;
     private javax.swing.JTextField txt_InventoryName;
     private javax.swing.JTextField txt_InventoryLocation;
+
     // End of variables declaration//GEN-END:variables
 }
