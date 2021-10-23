@@ -26,7 +26,8 @@ public class InventoryOperation extends BlockchainOperation{
         return filteredInventory;
     }
 
-    public boolean chkDuplicateInventory(String inventoryName) {
+    @Override
+    public boolean chkDuplicateItem(String inventoryName) {
         LinkedList<Block> tempBlockchain = getBlockchain();
         List<Block> listBlockchain = tempBlockchain.stream().collect(Collectors.toList());
         for (Block block : listBlockchain) {

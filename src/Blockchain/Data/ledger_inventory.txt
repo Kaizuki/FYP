@@ -53,5 +53,16 @@
     "preHash": "AJrRSin++ulEWStGr3qdwqzwwJcN7DMUiNdmbPo03duBgrWx5RJFgU7WLNGFHVNQbBhbUU4/OdJbEArFzdarj4GmXie7Pxe3GaLwMPkPh0IaYC6sADMOG+BfWRaGFsmzJKV0iJSK0kSPTkIQZXhdVmklqEVALskU1jF0p6YJ8LA\u003d",
     "nowHash": "fAHfgt+YuTLb0P04qSYFRmpj8D0g1ePtN9KXlDn/X4tDl9VOvmx+BgX3cKZpyJLdt+/u4mn1klm5lSHZCy14Uf0tYrY5nHbvfMVoFxaIx8cE2z51RjKOkgxV51TR8YJs/qmB7gcLTEx02/nj7VxcAmI/oLlqQVViD7DqkTiBYYk\u003d",
     "timeStamp": 1634626110046
+  },
+  {
+    "blockIndex": 6,
+    "blockchainData": {
+      "inventoryId": "IN31886297",
+      "inventoryName": "Alienware M15",
+      "inventoryLocation": "N20"
+    },
+    "preHash": "fAHfgt+YuTLb0P04qSYFRmpj8D0g1ePtN9KXlDn/X4tDl9VOvmx+BgX3cKZpyJLdt+/u4mn1klm5lSHZCy14Uf0tYrY5nHbvfMVoFxaIx8cE2z51RjKOkgxV51TR8YJs/qmB7gcLTEx02/nj7VxcAmI/oLlqQVViD7DqkTiBYYk\u003d",
+    "nowHash": "akwVZByPkefkrOZ6JbAKfH7AjAseCqjSu/WZhWfvOTqKPFtzIRligQruIEdgHidl+dXyvq3fGiyrL807kl8r8Rir3jZ0B1A77JuvNZsMIw/QEUHd8zV8qs7Jv6+hEdPVhWAV3YgExvgDe42rjyPJmecWTUH08H1QOOr5AutaMF0\u003d",
+    "timeStamp": 1634830863507
   }
 ]

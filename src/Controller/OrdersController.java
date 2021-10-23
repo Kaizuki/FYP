@@ -37,8 +37,12 @@ public class OrdersController {
 		}
     }
 
-    public void confirmOrders(String orderId, String managerId, String supplierId, List<OrderDetail> ordersList, OrdersStatus ordersStatus) throws Exception {
-        ordersOperation.createBlock( new Orders(orderId, managerId, supplierId, ordersList, ordersStatus.toString()) );
+    public void confirmOrders(String orderId, String managerId, String supplierId, List<OrderDetail> ordersList, OrdersStatus ordersStatus) {
+        try {
+			ordersOperation.createBlock( new Orders(orderId, managerId, supplierId, ordersList, ordersStatus.toString()) );
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     private boolean chkConfirmStatus(String searchOrderId) {

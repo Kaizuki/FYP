@@ -5,9 +5,14 @@
  */
 package Ui;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.InventoryController;
+import Helper.Validation;
 import Models.Inventory;
 import Models.User;
 
@@ -75,7 +80,7 @@ public class Addinventory extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                            .addComponent(lbl_Message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
@@ -97,7 +102,7 @@ public class Addinventory extends javax.swing.JFrame {
 
                 .addComponent(txt_InventoryLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_Message, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+//                .addComponent(lbl_Message, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Cancel)
@@ -116,20 +121,30 @@ public class Addinventory extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
-//        Mainmenu mainmenu = new Mainmenu();
-//        mainmenu.setVisible(true);
-//        Mainmenu.Addinventorytotable(new Object[]{
-//	      txt_InventoryName.getText(),
-//	      txt_InventoryLocation.getText()});
         Inventory newInventory = getInventoryData();
-        InventoryController inventoryController = new InventoryController();
-        inventoryController.createInventory(newInventory.getInventoryName(), newInventory.getInventoryLocation());
+        List<String> inventoryData = Arrays.asList(newInventory.getInventoryName(), newInventory.getInventoryLocation());
+        
+        if (Validation.emptyTextfield(inventoryData)) {
+        	InventoryController inventoryController = new InventoryController();
+        	
+        	if ( inventoryController.chkDuplicateInventory(newInventory.getInventoryName()) ) {
+        		inventoryController.createInventory(newInventory.getInventoryName(), newInventory.getInventoryLocation());        	
+        		Mainmenu mainmenu = new Mainmenu();
+        		mainmenu.setVisible(true);
+        		dispose();
+        	} else {
+        		JOptionPane.showMessageDialog(null, "Each inventory name must be unique", "Duplicated Inventory Name found", 1);        	
+        	}        	
+        } else {
+        	JOptionPane.showMessageDialog(null, "All text fields cannot be empty", "Empty Fields Detected", 1);
+        }
+        
     }//GEN-LAST:event_Btn_AddActionPerformed
 
     private Inventory getInventoryData() {
     	String inventoryName = txt_InventoryName.getText();
     	String inventoryLocation  = txt_InventoryLocation.getText();
-    	return new Inventory(inventoryName, inventoryLocation);
+		return new Inventory(inventoryName, inventoryLocation);    		
     }
 
     /**

@@ -23,7 +23,7 @@ public class StocksController {
     //* addEditStocks handles add and delete operation
     public void createStocks(String stockId, String inventoryId, String stockStatus) {
         try {
-        	if (stocksOperation.chkDuplicateInventory(stockId)) {
+        	if (stocksOperation.chkDuplicateItem(stockId)) {
         		 logger.log(Level.INFO, "Adding new [stock, "+ stockId  +"] to blockchain.");
                 stocksOperation.createBlock( new Stocks(stockId, inventoryId, stockStatus) );
             } else {
@@ -43,7 +43,7 @@ public class StocksController {
     }
 
     public int countInventoryStock(String inventoryId) {
-       return (int) stocksOperation.getStocks().stream().filter(stock -> stock.getInventoryId() == inventoryId).count();
+       return (int) stocksOperation.getStocks().stream().filter(stock -> stock.getInventoryId().equals(inventoryId)).count();
     }
 
     public List<Stocks> getStocks() {
@@ -56,5 +56,9 @@ public class StocksController {
 
     public List<Stocks> getGroupStocks(String inventoryId) {
     	return stocksOperation.getStocks().stream().filter(stock -> stock.getInventoryId().equals(inventoryId)).collect(Collectors.toList());
+    }
+
+    public boolean chkDuplicateStock(String stockId) {
+    	return stocksOperation.chkDuplicateItem(stockId);
     }
 }

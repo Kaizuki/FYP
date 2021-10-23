@@ -2,6 +2,7 @@
 package Ui;
 
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,9 +11,11 @@ import Controller.OrdersController;
 import Controller.StocksController;
 import Controller.UserController;
 import Models.Inventory;
+import Models.OrderDetail;
 import Models.Orders;
 import Models.Stocks;
 import Models.User;
+import Models.Orders.OrdersStatus;
 import Models.User.UserRoles;
 
 import java.util.List;
@@ -49,14 +52,20 @@ public class Mainmenu extends javax.swing.JFrame {
     	stocksController = new StocksController();
     	ordersController = new OrdersController();
     	userController = new UserController();
+    	System.out.println(inventoryController.getInventory().toString());
         initComponents();
         sortComponents();
         setLocationRelativeTo(null);
         fillInventoryTable();
+        fillUsersName();
 //        fillOrdersTable();
         tbl_Inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tbl_Stock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         System.out.println("Welcome " + User.currentUser.getUserRole()  + " "  +  User.currentUser.getUserName());
+    }
+
+    private void fillUsersName() {
+    	lbl_Welcome.setText("Welcome, " + User.currentUser.getUserName());
     }
 
     private void sortComponents() {
@@ -189,30 +198,31 @@ public class Mainmenu extends javax.swing.JFrame {
         tbl_Order.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mousePressed(MouseEvent e) {
-        		selectedOrdersRow = tbl_Order.getValueAt(tbl_Order.getSelectedRow(), 0).toString();  
+        		selectedOrdersRow = tbl_Order.getValueAt(tbl_Order.getSelectedRow(), 0).toString();
+        		fillOrderDetailTable(selectedOrdersRow);
         	}
         });
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tbl_Orderdetail = new javax.swing.JTable();
+        tbl_Orderdetail = new javax.swing.JTable();
         Pnl_Inventory = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_Inventory = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl_Stock = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_Welcome = new javax.swing.JLabel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable1);
+//        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+//            new Object [][] {
+//                {null, null, null, null},
+//                {null, null, null, null},
+//                {null, null, null, null},
+//                {null, null, null, null}
+//            },
+//            new String [] {
+//                "Title 1", "Title 2", "Title 3", "Title 4"
+//            }
+//        ));
+//        jScrollPane3.setViewportView(jTable1);
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -318,7 +328,7 @@ public class Mainmenu extends javax.swing.JFrame {
             tbl_Order.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        Tbl_Orderdetail.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Orderdetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -326,7 +336,7 @@ public class Mainmenu extends javax.swing.JFrame {
                 "Product", "Quantity"
             }
         ));
-        jScrollPane1.setViewportView(Tbl_Orderdetail);
+        jScrollPane1.setViewportView(tbl_Orderdetail);
 
         javax.swing.GroupLayout Pnl_OrderLayout = new javax.swing.GroupLayout(Pnl_Order);
         Pnl_Order.setLayout(Pnl_OrderLayout);
@@ -353,16 +363,14 @@ public class Mainmenu extends javax.swing.JFrame {
         	new Object[][] {
         	},
         	new String[] {
-        		"Inventory ID", "Product Name", "Location"
+        		"Inventory ID", "Product Name", "Location", "Quantity"
         	}
         ));
         tbl_Inventory.setDefaultEditor(Object.class, null);
         tbl_Inventory.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tbl_InventoryMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-//                Tbl_InventoryMousePressed(evt);
+            	selectedInventoryRow = tbl_Inventory.getValueAt(tbl_Inventory.getSelectedRow(), 0).toString();  
+            	fillStocksTable(selectedInventoryRow);
             }
         });
         jScrollPane4.setViewportView(tbl_Inventory);
@@ -438,9 +446,9 @@ public class Mainmenu extends javax.swing.JFrame {
 
         getContentPane().add(Layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 500, 430));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Welcome, ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, -1));
+        lbl_Welcome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_Welcome.setText("Welcome, ");
+        getContentPane().add(lbl_Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -470,7 +478,11 @@ public class Mainmenu extends javax.swing.JFrame {
     	DefaultTableModel model = (DefaultTableModel)tbl_Inventory.getModel();
     	model.setRowCount(0);
     	for (Inventory inventory : inventoryList) {
-			model.addRow( new Object[] {inventory.getInventoryId(), inventory.getInventoryName(), inventory.getInventoryLocation()} );
+			model.addRow( new Object[] { inventory.getInventoryId(), 
+				inventory.getInventoryName(), 
+				inventory.getInventoryLocation(), 
+				stocksController.countInventoryStock(inventory.getInventoryId())
+			} );
 		}
     }
 
@@ -485,9 +497,17 @@ public class Mainmenu extends javax.swing.JFrame {
     }
     
     private void btn_CancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelOrderActionPerformed
-        Orders searchOrder = ordersController.getSingleOrder(selectedOrdersRow);
-    	ordersController.deleteOrder(searchOrder.getOrderId(), searchOrder.getManagerId(), searchOrder.getSupplierId(), searchOrder.getOrdersList());
-    	fillOrdersTable();
+        if (selectedOrdersRow != "" && selectedOrdersRow != null) {
+        	Orders searchOrder = ordersController.getSingleOrder(selectedOrdersRow);
+        	String currentOrderStatus = searchOrder.getOrdersStatus();
+        	System.out.println("Current Status: " + currentOrderStatus);
+        	if (currentOrderStatus.equals(OrdersStatus.REJECTED.toString())|| currentOrderStatus.equals(OrdersStatus.ACCEPTED.toString())) {
+        		JOptionPane.showMessageDialog(null , "Supplied has " + currentOrderStatus.toLowerCase() + " the order, canceling is not allowed", "Notice", 1);
+        	} else {
+        		ordersController.deleteOrder(searchOrder.getOrderId(), searchOrder.getManagerId(), searchOrder.getSupplierId(), searchOrder.getOrdersList());
+        		fillOrdersTable();
+        	}
+        }
     }//GEN-LAST:event_btn_CancelOrderActionPerformed
 
     private void btn_DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteUserActionPerformed
@@ -513,12 +533,35 @@ public class Mainmenu extends javax.swing.JFrame {
 		}
     }
 
+    private void fillOrderDetailTable(String orderId) {
+    	List<OrderDetail> ordersList = ordersController.getOrders().stream()
+    			.filter(order -> order.getOrderId().equals(orderId))
+    			.map(Orders::getOrdersList)
+    			.findFirst().orElse(null);
+    	DefaultTableModel model = (DefaultTableModel)tbl_Orderdetail.getModel();
+    	String inventoryName;
+    	model.setRowCount(0);
+    	for (OrderDetail orderDetail : ordersList) {
+    		inventoryName = getInventory(orderDetail.getInventoryId()).getInventoryName();
+			model.addRow(new Object[] {inventoryName, orderDetail.getOrderDetailQty()});
+		}
+    }
+
     private User getUser(String userId) {
     	User user = userController.getUserDataWithID(userId);
     	if (user == null) {
     		return new User();
     	} else {
     		return user;
+    	}
+    }
+
+    private Inventory getInventory(String inventoryId) {
+    	Inventory inventory = inventoryController.getSingleInventory(inventoryId);
+    	if (inventory == null ) {
+    		return new Inventory("", "");
+    	} else {
+    		return inventory;
     	}
     }
 
@@ -545,11 +588,6 @@ public class Mainmenu extends javax.swing.JFrame {
        Addstock.setVisible(true);
        setVisible(false);
     }//GEN-LAST:event_btn_AddStockActionPerformed
-
-    private void Tbl_InventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_InventoryMouseClicked
-    	selectedInventoryRow = tbl_Inventory.getValueAt(tbl_Inventory.getSelectedRow(), 0).toString();  
-    	fillStocksTable(selectedInventoryRow);
-    }//GEN-LAST:event_Tbl_InventoryMouseClicked
 
     private void Tbl_StockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_StockMouseClicked
           
@@ -617,7 +655,7 @@ public class Mainmenu extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Order;
     private static javax.swing.JTable tbl_Inventory;
     private javax.swing.JTable tbl_Order;
-    private javax.swing.JTable Tbl_Orderdetail;
+    private javax.swing.JTable tbl_Orderdetail;
     private javax.swing.JTable tbl_Stock;
     private javax.swing.JButton btn_AddInventory;
     private javax.swing.JButton btn_AddOrder;
@@ -629,7 +667,7 @@ public class Mainmenu extends javax.swing.JFrame {
     private javax.swing.JButton btn_Logout;
     private javax.swing.JButton btn_ViewInventory;
     private javax.swing.JButton btn_ViewOrders;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbl_Welcome;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

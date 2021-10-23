@@ -7,12 +7,15 @@ package Ui;
 
 import Models.User;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 import Controller.InventoryController;
 import Controller.StocksController;
+import Helper.Validation;
 import Models.Inventory;
 import Models.Stocks;
 import Models.Stocks.StockStatus;
@@ -148,17 +151,29 @@ public class Addstock extends javax.swing.JFrame {
     }//GEN-LAST:event_Cmb_StatusActionPerformed
 
     private void Btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelActionPerformed
-        Mainmenu Mainmenu = new Mainmenu();
+    	Mainmenu Mainmenu = new Mainmenu();
         Mainmenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
-//        Mainmenu Mainmenu = new Mainmenu();
-//        Mainmenu.setVisible(true);
-//        dispose();
     	Stocks newStock = getStockData();
-    	stocksController.createStocks(newStock.getStockId(), newStock.getInventoryId(), newStock.getStockStatus());
+
+    	if ( Validation.emptyTextfield( Arrays.asList(newStock.getStockId()) ) ) {
+    		if ( stocksController.chkDuplicateStock(newStock.getStockId()) ) {
+    			stocksController.createStocks(newStock.getStockId(), newStock.getInventoryId(), newStock.getStockStatus());
+
+    			Mainmenu Mainmenu = new Mainmenu();
+    			Mainmenu.setVisible(true);
+    			dispose();
+    		} else {
+    			JOptionPane.showMessageDialog(null, "Each Stock ID must be unique", "Duplicated Stock ID found", 1);
+    		}	
+    	} else {
+    		JOptionPane.showMessageDialog(null, "All text fields cannot be empty", "Empty Fields Detected", 1);
+    	}
+
+    		
     	
     }//GEN-LAST:event_Btn_AddActionPerformed
 

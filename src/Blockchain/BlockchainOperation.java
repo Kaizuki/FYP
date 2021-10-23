@@ -102,7 +102,7 @@ public class BlockchainOperation {
         }
     }
 
-    public boolean chkDuplicateInventory(String modelId) {
+    public boolean chkDuplicateItem(String modelId) {
         LinkedList<Block> tempBlockchain = getBlockchain();
         List<Block> listBlockchain = tempBlockchain.stream().collect(Collectors.toList());
         for (Block block : listBlockchain) {

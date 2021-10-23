@@ -224,16 +224,16 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    private boolean chkDuplicateUser(String username) {
+    public boolean chkDuplicateUser(String username) {
         String sqlQuery = "SELECT * FROM users WHERE user_username = ?";
         try {
             PreparedStatement st = dbConnect.connect().prepareStatement(sqlQuery);
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
-            logger.log(Level.INFO, "Auth Duplicate User " + username + ".");
+            logger.log(Level.INFO, "Auth duplicated username found.");
 
+            //Return true if username exist, Return false if username is unique
             if (rs.next()) {
-                System.out.println("Duplicated user found");
                 return true;
             } else
                 return false;

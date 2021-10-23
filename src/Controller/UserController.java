@@ -68,4 +68,8 @@ public class UserController {
             System.out.println("User: " + userName + " Failed to delete!");
     }
 
+    public boolean chkDuplicateUser(String userName) {
+    	return userDao.chkDuplicateUser(userName);
+    }
+
 }

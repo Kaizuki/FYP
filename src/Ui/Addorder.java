@@ -1,16 +1,19 @@
 package Ui;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.InventoryController;
 import Controller.OrdersController;
 import Controller.UserController;
 import Helper.IdGenerator;
+import Helper.Validation;
 import Models.Inventory;
 import Models.OrderDetail;
 import Models.Orders;
@@ -196,9 +199,12 @@ public class Addorder extends javax.swing.JFrame {
     private List<OrderDetail> getTableData() {
     	System.out.println("Table row: " + tbl_OrderList.getRowCount());
     	List <OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+    	String inventoryName, inventoryId;
     	for (int count = 0; count < tbl_OrderList.getRowCount(); count++) {
+    		inventoryName = tbl_OrderList.getValueAt(count, 0).toString();
+    		inventoryId = inventoryController.getSingleInventoryByName(inventoryName).getInventoryId();
 			orderDetails.add( new OrderDetail( "OD" + IdGenerator.generateUUID(), 
-				tbl_OrderList.getValueAt(count, 0).toString(), 
+				inventoryId, 
 				Integer.parseInt( tbl_OrderList.getValueAt(count, 1).toString() )
 			));
 		}
@@ -220,10 +226,13 @@ public class Addorder extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_CancelActionPerformed
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
-    DefaultTableModel model = (DefaultTableModel)tbl_OrderList.getModel();
-    
-    model.addRow(new Object[]{cmb_InventoryName.getSelectedItem()
-                              ,txt_OrderQuantity.getText()});
+    if (Validation.emptyTextfield(Arrays.asList(txt_OrderQuantity.getText()))) {
+    	DefaultTableModel model = (DefaultTableModel)tbl_OrderList.getModel();
+    	model.addRow(new Object[]{cmb_InventoryName.getSelectedItem()
+    			,txt_OrderQuantity.getText()});    	
+    } else {
+    	JOptionPane.showMessageDialog(null, "All text fields cannot be empty", "Empty Fields Detected", 1);
+    }
     }//GEN-LAST:event_Btn_AddActionPerformed
 
     /**

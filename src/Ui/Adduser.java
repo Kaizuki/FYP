@@ -5,8 +5,12 @@
  */
 package Ui;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
+import java.util.Arrays;
+import java.util.List;
 import Controller.UserController;
+import Helper.Validation;
 import Models.User;
 import Models.User.UserRoles;
 
@@ -73,7 +77,7 @@ public class Adduser extends javax.swing.JFrame {
 
         lbl_Emaill.setText("Email");
 
-        cmb_UserRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_UserRole.setModel(new DefaultComboBoxModel(UserRoles.values()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,8 +148,25 @@ public class Adduser extends javax.swing.JFrame {
 
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
        User newUser = getNewUserInfo();
-       UserController userController = new UserController();
-       userController.createNewUser(newUser.getUserName(), newUser.getUserPass(), newUser.getUserEmail(), newUser.getUserRole());
+       List<String> newUserList = Arrays.asList(newUser.getUserName(), newUser.getUserPass(), newUser.getUserEmail());
+       
+       if (Validation.emptyTextfield(newUserList)) {
+    	   UserController userController = new UserController();
+    	   
+    	   if (userController.chkDuplicateUser(getName())) {
+    		   userController.createNewUser(newUser.getUserName(), newUser.getUserPass(), newUser.getUserEmail(), newUser.getUserRole());
+    		   
+    		   Mainmenu mainmenu = new Mainmenu();
+    		   mainmenu.setVisible(true);
+    		   dispose();    		   
+    	   } else {
+    		   JOptionPane.showMessageDialog(null, "Each username must be unique", "Duplicated username found", 1);
+    	   }
+    	   
+       } else {
+    	   JOptionPane.showMessageDialog(null, "All text fields cannot be empty", "Empty Fields Detected", 1);
+       }
+
     }//GEN-LAST:event_Btn_AddActionPerformed
     
     private User getNewUserInfo() {
