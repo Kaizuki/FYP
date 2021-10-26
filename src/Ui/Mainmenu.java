@@ -454,7 +454,6 @@ public class Mainmenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ViewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewInventoryActionPerformed
-        // TODO add your handling code here:
         sortInventoryComponents();
     	fillInventoryTable();
     }//GEN-LAST:event_btn_ViewInventoryActionPerformed
@@ -610,7 +609,6 @@ public class Mainmenu extends javax.swing.JFrame {
 //    }//GEN-LAST:event_Tbl_InventoryMousePressed
 
     private void Tbl_OrderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_OrderMousePressed
-        // TODO add your handling code here:
     }//GEN-LAST:event_Tbl_OrderMousePressed
 
     /**

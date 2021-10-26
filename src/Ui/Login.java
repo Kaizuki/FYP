@@ -124,7 +124,6 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PasswordActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_PasswordActionPerformed
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
@@ -141,7 +140,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_LoginActionPerformed
 
     private void txt_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_UsernameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_UsernameActionPerformed
 
     private User getUserCredentials() {

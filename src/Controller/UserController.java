@@ -9,8 +9,6 @@ import Models.User;
 public class UserController {
     UserDao userDao = new UserDaoImpl();
     UserDaoImpl userDaoImpl = new UserDaoImpl();
-
-    //! TODO: Remeber to convert all the return methods accordingly
     
     public User getUserDataWithID(String userId) {
         User user  = userDao.getUserWithID(userId);

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Inventory extends Models implements Serializable{
     private String inventoryId;
-    private String inventoryName; //!Cannot have duplicate name, must be unique
+    private String inventoryName;
     private String inventoryLocation;
 
     public Inventory(String inventoryId, String inventoryName, String inventoryLocation) {

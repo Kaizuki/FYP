@@ -25,7 +25,7 @@ public class OrdersController {
     }
 
     public void deleteOrder(String orderId, String managerId, String supplierId, List<OrderDetail> ordersList) {
-        //!CANNOT CANCEL ORDER IF ORDERSTATUS IS ACCEPT / REJECT
+        //* User should not cancel order if orderstatus is Accept OR Reject
         try {
         	if (chkConfirmStatus(orderId)) {
                 System.out.println("ORDER has been processed, no cancelation is allowed");
