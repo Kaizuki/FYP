@@ -152,17 +152,16 @@ public class Adduser extends javax.swing.JFrame {
        List<String> newUserList = Arrays.asList(newUser.getUserName(), newUser.getUserPass(), newUser.getUserEmail());
        
        if (Validation.emptyTextfield(newUserList)) {
-    	   UserController userController = new UserController();
-    	   
-    	   if (userController.chkDuplicateUser(getName())) {
-    		   userController.createNewUser(newUser.getUserName(), newUser.getUserPass(), newUser.getUserEmail(), newUser.getUserRole());
-    		   
-    		   Mainmenu mainmenu = new Mainmenu();
-    		   mainmenu.setVisible(true);
-    		   dispose();    		   
-    	   } else {
-    		   JOptionPane.showMessageDialog(null, "Each username must be unique", "Duplicated username found", 1);
-    	   }
+            UserController userController = new UserController();
+            boolean createResult = userController.createNewUser(newUser.getUserName(), newUser.getUserPass(), newUser.getUserEmail(), newUser.getUserRole());
+            
+            if (createResult) {
+                Mainmenu mainmenu = new Mainmenu();
+                mainmenu.setVisible(true);
+                dispose();    		   
+            } else {
+                JOptionPane.showMessageDialog(null, "Each username must be unique", "Duplicated username found", 1);
+            }
     	   
        } else {
     	   JOptionPane.showMessageDialog(null, "All text fields cannot be empty", "Empty Fields Detected", 1);

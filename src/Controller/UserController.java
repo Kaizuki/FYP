@@ -51,12 +51,16 @@ public class UserController {
         }
     }
 
-    public void createNewUser(String userName, String userPass, String userEmail, String userRole) {
+    public boolean createNewUser(String userName, String userPass, String userEmail, String userRole) {
         boolean insertResult = userDao.createUser(new User(userName, userPass, userEmail, userRole));
-        if (insertResult)
+        if (insertResult) {
             System.out.println("Inserted successfully!");
-        else
+            return true;
+        }
+        else {
             System.out.println("Inserted failed");
+            return false;
+        }
     }
 
     public void deleteUser(String userName) {
