@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import Blockchain.Blockchain;
+import Blockchain.BlockchainVerification;
+import Blockchain.Data.Config;
 import Controller.InventoryController;
 import Controller.OrdersController;
 import Controller.StocksController;
@@ -24,7 +27,7 @@ public class App {
         UserController userController = new UserController();
         // userController.getUserData("peach");
         // User user = new User("eli", "eli", "peach@gmail.com", "manager");
-        userController.createNewUser("sricomputer", "sricomputer", "allit@gmail.com", UserRoles.SUPPLIER.toString());
+        // userController.createNewUser("sricomputer", "sricomputer", "allit@gmail.com", UserRoles.SUPPLIER.toString());
         // userController.createNewUser("peach2", "peach", "eliwoo@gmail.com", UserRoles.STAFF.toString());
         // userController.deleteUser("peach");
         // userController.authUser(user);
@@ -93,10 +96,15 @@ public class App {
             // stocksController.createUpdateStocks(stockMouse2.getStockId(), stockMouse2.getInventoryId(), StockStatus.NOT_AVAILABLE);
             // System.out.println("Stocks List: " + stocksController.getStocks());
 
-            try(Stream<Path>paths=Files.walk(Paths.get("./"))){
-                paths.filter(Files::isRegularFile)
-                .forEach(System.out::println);
+            // BlockchainVerification bcVerify = new BlockchainVerification(Config.BC_INVENTORY_FILE, Config.LEDGER_INVENTORY_FILE);
+            // BlockchainVerification bcVerify = new BlockchainVerification(Config.BC_INVENTORY_FILE, Config.LEDGER_INVENTORY_FILE);
+            BlockchainVerification bcVerify = new BlockchainVerification(Config.BC_STOCK_FILE, Config.LEDGER_STOCK_FILE);
+            if (bcVerify.verifyBlockChain()) {
+                System.out.println("It is untempered");;
+            } else {
+                System.out.println("kena tempered");
             }
+
 
         } catch (Exception e) {
             e.printStackTrace();
