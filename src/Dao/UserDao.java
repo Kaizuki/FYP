@@ -10,5 +10,4 @@ public interface UserDao {
     public void updateUser(User user);
     public boolean deleteUser(String user);
     public boolean authUser(User user);
-    public boolean chkDuplicateUser(String username);
 }

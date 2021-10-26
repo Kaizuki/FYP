@@ -8,6 +8,7 @@ import Models.User;
 
 public class UserController {
     UserDao userDao = new UserDaoImpl();
+    UserDaoImpl userDaoImpl = new UserDaoImpl();
 
     //! TODO: Remeber to convert all the return methods accordingly
     
@@ -69,7 +70,7 @@ public class UserController {
     }
 
     public boolean chkDuplicateUser(String userName) {
-    	return userDao.chkDuplicateUser(userName);
+    	return userDaoImpl.chkDuplicateUser(userName);
     }
 
 }

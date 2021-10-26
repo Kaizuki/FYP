@@ -1,5 +1,9 @@
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import Controller.InventoryController;
 import Controller.OrdersController;
@@ -13,7 +17,6 @@ import Models.Orders.OrdersStatus;
 import Models.Stocks;
 import Models.Stocks.StockStatus;
 import Models.User.UserRoles;
-import Models.User;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -89,6 +92,11 @@ public class App {
             // stocksController.createUpdateStocks("1e98a29a", stockMouse1.getInventoryId(), StockStatus.DEFECTIVE);
             // stocksController.createUpdateStocks(stockMouse2.getStockId(), stockMouse2.getInventoryId(), StockStatus.NOT_AVAILABLE);
             // System.out.println("Stocks List: " + stocksController.getStocks());
+
+            try(Stream<Path>paths=Files.walk(Paths.get("./"))){
+                paths.filter(Files::isRegularFile)
+                .forEach(System.out::println);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
